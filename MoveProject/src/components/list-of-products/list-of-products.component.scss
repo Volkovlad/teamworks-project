@@ -1,0 +1,18 @@
+*{
+	font-family: Montserrat;
+    font-style: normal;
+    font-size: 1.3vw;
+    font-weight:500;
+}
+
+img{
+	width: 17em;
+	height: 12em;
+}
+.list-of-products{
+	display: flex;
+	.product{
+		padding: 10px;
+	}
+
+}
