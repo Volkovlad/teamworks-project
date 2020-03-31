@@ -1,0 +1,369 @@
+body{background: #071222}
+
+#layer1{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 10%;
+}
+#img1 {
+  width: 100%;
+  height: 100%;
+}
+
+#layer2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 110%;
+}
+
+#layer3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 210%;
+  background: #EFEFEF;
+}
+
+#sign1{
+  position: absolute;
+  width: 370px;
+  height: 125px;
+  left: 685px;
+  top: 23px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #071222;
+}
+#sign2{
+  position: absolute;
+  width: 370px;
+  height: 125px;
+  left: 640px;
+  top: 23px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #EFEFEF;
+}
+
+#logo1 {
+  position: absolute;
+  width: 446px;
+  height: 59px;
+  left: 650px;
+  top: 275px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 50px;
+  line-height: 61px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #EFEFEF;
+  transform: rotate(-90deg);
+}
+
+#logo2{
+  position: absolute;
+  width: 318px;
+  height: 315px;
+  left: 912px;
+  top: 232px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 150px;
+  line-height: 150px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #EFEFEF;
+}
+
+#button1{
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  left: 595px;
+  top: 600px;
+  background: #004BA8;
+  border-radius: 10px;
+}
+
+#button2{
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  width: 170px;
+  height: 50px;
+  left: 629px;
+  top: 600px;
+  background: #004BA8;
+  border-radius: 10px;
+}
+
+@mixin buyButton {
+  color: #EFEFEF;
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  width: 167.22px;
+  height: 46.17px;
+  background: #004BA8;
+  border-radius: 10px;
+  left: 40.8px;
+  top: 280.25px;
+}
+
+@mixin description {
+
+  position: absolute;
+  width: 183.94px;
+  height: 32.32px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #071222;
+  left: 40.44px;
+  top: 200.38px;
+}
+
+@mixin price {
+  position: absolute;
+  width: 183.94px;
+  height: 32.32px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #071222;
+  left: 102.44px;
+  top: 238.38px;
+}
+
+@mixin shoes {
+  position: absolute;
+  width: 250.82px;
+  height: 184.68px;
+  border-radius: 10px 10px 0px 0px;
+  left: -2px;
+  top: -2px;
+}
+
+.box{
+
+  width: 250.82px;
+  height: 371.76px;
+
+  background: #EFEFEF;
+  border: 2px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+/*
+.box2{
+  position: absolute;
+  width: 250.82px;
+  height: 371.76px;
+  left: 457px;
+  top: 168px;
+  background: #FFFFFF;
+  border: 2px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.box{
+  position: absolute;
+  width: 250.82px;
+  height: 371.76px;
+  left: 732px;
+  top: 168px;
+  background: #EFEFEF;
+  border: 2px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.box{
+  position: absolute;
+  width: 250.82px;
+  height: 371.76px;
+  left: 1007px;
+  top: 168px;
+  background: #EFEFEF;
+  border: 2px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+*/
+#box5{
+  position: absolute;
+  width: 250.82px;
+  height: 371.76px;
+  left: 182px;
+  top: 168px;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+#box6{
+  position: absolute;
+  width: 250.82px;
+  height: 371.76px;
+  left: 457px;
+  top: 168px;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+#box7{
+  position: absolute;
+  width: 250.82px;
+  height: 371.76px;
+  left: 732px;
+  top: 168px;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+#box8{
+  position: absolute;
+  width: 250.82px;
+  height: 371.76px;
+  left: 1007px;
+  top: 168px;
+  background: #FFFFFF;
+  border-radius: 10px;
+}
+
+#popular1{
+  @include buyButton;
+}
+#popular2 {
+  @include buyButton;
+}
+#popular3 {
+  @include buyButton;
+}
+#popular4 {
+  @include buyButton;
+}
+#popular5 {
+  @include buyButton;
+}
+#popular6 {
+  @include buyButton;
+}
+#popular7 {
+  @include buyButton;
+}
+#popular8 {
+  @include buyButton;
+}
+#descrip1{
+  @include description;
+}
+#descrip2{
+  @include description;
+}
+#descrip3{
+  @include description;
+}
+#descrip4{
+  @include description;
+}
+#descrip5{
+  @include description;
+}
+#descrip6{
+  @include description;
+}
+#descrip7{
+  @include description;
+}
+#descrip8{
+  @include description;
+}
+#price1 {
+  @include price;
+}
+#price2 {
+  @include price;
+}
+#price3 {
+  @include price;
+}
+#price4 {
+  @include price;
+}
+#price5 {
+  @include price;
+}
+#price6 {
+  @include price;
+}
+#price7 {
+  @include price;
+}
+#price8 {
+  @include price;
+}
+#shoes1 {
+  @include shoes;
+}
+#shoes2 {
+  @include shoes;
+}
+#shoes3 {
+  @include shoes;
+}
+#shoes4 {
+  @include shoes;
+}
+#shoes5 {
+  @include shoes;
+}
+#shoes6 {
+  @include shoes;
+}
+#shoes7 {
+  @include shoes;
+}
+#shoes8 {
+  @include shoes;
+}
+
+
+
+
+
+
+
+
+
+
