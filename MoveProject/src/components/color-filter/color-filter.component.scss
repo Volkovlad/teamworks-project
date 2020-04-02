@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,500,700,700i&display=swap');
+
+*{
+  font-family: 'Montserrat',sans-serif;
+  font-style: normal;
+  font-size: 1.7vh;
+  font-weight:500;
+}
+
+.filter{
+  padding: 3px;
+  h2{
+    font-size: 2vh;
+    text-decoration: underline;
+  }
+}
+.con{
+  width: 200px;
+  margin: 10px;
+}
+.container {
+
+  display: block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2.1vh;
+  width: 2.1vh;
+  background-color: #fff;
+  border: 1px solid #000
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+  cursor: pointer;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 4px;
+  top: 2px;
+  width: 0.8vh;
+  height: 1.2vh;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
