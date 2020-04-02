@@ -1,0 +1,190 @@
+body {
+  background: #071222; }
+
+#layer1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 10%; }
+
+#img1 {
+  width: 100%;
+  height: 100%; }
+
+#layer2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 110%; }
+
+#layer3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0px;
+  top: 210%;
+  background: #EFEFEF; }
+
+#sign1 {
+  position: absolute;
+  width: 370px;
+  height: 125px;
+  left: 720px;
+  top: 23px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #071222; }
+
+#sign2 {
+  position: absolute;
+  width: 370px;
+  height: 125px;
+  left: 685px;
+  top: 23px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 37px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #EFEFEF; }
+
+#logo1 {
+  position: absolute;
+  width: 446px;
+  height: 59px;
+  left: 650px;
+  top: 275px;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 50px;
+  line-height: 61px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #EFEFEF;
+  transform: rotate(-90deg); }
+
+#logo2 {
+  position: absolute;
+  width: 318px;
+  height: 315px;
+  left: 912px;
+  top: 232px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 150px;
+  line-height: 150px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #EFEFEF; }
+
+#button1 {
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  left: 41.5%;
+  top: 625px;
+  background: #004BA8;
+  border-radius: 10px; }
+
+#button2 {
+  color: #FFFFFF;
+  font-family: 'Montserrat', sans-serif;
+  position: absolute;
+  width: 170px;
+  height: 50px;
+  left: 44.5%;
+  top: 630px;
+  background: #004BA8;
+  border-radius: 10px; }
+
+.popular {
+  position: relative;
+  color: #EFEFEF;
+  font-family: 'Montserrat', sans-serif;
+  width: 167.22px;
+  height: 46.17px;
+  background: #004BA8;
+  border-radius: 10px;
+  top: 220px;
+  left: 40px; }
+
+.descrip {
+  position: relative;
+  width: 183.94px;
+  height: 32.32px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #071222;
+  left: 15%;
+  top: 200px; }
+
+.price {
+  position: relative;
+  width: 183.94px;
+  height: 32.32px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #071222;
+  left: 102.44px;
+  top: 210px; }
+
+.shoes {
+  position: absolute;
+  width: 250.82px;
+  height: 184.68px;
+  border-radius: 10px 10px 0px 0px; }
+
+.box {
+  width: 250.82px;
+  height: 371.76px;
+  background: #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 10px; }
+
+.box2 {
+  width: 250.82px;
+  height: 371.76px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 10px; }
+
+/*# sourceMappingURL=main-page.component.css.map */
