@@ -10,8 +10,10 @@ img{
 	height: 12em;
 }
 .list-of-products{
-	display: flex;
+  margin-left: 50px;
+  margin-right: 50px;
 	.product{
+    float: left;
 		padding: 10px;
 	}
 
