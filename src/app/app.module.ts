@@ -3,12 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MainPageComponent} from './main-page/main-page.component';
+import {MainPageComponent} from './components/main-page/main-page.component';
+import { PriceFilterComponent } from './components/price-filter/price-filter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent
+    MainPageComponent,
+    PriceFilterComponent
   ],
   imports: [
     BrowserModule,
