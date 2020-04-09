@@ -1,0 +1,53 @@
+{
+  "shoes": [
+    {
+      "brand": "Nike",
+      "model": "Free Run",
+      "price": 2000,
+      "color": "black",
+      "size": 43
+    },
+    {
+      "brand": "Reebok",
+      "model": "Classic",
+      "price": 2300,
+      "color": "blue",
+      "size": 41
+    },
+    {
+      "brand": "Nike",
+      "model": "Free Run",
+      "price": 2000,
+      "color": "black",
+      "size": 43
+    },
+    {
+      "brand": "Nike",
+      "model": "Free Run",
+      "price": 2000,
+      "color": "black",
+      "size": 43
+    },
+    {
+      "brand": "Nike",
+      "model": "Free Run",
+      "price": 2000,
+      "color": "black",
+      "size": 43
+    },
+    {
+      "brand": "Nike",
+      "model": "Free Run",
+      "price": 2000,
+      "color": "black",
+      "size": 43
+    },
+    {
+      "brand": "Nike",
+      "model": "Free Run",
+      "price": 2000,
+      "color": "black",
+      "size": 43
+    }
+  ]
+}
