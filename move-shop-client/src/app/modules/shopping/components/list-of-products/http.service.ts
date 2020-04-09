@@ -8,7 +8,7 @@ export class HttpService {
 
 
   getData() {
-    return this.http.get('../assets/shoes.json');
-    // return this.http.get('http://localhost:8000/move/shoes/');
+    //return this.http.get('../assets/shoes.json');
+    return this.http.get('http://localhost:8000/move/shoes/');
   }
 }
