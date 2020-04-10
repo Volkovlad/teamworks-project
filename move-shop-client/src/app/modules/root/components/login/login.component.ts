@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {AuthService, SocialUser} from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 
@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   private user: SocialUser;
   private loggedIn: boolean;
+  @Input() showMePartially: boolean;
 
   constructor(private authService: AuthService) { }
 

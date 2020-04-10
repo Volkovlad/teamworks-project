@@ -19,13 +19,18 @@
 
     </div>
     <div class="icon">
-      <a href=""><img class="one" src="../../../../../assets/img_header/heart.png" height="26"/></a>
-      <a href=""><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></a>
+      <button style="background: none; border: none;cursor: pointer"><img class="one"  src="../../../../../assets/img_header/heart.png" height="26"/></button>
+      <button style="background: none; border: none;cursor: pointer"><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></button>
     </div>
     <div class="login">
-      <button type="button" >Log in</button>
+      <button type="button" (click)="toggleChild()" >Log in</button>
+      <div class="log" style=" position: absolute; right: 320px; top: 65px;">
+        <app-login [showMePartially]="showVar" style="float: right" ></app-login>
+      </div>
     </div>
 
-  </div>
+    </div>
+
 </header>
+
 

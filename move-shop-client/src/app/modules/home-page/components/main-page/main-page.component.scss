@@ -1,57 +1,38 @@
 *{
   padding: 0;
-margin: auto;
+  margin: 0;
   font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
 
 }
-
-
-
-
-
-#header{
-  width: 100%;
-  height: 80px;
-}
-
 #layer1{
-
   height: 733px;
   background: url("../../../../../assets/55.jpg")no-repeat center center;
   background-size: cover;
+  margin-top: -18px;
+
  // flex-wrap: wrap;
 
 }
-
-
-
-
 #logo{
   position: absolute;
 
   left: 50%;
   top: 35%;
 
+  //another variant position big logo
+/*  right: 200px;
+  top: 255px;*/
+
   height: 500px;
   width: 500px;
   display: flex;
-
-
-
-
-
 }
 #log1{
   width: 210px;
   height: 350px;
  // flex-wrap: wrap;
 }
-#log2{
-
-}
-
-
-
 #logo1{
 
   transform: rotate(-90deg);
@@ -84,18 +65,7 @@ margin: auto;
   color: #EFEFEF;
 }
 
-
-
-
-
-
-
-
-
-
-
 #sign1{
-
 
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -109,7 +79,7 @@ margin: auto;
 
   width: 100%;
   height: 125px;
-  left: 685px;
+
   top: 23px;
   display: flex;
   align-items: center;
@@ -133,8 +103,6 @@ margin: auto;
 
   background: #EFEFEF;
 }
-
-
 
 
 
@@ -162,6 +130,7 @@ margin: auto;
   align-items: center;
   text-align: center;
   justify-content: center;
+
 }
 
 #button1{
@@ -172,6 +141,8 @@ margin: auto;
   height: 50px;
   background: #004BA8;
   border-radius: 10px;
+  border: none ;
+
 }
 
 #button2{
@@ -183,6 +154,8 @@ margin: auto;
 
   background: #004BA8;
   border-radius: 10px;
+  border: none ;
+
 }
 
 .popular {
@@ -195,7 +168,8 @@ margin: auto;
   height: 46.17px;
   background: #004BA8;
   border-radius: 10px;
-
+  margin-top: 12px;
+  border: none ;
 
 }
 
@@ -206,6 +180,7 @@ margin: auto;
     font-style: italic;
     margin-top: 8px;
   }
+  margin-top: 10px;
 }
 
 .shoes {

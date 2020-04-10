@@ -1,6 +1,7 @@
-<form action="">
+<form *ngIf="showMePartially" style="float: right">
   <div class="log">
-    <div><img src="" alt=""></div>
+
+      <img class="triangle" src="../../../../../assets/img_login/Polygon.png" height="15" width="35"/>
 
     <div class="container">
       <h1 >Sing in:</h1>
@@ -11,13 +12,16 @@
         <input type="password" name="psw" placeholder="Password " required>
       </div>
 
-      <button type="submit" class="loginbtn">Sign in</button>
+      <button type="submit" id="logbtn" class="loginbtn">Sign in</button>
       <div>
         <h1 style="float: none">Sign in with</h1>
         <div class="soc">
-          <button class="social fb"> </button>
-          <button class="social tw"> </button>
+          <button class="social gl" id="googlebtn" (click)="signInWithGoogle()"><img
+            src="../../../../../assets/img_login/google-logo.png" height="50" width="50"/></button>
+          <button class="social fb" id="facebookbtn" (click)="signInWithFB()"><img
+            src="../../../../../assets/img_login/facebook-logo.png" height="50" width="50"/></button>
         </div>
+        <h1 style="float: none; margin-top:5px; " >New customer?<a href="" style=" text-decoration: none; color: black"> Sign up</a></h1>
       </div>
 
     </div>
