@@ -88,7 +88,7 @@ DATABASES = {
         # port number.
         'PORT': '3306',
         # database name.
-        'NAME': 'shop_test_many_to_one',
+        'NAME': 'shopdb',
         # user name. you need write your user on database MySQL
         'USER': 'root',
         # password and your password
