@@ -14,9 +14,9 @@ import { RegistrationComponent } from './components/registration/registration.co
     RootComponent,
     FooterComponent,
     HeaderComponent,
-    RegistrationComponent
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent
   ],
   imports: [
     CommonModule,
