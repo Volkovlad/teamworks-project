@@ -6,12 +6,14 @@ import { RootComponent } from './root.component';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
     RootComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegistrationComponent
   ],
   imports: [
     CommonModule,
