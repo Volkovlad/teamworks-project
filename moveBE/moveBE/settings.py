@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework.authtoken',
     'BEforDB',
     'corsheaders'
 ]
@@ -88,7 +89,7 @@ DATABASES = {
         # port number.
         'PORT': '3306',
         # database name.
-        'NAME': 'shopdb',
+        'NAME': 'shopdb_test',
         # user name. you need write your user on database MySQL
         'USER': 'root',
         # password and your password
