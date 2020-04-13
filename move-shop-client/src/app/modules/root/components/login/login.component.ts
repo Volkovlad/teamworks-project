@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   @Input() showMePartially: boolean;
 
   constructor(private authService: AuthService) { }
-
+  showReg = {
+    show: false
+  };
   ngOnInit(): void {
     /* this.authService.authState.subscribe((user) => {
        this.user = user;
@@ -36,4 +38,7 @@ export class LoginComponent implements OnInit {
     this.authService.signOut();
   }
 
+  showRegistration(){
+    this.showReg.show = !this.showReg.show;
+  }
 }

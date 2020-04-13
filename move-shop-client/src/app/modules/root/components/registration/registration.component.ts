@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import {User} from './services/user';
 import {UserService} from './services/user.service';
+import {LoginComponent} from '../login/login.component';
 
 @Component({
   selector: 'app-registration',
@@ -15,6 +16,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
+  @Input() showMe;
   ngOnInit(): void {
   }
 
@@ -35,5 +37,9 @@ export class RegistrationComponent implements OnInit {
   }
   onSubmit(){
     this.save()
+  }
+
+  closeRegistration(){
+    this.showMe.show = !this.showMe.show;
   }
 }

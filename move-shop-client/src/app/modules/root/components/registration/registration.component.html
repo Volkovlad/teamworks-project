@@ -1,8 +1,8 @@
 
-<div class="registration_form">
+<div class="registration_form" *ngIf="showMe.show">
 <form (ngSubmit)="onSubmit()">
   <div class="container">
-    <button class="closebtn">✖</button>
+    <button class="closebtn" (click)="closeRegistration()">✖</button>
       <h1 style="margin-left: 19px">Registration</h1>
     <div>
       <label for="name">Your name:</label>
@@ -23,7 +23,7 @@
     </div>
 
     <div>
-      <label for="phone">phone:</label>
+      <label for="Phone">phone:</label>
       <input type="text" name="phone" required [(ngModel)]="user.phone">
     </div>
 

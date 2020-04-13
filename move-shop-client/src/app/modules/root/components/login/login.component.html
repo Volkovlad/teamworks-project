@@ -21,7 +21,8 @@
           <button class="social fb" id="facebookbtn" (click)="signInWithFB()"><img
             src="../../../../../assets/img_login/facebook-logo.png" height="50" width="50"/></button>
         </div>
-        <h1 style="float: none; margin-top:5px; " >New customer?<a href="" style=" text-decoration: none; color: black"> Sign up</a></h1>
+        <h1 style="float: none; margin-top:5px; " >New customer?<button class="signup" (click)="showRegistration()"> Sign up</button></h1>
+        <app-registration [showMe]="showReg"></app-registration>
       </div>
 
     </div>
