@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import { RegistrationComponent } from './components/registration/registration.co
     LoginComponent,
     RegistrationComponent
   ],
-  imports: [
-    CommonModule,
-    RootRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        RootRoutingModule,
+        FormsModule
+    ]
 })
 export class RootModule { }
