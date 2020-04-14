@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Shoe(models.Model):
     brand = models.CharField(max_length=30)
@@ -11,23 +11,13 @@ class Shoe(models.Model):
 
 
 
-class User(models.Model):
-    name = models.CharField(max_length=30)
-    surname = models.CharField(max_length=30)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
-    phone = models.IntegerField(unique=True)
-
-    def __str__(self):
-        return self.email
-
-
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     name = models.CharField(max_length=30)
     phone = models.IntegerField()
     date = models.DateField()
+    address = models.CharField(max_length=40)
     payment_status = models.BooleanField()
     order_status = models.CharField(max_length=20)
     user_shoe_status = models.BooleanField()
