@@ -1,0 +1,6 @@
+# Default ignored files
+/workspace.xml
+/moveBE/BEforDB/__pycache__
+/moveBE/BEforDB/migrations/__pycache__
+/moveBE/moveBE/__pycache__
+/moveBE/__pycache__
