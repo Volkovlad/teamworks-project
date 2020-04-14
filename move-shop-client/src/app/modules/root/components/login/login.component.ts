@@ -12,7 +12,6 @@ import {UserService} from '../../services/user.service';
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
-  // private user: SocialUser;
   private loggedIn: boolean;
   @Input() showMePartially: boolean;
 
@@ -22,30 +21,13 @@ export class LoginComponent implements OnInit {
     show: false
   };
   ngOnInit(): void {
-    /* this.authService.authState.subscribe((user) => {
-       this.user = user;
-       this.loggedIn = (user != null);
-     });*/
+
   }
 
-  signInWithGoogle(): void {
-    /*this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);*/
-    console.log('login Google');
-  }
-
-  signInWithFB(): void {
-    /*this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);*/
-    console.log('login Facebook');
-  }
-
-  // signOut(): void {
-  //   this.authService.signOut();
-  // }
-
-  showRegistration(){
+  showRegistration() {
     this.showReg.show = !this.showReg.show;
   }
-  onLogin(){
+  onLogin() {
     this.userService.loginUser(this.user).subscribe(
       response => {
         console.log(response);
@@ -57,4 +39,33 @@ export class LoginComponent implements OnInit {
     );
 
   }
-}
+ }
+// export class SocialLoginComponent implements OnInit {
+//
+//   private user: SocialUser;
+//   private loggedIn: boolean;
+//
+//   constructor(private authService: AuthService) { }
+//
+//   ngOnInit(): void {
+//     this.authService.authState.subscribe((user) => {
+//       this.user = user;
+//       this.loggedIn = (user != null);
+//     });
+//   }
+//
+//   signInWithGoogle(): void {
+//     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+//     console.log('login Google');
+//   }
+//
+//   signInWithFB(): void {
+//     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+//     console.log('login Facebook');
+//   }
+//
+//   signOut(): void {
+//     this.authService.signOut();
+//   }
+//
+// }
