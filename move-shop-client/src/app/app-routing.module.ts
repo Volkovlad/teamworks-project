@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {FaqComponent} from './modules/faq/faq.component';
 
 const routes: Routes = [
   {
