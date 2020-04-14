@@ -1,16 +1,17 @@
 from django.urls import path,include
 from rest_framework import routers
+from rest_framework.authtoken.views import ObtainAuthToken
+
+from . import views
 from .views import *
 
-from django.urls import path
-from .views import current_user, UserList
-
 router = routers.DefaultRouter()
+router.register('register', views.UserViewSet)
 
 urlpatterns = [
     path('shoes/', ShoeView.as_view()),
     path('', include(router.urls)),
-    path('current_user/', current_user),
-    path('users/', UserList.as_view()),
+    path('login/', ObtainAuthToken.as_view()),
+
 
 ]

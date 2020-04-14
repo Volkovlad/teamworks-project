@@ -20,5 +20,7 @@ from rest_framework_jwt.views import obtain_jwt_token
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('move/', include('BEforDB.urls')),
+
+
     path('token-auth/', obtain_jwt_token)
 ]
