@@ -22,6 +22,23 @@ export function provideConfig() {
   return config;
 }
 
+
+// export function getAuthServiceConfigs() {
+//   const config = new AuthServiceConfig(
+//     [
+//       {
+//         id: FacebookLoginProvider.PROVIDER_ID,
+//         provider: new FacebookLoginProvider('1009301017122-lg3afndggvgoi0hofq1pedp5rjndhr4b.apps.googleusercontent.com')
+//       },
+//       {
+//         id: GoogleLoginProvider.PROVIDER_ID,
+//         provider: new GoogleLoginProvider('1348783431972468')
+//       }
+//     ]
+// )
+//   return config;
+// }
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +54,7 @@ export function provideConfig() {
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+      /*useFactory: getAuthServiceConfigs*/
     }
   ],
   bootstrap: [AppComponent]

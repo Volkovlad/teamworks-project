@@ -14,15 +14,57 @@ export class LoginComponent implements OnInit {
   user: User = new User();
   private loggedIn: boolean;
   @Input() showMePartially: boolean;
+  public socialUser: any = SocialUser;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private socialAuthService: AuthService) { }
 
   showReg = {
     show: false
   };
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.socialAuthService.authState.subscribe((socialUser) => {
+       this.socialUser = socialUser;
+       this.loggedIn = (socialUser != null);
+     });
   }
+  signInWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
+      this.socialUser = userData;
+    });
+  }
+
+  signInWithFB(): void {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then((userData) => {
+      this.socialUser = userData;
+    });
+  }
+
+  signOut(): void {
+    this.socialAuthService.signOut();
+  }
+
+  //
+  // public socialSignIn(socialPlatform : string) {
+  //   let socialPlatformProvider;
+  //
+  //   // tslint:disable-next-line:triple-equals
+  //   if (socialPlatform == 'facebook') {
+  //     socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
+  //
+  //   } else if (socialPlatform == 'google') {
+  //     socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
+  //   }
+  //
+  //   this.socialAuthService.signIn(socialPlatformProvider).then(
+  //     (userData) => {
+  //       console.log(socialPlatform + ' sign in data : ' , userData);
+  //       // Now sign-in with userData
+  //       // ...
+  //
+  //     }
+  //   );
+  // }
 
   showRegistration() {
     this.showReg.show = !this.showReg.show;
@@ -42,7 +84,7 @@ export class LoginComponent implements OnInit {
  }
 // export class SocialLoginComponent implements OnInit {
 //
-//   private user: SocialUser;
+//   private socialUser: SocialUser;
 //   private loggedIn: boolean;
 //
 //   constructor(private authService: AuthService) { }
