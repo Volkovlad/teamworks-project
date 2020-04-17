@@ -1,4 +1,4 @@
-<link rel="stylesheet/scss" type="text/css" href="menu.component.scss">
+
 <header>
 
   <div class="logo">
@@ -12,20 +12,25 @@
   <div class="toolbar" >
     <div class="list">
       <ul >
-        <li><a href="">Catalog</a></li>
+        <li><a routerLink="/shopping">Catalog</a></li>
         <li><a href="">About us</a></li>
-        <li><a href="">FAQ</a></li>
+        <li><a routerLink="/faq">FAQ</a></li>
       </ul>
 
     </div>
     <div class="icon">
-      <a href=""><img class="one" src="../../../../../assets/img_header/heart.png" height="26"/></a>
-      <a href=""><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></a>
+      <button style="background: none; border: none;cursor: pointer"><img class="one"  src="../../../../../assets/img_header/heart.png" height="26"/></button>
+      <button style="background: none; border: none;cursor: pointer"><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></button>
     </div>
     <div class="login">
-      <a href=""><button type="button" >Log in</button></a>
+      <button type="button" (click)="toggleChild()" >Log in</button>
+      <div class="log" style=" position: absolute; right: 320px; top: 65px;">
+        <app-login [showMePartially]="showVar" style="float: right" ></app-login>
+      </div>
     </div>
 
-  </div>
+    </div>
+
 </header>
+
 

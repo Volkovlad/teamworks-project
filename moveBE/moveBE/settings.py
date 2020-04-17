@@ -80,8 +80,19 @@ WSGI_APPLICATION = 'moveBE.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+         # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        # MySQL database host ip.
+        'HOST': 'localhost',
+        # port number.
+        'PORT': '3306',
+        # database name.
+        'NAME': 'shopdb',
+        # user name. you need write your user on database MySQL
+        'USER': 'root',
+        # password and your password
+        'PASSWORD': 'lukash051000',
     }
 }
 
