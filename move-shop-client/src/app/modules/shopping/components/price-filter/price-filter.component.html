@@ -1,59 +1,22 @@
-<p>price-filter works!</p>
+
 <html>
 <head>
 
   <meta charset="UTF-8"/>
-  <title>move.com</title>
+
 
   <link href="price-filter.component.scss" rel="stylesheet" type="text/css">
 
-
-
-
-
-
-
-
 </head>
 
-<body bgcolor="#E5E5E5">
+<body>
 
-
-<!--<div class="range-filter">
-  <div class="range-controls">
-    <div class="scale"><div style="margin-left:50px;width:100px;" class="bar"></div></div>
-    <div class="toggle min-toggle"></div>
-    <div class="toggle max-toggle"></div>
-  </div>
-  <div class="price-controls">
-    <input class="min-price" type="text" placeholder=" 0$">
-    <input class="max-price" type="text" placeholder=" 400$">
-  </div>
+<div class="custom-slider">
+  <hr>
+  <h4>Price:</h4>
+<ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" ></ng5-slider>
+  <hr>
 </div>
 
-<span id="price">Price:</span>
-
-
-
-
-
-
-
-
-
-
-<div id="header"></div>
-
-<form>
-  <input type="text" placeholder="  Search" id="i1">
-  <button type="submit" id="b1"></button>
-</form>
-
-
-
-<span id="CORONAVIRUS">! JUST WASH YOUR HANDS !</span>-->
-
 </body>
-
-
 </html>

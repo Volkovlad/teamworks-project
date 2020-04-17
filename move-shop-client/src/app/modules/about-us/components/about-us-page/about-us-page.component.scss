@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,700,700i&display=swap');
+*{
+  margin: 0;
+}
+.bcgd{
+  width: 100%;
+  display: inline-block;
+  background-color: #EFEFEF;
+  height: 100%;
+  border-color: #EFEFEF;
+}
+.name{
+  width: 100%;
+  padding-left: 10%;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 40px;
+  color: #071222;
+}
+.description{
+  padding-left: 5%;
+  margin-top: 30px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #071222;
+}
+.image{
+  float: right;
+  padding-right: 3%;
+  padding-left: 3%;
+  width: 45%;
+}
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 15%;
+  padding-left: 15%;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.surname{
+  padding: 5%;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #EFEFEF;
+  text-align: center;
+}
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column2 {
+  float: left;
+  width: 15%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 15%;
+}
+
+/* Clear floats after image containers */
+.row2::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.team{
+  background-color: #071222;
+}
+.map{
+  float: right;
+  margin-right: 5%;
+  margin-top: 1%;
+  margin-bottom: 3%;
+  height: auto;
+  width: auto;
+}
+.info{
+  padding-left: 5%;
+  margin-top: 5%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #071222;
+}
