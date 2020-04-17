@@ -17,6 +17,12 @@ export class HeaderComponent implements OnInit {
   toggleChild() {
     this.showVar = !this.showVar;
   }
+  mouseEnter(div : string){
+    console.log("mouse enter : " + div);
+  }
 
+  mouseLeave(div : string){
+    console.log('mouse leave :' + div);
+  }
 }
 

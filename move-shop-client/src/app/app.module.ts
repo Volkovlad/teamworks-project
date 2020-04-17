@@ -5,22 +5,41 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
+import {FormsModule} from '@angular/forms';
 import { Ng5SliderModule } from 'ng5-slider';
+
 
 const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider('Google-OAuth-Client-Id')
+    provider: new GoogleLoginProvider('1009301017122-lg3afndggvgoi0hofq1pedp5rjndhr4b.apps.googleusercontent.com')
   },
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider('Facebook-App-Id')
+    provider: new FacebookLoginProvider('1348783431972468')
   }
 ]);
 
 export function provideConfig() {
   return config;
 }
+
+
+// export function getAuthServiceConfigs() {
+//   const config = new AuthServiceConfig(
+//     [
+//       {
+//         id: FacebookLoginProvider.PROVIDER_ID,
+//         provider: new FacebookLoginProvider('1009301017122-lg3afndggvgoi0hofq1pedp5rjndhr4b.apps.googleusercontent.com')
+//       },
+//       {
+//         id: GoogleLoginProvider.PROVIDER_ID,
+//         provider: new GoogleLoginProvider('1348783431972468')
+//       }
+//     ]
+// )
+//   return config;
+// }
 
 @NgModule({
   declarations: [
@@ -30,12 +49,14 @@ export function provideConfig() {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SocialLoginModule
+    SocialLoginModule,
+    FormsModule
   ],
   providers: [
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
+      /*useFactory: getAuthServiceConfigs*/
     }
   ],
   bootstrap: [AppComponent]

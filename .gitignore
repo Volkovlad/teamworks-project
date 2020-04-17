@@ -1,0 +1,10 @@
+# Default ignored files
+/workspace.xml
+/moveBE/BEforDB/pycache
+/moveBE/BEforDB/migrations/pycache
+/moveBE/moveBE/pycache
+/moveBE/pycache
+/venv
+/.idea/misc.xml
+/.idea/teamworks-project.iml
+
