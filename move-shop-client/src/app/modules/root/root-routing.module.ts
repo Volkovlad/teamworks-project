@@ -7,6 +7,13 @@ const routes: Routes = [
     path     : '',
     component: RootComponent,
     children : [
+
+
+      {
+        path: 'faq',
+        loadChildren: () => import('../faq/faq.module').then(m => m.FaqModule),
+      },
+
       {
         path        : 'home',
         loadChildren: () => import('../home-page/home-page.module').then(m => m.HomePageModule),
@@ -19,7 +26,8 @@ const routes: Routes = [
         path      : '**',
         redirectTo: 'home',
         pathMatch : 'full'
-      }
+      },
+
     ]
   }
 ];
