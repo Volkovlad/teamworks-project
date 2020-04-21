@@ -8,6 +8,9 @@ import { SizeComponent } from './components/size/size.component';
 import { BrandFilterComponent } from './components/brand-filter/brand-filter.component';
 import { ColorFilterComponent } from './components/color-filter/color-filter.component';
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
+import { ShoeSearchComponent } from './components/shoe-search/shoe-search.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+
 
 @NgModule({
   declarations: [
@@ -16,11 +19,15 @@ import { ListOfProductsComponent } from './components/list-of-products/list-of-p
     SizeComponent,
     BrandFilterComponent,
     ColorFilterComponent,
-    ListOfProductsComponent
+    ListOfProductsComponent,
+    ShoeSearchComponent
   ],
   imports: [
     CommonModule,
-    ShoppingRoutingModule
+    ShoppingRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
-export class ShoppingModule { }
+export class ShoppingModule {
+}

@@ -1,22 +1,5 @@
 *{
-	font-family: Montserrat;
-    font-style: normal;
-    font-size: 1.3vw;
-    font-weight:500;
-}
-
-img{
-	width: 17em;
-	height: 12em;
-}
-.list-of-products{
-  margin-left: 50px;
-  margin-right: 50px;
-	.product{
-    float: left;
-		padding: 10px;
-	}
-
+  font-family: Montserrat;
 }
 input[type="text"] {
   width: 450px;
@@ -34,9 +17,6 @@ button {
   box-sizing: border-box;
   width: 50px;
 }
-form{
-  img{
-    width: 14px;
-    height: 14px;
-  }
+i::before{
+content: '\e806';
 }

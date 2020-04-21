@@ -19,7 +19,11 @@ from .serializers import UserSerializer
 
 class ShoeView(APIView):
     def get(self, request):
-        shoes = Shoe.objects.all()
+        query = request.GET.get("q")
+        if query:
+            shoes = Shoe.objects.filter(brand=query) or Shoe.objects.filter(model=query)
+        else:
+            shoes = Shoe.objects.all()
         serializer = ShoeSerializer(shoes, many=True)
         return Response({"shoes": serializer.data})
 

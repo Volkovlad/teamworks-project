@@ -1,14 +1,16 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from "rxjs";
+
 
 @Injectable()
 export class HttpService {
-
-  constructor(private http: HttpClient){ }
-
-
-  getData() {
-    //return this.http.get('../assets/shoes.json');
-    return this.http.get('http://localhost:8000/move/shoes/');
+  baseUrl = 'http://localhost:8000/move/shoes/';
+  constructor(private http: HttpClient) { }
+  getData(): Observable<any> {
+    return this.http.get(this.baseUrl);
+  }
+  getSearched(name: string): Observable<any>{
+    return this.http.get(this.baseUrl+'?q='+name);
   }
 }
