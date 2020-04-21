@@ -11,12 +11,23 @@ import {HttpService} from './http.service';
 export class ListOfProductsComponent implements OnInit {
 
   shoes: Shoe[] = [];
+  name: string;
 
-  constructor(private httpService: HttpService){}
+  constructor(private httpService: HttpService) {
+  }
 
-  ngOnInit(){
-
+  ngOnInit() {
+    this.name = '';
     this.httpService.getData().subscribe(data => this.shoes = data["shoes"]);
   }
 
+  private searchShoes() {
+    this.shoes = [];
+    this.httpService.getSearched(this.name)
+      .subscribe(data => this.shoes = data["shoes"]);
+  }
+
+  onSubmit() {
+    this.searchShoes();
+  }
 }

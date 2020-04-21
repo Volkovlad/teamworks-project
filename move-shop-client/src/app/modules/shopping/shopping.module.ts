@@ -8,7 +8,10 @@ import { SizeComponent } from './components/size/size.component';
 import { BrandFilterComponent } from './components/brand-filter/brand-filter.component';
 import { ColorFilterComponent } from './components/color-filter/color-filter.component';
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
+
 import {Ng5SliderModule} from "ng5-slider";
+import { ShoeSearchComponent } from './components/shoe-search/shoe-search.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -17,12 +20,17 @@ import {Ng5SliderModule} from "ng5-slider";
     SizeComponent,
     BrandFilterComponent,
     ColorFilterComponent,
-    ListOfProductsComponent
+    ListOfProductsComponent,
+    ShoeSearchComponent
   ],
-    imports: [
-        CommonModule,
-        ShoppingRoutingModule,
-        Ng5SliderModule
-    ]
+
+  imports: [
+    CommonModule,
+    ShoppingRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+  ]
+
 })
-export class ShoppingModule { }
+export class ShoppingModule {
+}

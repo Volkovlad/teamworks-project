@@ -1,23 +1,30 @@
-<div class="bg">
-  <label class="container">Clear all filters
-    <input type="checkbox" checked="checked">
-    <span class="checkmark"></span>
-  </label>
-  <div class="line" style="top: 360px">
-    _____________________
+
+<div class="under-header-panel">
+  <div class="bg">
+    <label class="container" >Clear all filters
+      <input name="clear" type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
   </div>
-  <div class="line" style="top: 555px">
-    _____________________
-  </div>
-  <div class="line" style="top: 770px">
-    _____________________
-  </div>
+<app-shoe-search style="text-align: center"></app-shoe-search>
 </div>
 
 
-<app-size></app-size>
-<app-brand-filter></app-brand-filter>
-
-<app-color-filter></app-color-filter>
-
-<app-list-of-products></app-list-of-products>
+<div class="main_content">
+  <div class="all_filters">
+    <app-brand-filter></app-brand-filter>
+      <div class="line" style="top: 360px">
+        _____________________
+      </div>
+    <app-brand-filter></app-brand-filter>
+      <div class="line" style="top: 555px">
+        _____________________
+      </div>
+    <app-size></app-size>
+      <div class="line" style="top: 770px">
+        _____________________
+      </div>
+    <app-color-filter></app-color-filter>
+</div>
+  <app-list-of-products></app-list-of-products>
+</div>
