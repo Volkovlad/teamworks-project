@@ -10,8 +10,14 @@ router.register('register', views.UserViewSet)
 
 urlpatterns = [
     path('shoes/', ShoeView.as_view()),
+    path('shoe/<int:pk>/', CurrentShoeView.as_view()),
     path('', include(router.urls)),
     path('login/', ObtainAuthToken.as_view()),
+    path('add/<int:pk>/<int:count>', add_to_cart),
+    path('favorite/add/<int:pk>', add_to_favorite),
+    path('favorite/remove/<int:pk>', remove_from_favorite),
+    path('remove/<int:pk>', remove_from_cart),
+    path('remove/one/<int:pk>', remove_one_from_cart),
 
 
 ]

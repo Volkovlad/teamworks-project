@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'BEforDB',
-    'corsheaders'
+    'corsheaders',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [
@@ -102,9 +103,10 @@ DATABASES = {
         # user name. you need write your user on database MySQL
         'USER': 'root',
         # password and your password
-        'PASSWORD': 'lukash051000',
+        'PASSWORD': '',
     }
 }
+PHONENUMBER_DEFAULT_REGION = 'UA'
 
 JWT_AUTH = {
     'JWT_VERIFY': True,
