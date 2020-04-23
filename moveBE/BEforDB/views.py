@@ -23,7 +23,7 @@ from .serializers import UserSerializer
 class ShoeView(APIView):
     def get(self, request):
         shoes = Shoe.objects.all()
-        serializer = SizeSerializer(shoes, many=True)
+        serializer = ShoeSerializer(shoes, many=True)
         return Response({"shoes": serializer.data})
 
 
