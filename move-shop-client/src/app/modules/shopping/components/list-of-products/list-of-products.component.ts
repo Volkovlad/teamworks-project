@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Shoe} from './shoe';
-import {HttpService} from './http.service';
+import { Shoe } from '../../../../models/shoe';
+import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-list-of-products',
@@ -9,6 +9,7 @@ import {HttpService} from './http.service';
   providers: [HttpService]
 })
 export class ListOfProductsComponent implements OnInit {
+  @Input() shoesNew;
 
   shoes: Shoe[] = [];
   name: string;

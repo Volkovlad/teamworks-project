@@ -6,7 +6,9 @@
       <span class="checkmark"></span>
     </label>
   </div>
-<app-shoe-search style="text-align: center"></app-shoe-search>
+  <app-shoe-search style="text-align: center"
+    (searchProducts)="searchProducts($event)"
+  ></app-shoe-search>
 </div>
 
 
@@ -26,5 +28,5 @@
       </div>
     <app-color-filter></app-color-filter>
 </div>
-  <app-list-of-products></app-list-of-products>
+  <app-list-of-products [shoesNew]="shoes"></app-list-of-products>
 </div>

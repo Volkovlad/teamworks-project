@@ -9,9 +9,9 @@ import { BrandFilterComponent } from './components/brand-filter/brand-filter.com
 import { ColorFilterComponent } from './components/color-filter/color-filter.component';
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
 
-import {Ng5SliderModule} from "ng5-slider";
+import { Ng5SliderModule } from 'ng5-slider';
 import { ShoeSearchComponent } from './components/shoe-search/shoe-search.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     ShoppingRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    Ng5SliderModule,
   ]
 
 })
