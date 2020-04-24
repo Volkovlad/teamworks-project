@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import { Ng5SliderModule } from 'ng5-slider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+
 
 const config = new AuthServiceConfig([
   {
@@ -27,10 +30,13 @@ export function provideConfig() {
     AppComponent,
   ],
   imports: [
+    MatSliderModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    SocialLoginModule
+    SocialLoginModule,
+    BrowserAnimationsModule,
+
   ],
   providers: [
     {

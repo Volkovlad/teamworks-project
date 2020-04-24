@@ -8,7 +8,10 @@ const routes: Routes = [
     component: RootComponent,
     children : [
 
-
+      {
+        path: 'ordering',
+        loadChildren: () => import('../ordering/ordering.module').then(m => m.OrderingModule),
+      },
       {
         path: 'faq',
         loadChildren: () => import('../faq/faq.module').then(m => m.FaqModule),
@@ -22,6 +25,9 @@ const routes: Routes = [
         path        : 'shopping',
         loadChildren: () => import('../shopping/shopping.module').then(m => m.ShoppingModule),
       },
+
+
+
       {
         path      : '**',
         redirectTo: 'home',

@@ -8,7 +8,7 @@ import { SizeComponent } from './components/size/size.component';
 import { BrandFilterComponent } from './components/brand-filter/brand-filter.component';
 import { ColorFilterComponent } from './components/color-filter/color-filter.component';
 import { ListOfProductsComponent } from './components/list-of-products/list-of-products.component';
-import {Ng5SliderModule} from "ng5-slider";
+import {Ng5SliderModule} from 'ng5-slider';
 
 @NgModule({
   declarations: [

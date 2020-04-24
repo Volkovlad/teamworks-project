@@ -19,8 +19,9 @@
 
     </div>
     <div class="icon">
-      <button style="background: none; border: none;cursor: pointer"><img class="one"  src="../../../../../assets/img_header/heart.png" height="26"/></button>
-      <button style="background: none; border: none;cursor: pointer"><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></button>
+      <button style="background: none; border: none;cursor: pointer"><img class="one"  src="../../../../../assets/img_header/heart.png" height="26"/><a
+        routerLink="/ordering"></a></button>
+      <button style="background: none; border: none;cursor: pointer" routerLink="/ordering"><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></button>
     </div>
     <div class="login">
       <button type="button" (click)="toggleChild()" >Log in</button>
