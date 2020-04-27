@@ -1,13 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
-import {FormsModule} from '@angular/forms';
-import { Ng5SliderModule } from 'ng5-slider';
-
+import { FormsModule } from '@angular/forms';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 const config = new AuthServiceConfig([
   {
@@ -23,23 +22,6 @@ const config = new AuthServiceConfig([
 export function provideConfig() {
   return config;
 }
-
-
-// export function getAuthServiceConfigs() {
-//   const config = new AuthServiceConfig(
-//     [
-//       {
-//         id: FacebookLoginProvider.PROVIDER_ID,
-//         provider: new FacebookLoginProvider('1009301017122-lg3afndggvgoi0hofq1pedp5rjndhr4b.apps.googleusercontent.com')
-//       },
-//       {
-//         id: GoogleLoginProvider.PROVIDER_ID,
-//         provider: new GoogleLoginProvider('1348783431972468')
-//       }
-//     ]
-// )
-//   return config;
-// }
 
 @NgModule({
   declarations: [
@@ -57,7 +39,8 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
       /*useFactory: getAuthServiceConfigs*/
-    }
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
