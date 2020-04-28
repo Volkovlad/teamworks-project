@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 
 @Injectable()
 export class HttpService {
-  baseUrl = 'http://localhost:8000/move/shoes/';
+  baseUrl = 'http://localhost:8000/move/shoe/';
   constructor(private http: HttpClient) { }
   getData(): Observable<any> {
     return this.http.get(this.baseUrl);

@@ -9,6 +9,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import {FormsModule} from '@angular/forms';
+import {CartComponent} from './components/cart/cart.component';
+import {FavoriteComponent} from './components/favorite/favorite.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import {FormsModule} from '@angular/forms';
     HeaderComponent,
     HeaderComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CartComponent,
+    FavoriteComponent
   ],
   imports: [
     CommonModule,

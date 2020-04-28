@@ -1,18 +1,3 @@
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
-<!--hover user objects-->
 <header>
 
   <div class="logo">
@@ -33,15 +18,24 @@
 
     </div>
     <div class="icon">
-      <button style="background: none; border: none;cursor: pointer"><img class="one"  src="../../../../../assets/img_header/heart.png" height="26"/></button>
-      <button style="background: none; border: none;cursor: pointer"><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></button>
-    </div>
+     <img (click)="viewFavorite()" class="one"  src="../../../../../assets/img_header/heart.png" height="26"/>
+      <div style=" position: absolute; right: 335px; top: 39px;">
+        <app-favorite [showFavorite]="favoriteVar"></app-favorite>
+      </div>
+     <img (click)="viewCart()" class="second" src="../../../../../assets/img_header/cart.png" height="28" />
+
+      <div style=" position: absolute; right: 255px; top: 39px;">
+        <app-cart [showCart]="cartVar" ></app-cart></div>
+      </div>
     <div class="login">
-      <div (mouseenter)="toggleChild()"   >
+      <div (click)="toggleChild()"   >
         <button type="button"  >Log in</button>
       </div>
+      <div class="cart">
 
-      <div class="log" style=" position: absolute; right: 320px; top: 65px;">
+      </div>
+
+      <div class="log" style=" position: absolute; right: 320px; top: 64px;">
         <app-login [showMePartially]="showVar" style="float: right" ></app-login>
       </div>
     </div>

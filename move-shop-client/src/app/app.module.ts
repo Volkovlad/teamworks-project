@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
 import {FormsModule} from '@angular/forms';
-import { Ng5SliderModule } from 'ng5-slider';
 
 
 const config = new AuthServiceConfig([

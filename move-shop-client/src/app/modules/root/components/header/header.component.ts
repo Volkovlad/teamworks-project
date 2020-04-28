@@ -10,19 +10,29 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
   showVar = false;
+  cartVar = false;
+  favoriteVar = false;
 
   ngOnInit(): void {
   }
 
   toggleChild() {
     this.showVar = !this.showVar;
-  }
-  mouseEnter(div : string){
-    console.log("mouse enter : " + div);
+    this.cartVar = false;
+    this.favoriteVar = false;
   }
 
-  mouseLeave(div : string){
-    console.log('mouse leave :' + div);
+  viewCart() {
+    this.cartVar = !this.cartVar;
+    this.showVar = false;
+    this.favoriteVar = false;
   }
+
+  viewFavorite(){
+    this.favoriteVar = !this.favoriteVar;
+    this.showVar = false;
+    this.cartVar = false;
+  }
+
 }
 
