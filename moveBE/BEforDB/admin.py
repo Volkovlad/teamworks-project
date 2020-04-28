@@ -7,7 +7,18 @@ admin.site.register(Order)
 admin.site.register(Comment)
 admin.site.register(OrderList)
 admin.site.register(Favorite)
-admin.site.register(Color)
 admin.site.register(Image)
-admin.site.register(Size)
-# Register your models here.
+
+
+# Define the admin class
+class ColorAdmin(admin.ModelAdmin):
+    list_display = ('shoe','color')
+# Register the admin class with the associated model
+admin.site.register(Color, ColorAdmin)
+
+# Define the admin class
+class SizeAdmin(admin.ModelAdmin):
+    list_display = ('shoe', 'color', 'size' )
+
+# Register the admin class with the associated model
+admin.site.register(Size, SizeAdmin)
