@@ -60,18 +60,35 @@ class SizeSerializer(serializers.Serializer):
 '''
 
 
+class ColorSerializer(serializers.ModelSerializer):
+    size = serializers.StringRelatedField(many=True)
 
-class ShoeSerializer(serializers.Serializer):
-    brand = serializers.CharField(max_length=30)
-    model = serializers.CharField(max_length=30)
-    price = serializers.IntegerField()
+    class Meta:
+        model = Color
+        fields = ['id', 'size']
 
-class ColorSerializer(serializers.Serializer):
-    shoe = ShoeSerializer()
-    color = serializers.CharField(max_length=30)
 
-class SizeSerializer(serializers.Serializer):
-    color = ColorSerializer()
+class ShoeSerializer(serializers.ModelSerializer):
+    color = serializers.StringRelatedField(many=True)
+
+    class Meta:
+        model = Shoe
+        fields = ['id','brand', 'model', 'price', 'color']
+
+
+class OrderShoeSerializer(serializers.Serializer):
+
+    brand = serializers.SerializerMethodField()
+    model = serializers.SerializerMethodField()
+    price = serializers.SerializerMethodField()
+
+
+class OrderColorSerializer(serializers.Serializer):
+    shoe = OrderShoeSerializer()
+    color = serializers.CharField(max_length=20)
+
+class OrderSerializer(serializers.Serializer):
+    color = OrderColorSerializer()
     size = serializers.IntegerField()
     count = serializers.IntegerField()
 

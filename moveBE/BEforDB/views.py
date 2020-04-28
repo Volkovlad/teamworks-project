@@ -5,8 +5,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Shoe, Size, OrderList, Order, Favorite
-from .serializers import ShoeSerializer, SizeSerializer
+from .models import Shoe, Size, OrderList, Order, Favorite, Color
+from .serializers import ShoeSerializer, ColorSerializer, OrderSerializer
 
 from rest_framework import viewsets, permissions
 
@@ -20,21 +20,38 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer
 
-class ShoeView(APIView):
+class ShoeView(APIView):    #display all shoes model
     def get(self, request):
         shoes = Shoe.objects.all()
         serializer = ShoeSerializer(shoes, many=True)
+
         return Response({"shoes": serializer.data})
+
+class ShowSizeVaribleView(APIView): #display varidle size of current color
+    def get(self,request, pk, color):
+        color = Color.objects.filter(shoe__id = pk, color=color)
+        serializer = ColorSerializer(color, many=True)
+        return Response({"value": serializer.data})
+
+class CartView(APIView):
+    def get(self, request):
+        order = Order.objects.filter(user=request.user, ordered=False)
+        if order.exists() :
+            print(order[0].shoes.quantity)
+            return order[0].shoes.count()
+
 
 
 class CurrentShoeView(APIView):
     def get(self,request, pk):
         try:
-            shoe = Size.objects.get(pk=pk)
+            shoe = Shoe.objects.get(pk=pk)
         except ObjectDoesNotExist:
             pass
-        serializer = SizeSerializer(shoe)
-        return Response({"shoe": serializer.data})
+        serializer = ShoeSerializer(shoe)
+        return Response({"shoe" :serializer.data})
+
+
 
 
 
@@ -42,21 +59,19 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
 @csrf_exempt
-def add_to_cart(request,pk, count):
+def add_to_cart(request, pk, size, count):
     try:
-        shoe = Size.objects.get(pk=pk)
+        shoe = Size.objects.get(color__pk=pk, size=size)
     except ObjectDoesNotExist:
         pass
-    order_list, created  = OrderList.objects.get_or_create(shoe=shoe, user=request.user,ordered=False)
-    order_list.quantity = count
+    order_list, created  = OrderList.objects.get_or_create(shoe=shoe, user=request.user, ordered=False)
+    order_list.quantity += count
     order_list.save()
     order_qs =  Order.objects.filter(user=request.user, ordered=False)
     if order_qs.exists():
         order = order_qs[0]
         if order.shoes.filter(shoe__pk = shoe.pk).exists():
-            order.shoes.filter()
-            order_list.quantity += count
-            order_list.save()
+            pass
         else:
             order.shoes.add(order_list)
     else:
@@ -110,7 +125,6 @@ def remove_from_favorite(request, pk):
         pass
     favorite = Favorite.objects.filter(user=request.user, shoe=shoe)[0]
     Favorite.delete(favorite)
-
 
 
 class UserViewSet(viewsets.ModelViewSet):
