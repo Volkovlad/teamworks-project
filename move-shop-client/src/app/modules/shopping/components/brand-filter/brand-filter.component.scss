@@ -1,19 +1,19 @@
 *{
 	  font-family: Montserrat;
     font-style: normal;
-    font-size: 1.7vh;
+    font-size: 17px;
     font-weight:500;
 }
 
 h4{
-	font-size: 2vh;
+	font-size: 20px;
+  font-weight: 600;
 	text-decoration: underline;
   padding-bottom: 15px;
 }
 .brand-filter{
 	  width: 10em;
     padding: 10px;
-    border: 1px solid black;
 }
 .filter{
 	padding: 3px;
@@ -21,7 +21,7 @@ h4{
 
 .container {
   display: block;
-  position: relative;
+  margin-left: -17px;
   padding-left: 1.7em;
   margin-bottom: 12px;
   cursor: pointer;
@@ -29,6 +29,7 @@ h4{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
 }
 
 /* Hide the browser's default checkbox */
@@ -42,11 +43,11 @@ h4{
 
 /* Create a custom checkbox */
 .checkmark {
-  position: absolute;
+  display: inline-block;
   top: 0;
   left: 0;
-  height: 2.1vh;
-  width: 2.1vh;
+  height: 20px;
+  width: 20px;
   background-color: #fff;
   border: 1px solid #000
 }
@@ -59,7 +60,6 @@ h4{
 /* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
   content: "";
-  position: absolute;
   display: none;
 }
 
@@ -70,10 +70,10 @@ h4{
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-  left: 2px;
+  left: 4px;
   top: 2px;
-  width: 1vh;
-  height: 0.8vh;
+  width: 10px;
+  height: 8px;
   border: solid black;
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);

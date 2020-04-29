@@ -50,7 +50,8 @@ export function provideConfig() {
     AppRoutingModule,
     HttpClientModule,
     SocialLoginModule,
-    FormsModule
+    FormsModule,
+    Ng5SliderModule
   ],
   providers: [
     {

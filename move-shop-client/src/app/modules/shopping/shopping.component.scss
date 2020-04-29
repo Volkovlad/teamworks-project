@@ -2,6 +2,7 @@
 
 *{
   margin: 0;
+
 }
 /* Customize the label (the container) */
 .container {
@@ -106,7 +107,24 @@
 
 .main_content{
   display: flex;
+  margin-top: -17px;
+
 }
 .under-header-panel{
   display: flex;
+}
+
+.all_filters{
+  margin-top: 80px;
+  margin-left: 60px;
+  margin-bottom: 80px;
+}
+
+.list{
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.search{
+  margin-bottom: 20px;
 }

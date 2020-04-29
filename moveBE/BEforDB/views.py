@@ -21,7 +21,7 @@ class ShoeView(APIView):
     def get(self, request):
         query = request.GET.get("q")
         if query:
-            shoes = Shoe.objects.filter(brand=query) or Shoe.objects.filter(model=query)
+            shoes = Shoe.objects.filter(brand__icontains=query) or Shoe.objects.filter(model__icontains=query)
         else:
             shoes = Shoe.objects.all()
         serializer = ShoeSerializer(shoes, many=True)
