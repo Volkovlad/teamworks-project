@@ -19,7 +19,7 @@ class ShoeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Shoe
-        fields = ['id','brand', 'model', 'price', 'color']
+        fields = ['id','brand', 'model', 'price', 'color', 'image']
 
 
 # class OrderShoeSerializer(serializers.Serializer):
