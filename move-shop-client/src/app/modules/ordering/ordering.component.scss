@@ -1,55 +1,25 @@
 *{
   font-family: Montserrat;
+
+
 }
 
 body{
   background: #EFEFEF;
 }
 
-.remove {
-  //margin-left: calc( 50vw - 175px );
- // margin-top: calc( 50vh - 30px );
-  width: 80px;
-  height: 20px;
-  border: none;
-  border-radius: 3px;
-  background: #fff;
-  font-weight: bold;
-  font-size: 1.1em;
-  color: #666;
-  box-shadow: 0 6px 6px #8d8d8d;
-  outline: none;
-  margin-bottom: 10px;
-  margin-top: 5px;
-
-
-}
-.remove:active {
-  /* set time duration to your needs */
-  animation: gradient 100ms;
-  background: #f88;
-  color: #fff;
-  box-shadow: none;
-}
-
 
 .table {
-  margin-left: 17%;
 
+  margin-left: 17%;
+  margin-right: 17%;
 }
 
 table {
   text-align: center;
-  width: 80%;
-  //margin-bottom: 5%;
-
+  width: 100%;
 }
 
-
-
-tr.mat-footer-row {
-  font-weight: bold;
-}
 
 h3 {
   text-align: center;
@@ -70,7 +40,6 @@ h2 {
 }
 
 .order-methods{
- // margin-left: 5%;
   padding-right: 20%;
   padding-left: 20%;
   padding-top: 3%;
@@ -83,7 +52,6 @@ h2 {
 h4 {
   font-family: Montserrat;
   text-transform: uppercase;
-
   margin: 0;
   font-size: 1.5rem;
   font-weight: bold;
@@ -144,14 +112,14 @@ input:focus {
   border-image: linear-gradient(to right, #071222, #EFEFEF);
   border-image-slice: 1;
 }
-/* reset input */
+
 input{
   &:required,&:invalid { box-shadow:none; }
 }
 
-html, body {
+body {
 
- // background: linear-gradient(to left, #606c88 , #3f4c6b);
+
 
 }
 

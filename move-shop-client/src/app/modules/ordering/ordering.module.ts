@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { OrderingComponent } from './ordering.component';
 import {OrderingRoutingModule} from './ordering-routing.module';
 import {MatSliderModule} from '@angular/material/slider';
-import {MatTableModule} from "@angular/material/table";
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -18,7 +19,8 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     OrderingRoutingModule,
     MatSliderModule,
     MatTableModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatPaginatorModule
   ]
 })
 export class OrderingModule { }
