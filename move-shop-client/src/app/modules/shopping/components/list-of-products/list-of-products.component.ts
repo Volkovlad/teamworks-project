@@ -1,34 +1,24 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Shoe } from '../../../../models/shoe';
-import { HttpService } from './http.service';
+import {ShoppingService} from '../../services/shopping.service';
 
 @Component({
   selector: 'app-list-of-products',
   templateUrl: './list-of-products.component.html',
   styleUrls: ['./list-of-products.component.scss'],
-  providers: [HttpService]
+  providers: [ShoppingService]
 })
 export class ListOfProductsComponent implements OnInit {
-  @Input() shoesNew;
+  @Input() shoes;
 
-  shoes: Shoe[] = [];
+
   name: string;
 
-  constructor(private httpService: HttpService) {
+  constructor(private shoppingService: ShoppingService) {
   }
 
   ngOnInit() {
     this.name = '';
-    this.httpService.getData().subscribe(data => this.shoes = data["shoes"]);
+    this.shoppingService.getData().subscribe(data => this.shoes = data["shoes"]);
   }
 
-  private searchShoes() {
-    this.shoes = [];
-    this.httpService.getSearched(this.name)
-      .subscribe(data => this.shoes = data["shoes"]);
-  }
-
-  onSubmit() {
-    this.searchShoes();
-  }
 }

@@ -7,4 +7,6 @@
 /venv
 /.idea/misc.xml
 /.idea/teamworks-project.iml
-
+/moveBE/BEforDB/__pyache__
+/moveBE/BEforDB/migrations/__pyache__
+/moveBE/moveBE/__pyache__
