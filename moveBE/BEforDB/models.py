@@ -8,8 +8,13 @@ class Shoe(models.Model):
     brand = models.CharField(max_length=30)
     model = models.CharField(max_length=30)
     price = models.IntegerField()
+    image = models.CharField(max_length=300)
+
 
     def __str__(self):
+        return str(self.brand + " " + self.model)
+
+    def shoe(self):
         return str(self.brand +" "+ self.model)
 
 
@@ -17,19 +22,21 @@ class Shoe(models.Model):
 class Color(models.Model):
     color = models.CharField(max_length=20)
     shoe = models.ForeignKey(Shoe,related_name='color', on_delete=models.CASCADE)
+    image = models.CharField(max_length=300)
 
     def __str__(self):
         return '%s' % (self.color)
 
 
-class Image(models.Model):
-    image = models.CharField(max_length=300, blank=True)
-    color = models.ForeignKey(Color, on_delete=models.CASCADE)
-
-    def __int__(self):
-        return self.color
-    def __str__(self):
-        return str(self.color)
+#
+# class Image(models.Model):
+#     image = models.CharField(max_length=300, blank=True)
+#     color = models.ForeignKey(Color, on_delete=models.CASCADE)
+#
+#     def __int__(self):
+#         return self.color
+#     def __str__(self):
+#         return str(self.color)
 
 
 class Size(models.Model):
@@ -94,8 +101,11 @@ class Comment(models.Model):
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     #   shoe = models.ForeignKey(Size, on_delete=models.CASCADE)
-    shoe = models.ForeignKey(Shoe, on_delete=models.CASCADE)
+    color = models.ForeignKey(Color, on_delete=models.CASCADE)
     date = models.DateField(default=datetime.datetime.now())
 
     def __str__(self):
-        return str(self.user)+" - "+ str(self.shoe)
+        return str(self.color)
+
+    def shoe(self):
+        return "".join(map(lambda c: c, str(self.color.shoe.model) + " - " + str(self.color.shoe.brand)))

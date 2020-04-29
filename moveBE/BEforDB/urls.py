@@ -20,8 +20,9 @@ urlpatterns = [
 
     path('view', CartView.as_view()),
 
-    path('favorite/add/<int:pk>', add_to_favorite),
-    path('favorite/remove/<int:pk>', remove_from_favorite),
+    path('favorite/add/<int:pk>/<color>', add_to_favorite),
+    path('favorite/remove/<int:pk>/<color>', remove_from_favorite),
+
     path('remove/<int:pk>', remove_from_cart),
     path('remove/one/<int:pk>', remove_one_from_cart),
 

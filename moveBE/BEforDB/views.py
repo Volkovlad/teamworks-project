@@ -6,7 +6,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Shoe, Size, OrderList, Order, Favorite, Color
-from .serializers import ShoeSerializer, ColorSerializer, OrderSerializer
+from .serializers import ShoeSerializer, ColorSerializer#, OrderSerializer
 
 from rest_framework import viewsets, permissions
 
@@ -114,21 +114,28 @@ def remove_one_from_cart(request, pk):
         else:
             pass
 
-def add_to_favorite(request,pk):
+def add_to_favorite(request, pk, color):
     try:
-        shoe = Shoe.objects.get(pk=pk)
+        shoe = Color.objects.get(shoe__pk=pk, color=color)
     except ObjectDoesNotExist:
         pass
-    favorite, created  = Favorite.objects.get_or_create(shoe=shoe, user=request.user)
+    favorite, created  = Favorite.objects.get_or_create(color=shoe, user=request.user)
     favorite.save()
 
-def remove_from_favorite(request, pk):
+def remove_from_favorite(request, pk, color):
     try:
-        shoe = Shoe.objects.get(pk=pk)
+        shoe = Color.objects.get(shoe__pk=pk, color=color)
     except ObjectDoesNotExist:
         pass
-    favorite = Favorite.objects.filter(user=request.user, shoe=shoe)[0]
+    favorite = Favorite.objects.filter(user=request.user, color=shoe)[0]
     Favorite.delete(favorite)
+
+class FavoriteView(APIView):
+    def get(self, request):
+        shoes = Favorite.objects.filter(user=request.user)
+        serializer = Shoe
+        return Response()
+
 
 
 class UserViewSet(viewsets.ModelViewSet):
