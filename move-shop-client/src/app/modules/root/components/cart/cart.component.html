@@ -1,58 +1,32 @@
-<form  *ngIf="showCart" >
-  <div class="cart">
+<form  *ngIf="showCart"  >
+  <div class="cart" >
 
     <img class="triangle" src="../../../../../assets/img_login/Polygon.png" height="15" width="35"/>
 
-    <div class="container" (scroll)="showCart">
+    <div class="container" >
 
       <label > Shopping Cart :</label>
-      <div class="item">
+      <div class="item" *ngFor=" let item of cart">
         <form>
           <div class="left-box">
-            <img src="" alt="">
+            <img src="{{item.image}}" width="120" height="100" style=" border-radius: 10px 0 0 10px;" alt="">
           </div>
           <div class="right-box">
-            <button class="remove">✖</button>
+            <button (click)="remove(item.size_id)" class="remove">✖</button>
             <div class="name">
-              <h1>brand</h1>
-              <h1>model</h1>
+              <h1>{{item.brand}}</h1>
+              <h1>{{item.model}}</h1>
             </div>
             <div class="param">
-              <h1>Size: 38</h1>
-              <div class="price"><h1>3000$</h1></div>
+              <h1>Size: {{item.size}}</h1>
+              <div class="price"><h1>{{item.price}}$</h1></div>
             </div>
             <div class="quantity">
-              <button class="minus"> - </button>
+              <button (click)="minus(item.size_id)" class="minus"> - </button>
               <div class="count">
-                <h2>5</h2>
+                <h2>{{item.quantity}}</h2>
               </div>
-              <button class="plus"> + </button>
-            </div>
-          </div>
-
-        </form>
-      </div>
-      <div class="item">
-        <form>
-          <div class="left-box">
-            <img src="" alt="">
-          </div>
-          <div class="right-box">
-            <button class="remove">✖</button>
-            <div class="name">
-              <h1>brand</h1>
-              <h1>model</h1>
-            </div>
-            <div class="param">
-              <h1>Size: 38</h1>
-              <div class="price"><h1>3000$</h1></div>
-            </div>
-            <div class="quantity">
-              <button class="minus"> - </button>
-              <div class="count">
-                <h2>5</h2>
-              </div>
-              <button class="plus"> + </button>
+              <button (click)="plus(item.size_id)" class="plus"> + </button>
             </div>
           </div>
 
@@ -62,7 +36,7 @@
         <label style="margin-bottom: 10px;"> Subtotal :</label>
         <div class="space-line align-center"> </div>
       </div>
-      <button  type="submit" id="logbtn" class="loginbtn">Chekout</button>
+      <button  type="submit" class="btn">Chekout</button>
 
     </div>
   </div>

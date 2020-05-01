@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CartService} from '../../services/cart.service';
+import {Cart} from '../../services/cart';
 
 
 @Component({
@@ -7,8 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor() { }
+  constructor(private cartServices: CartService) { }
   showVar = false;
   cartVar = false;
   favoriteVar = false;
