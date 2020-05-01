@@ -27,16 +27,17 @@
       <div style=" position: absolute; right: 255px; top: 39px;">
         <app-cart [showCart]="cartVar" ></app-cart></div>
       </div>
-    <div class="login">
+    <div class="login" *ngIf="loginVar">
       <div (click)="toggleChild()"   >
         <button type="button"  >Log in</button>
       </div>
-      <div class="cart">
-
-      </div>
-
       <div class="log" style=" position: absolute; right: 320px; top: 64px;">
         <app-login [showMePartially]="showVar" style="float: right" ></app-login>
+      </div>
+    </div>
+    <div class="login" *ngIf="!loginVar">
+      <div (click)="onLogOut()"   >
+        <button type="button"  >Log out</button>
       </div>
     </div>
 

@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from '../../services/cart.service';
 import {Cart} from '../../services/cart';
+import {map} from 'rxjs/operators';
+import {AuthenticationService} from '../../../../services/authentication.service';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +12,7 @@ import {Cart} from '../../services/cart';
 export class CartComponent implements OnInit {
   @Input() showCart: boolean;
   cart: Cart[] = [];
-  constructor(private cartServices: CartService) { }
+  constructor(private cartServices: CartService,  private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.cartServices.getData().subscribe(data => this.cart = data['value']);

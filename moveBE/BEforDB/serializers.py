@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework_jwt.settings import api_settings
 from django.contrib.auth.models import User
 
-from BEforDB.models import Shoe, Color, Size,OrderList,Order,Favorite
+from BEforDB.models import Shoe, Color, Size, OrderList, Order, Favorite
 
 
 
@@ -45,6 +45,10 @@ class OrderListSerializer(serializers.ModelSerializer):
         model = OrderList
         fields = ['size_id', 'brand', 'model', 'color', 'price', 'size', 'quantity', 'image']
 
+    # def confirmOrder(self, data):
+    #     order = Order.objects.confirm(**data)
+    #     return order
+
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -56,3 +60,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+

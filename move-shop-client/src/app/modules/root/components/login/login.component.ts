@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
-
 import { User } from '../../services/user';
 import { UserService } from '../../services/user.service';
 
@@ -15,7 +14,7 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
   @Input() showMePartially: boolean;
-
+  @Input() loginVar: boolean;
   user: User = new User();
   private loggedIn: boolean;
   public socialUser: any = SocialUser;
@@ -51,41 +50,11 @@ export class LoginComponent implements OnInit {
     this.socialAuthService.signOut();
   }
 
-  //
-  // public socialSignIn(socialPlatform : string) {
-  //   let socialPlatformProvider;
-  //
-  //   // tslint:disable-next-line:triple-equals
-  //   if (socialPlatform == 'facebook') {
-  //     socialPlatformProvider = FacebookLoginProvider.PROVIDER_ID;
-  //
-  //   } else if (socialPlatform == 'google') {
-  //     socialPlatformProvider = GoogleLoginProvider.PROVIDER_ID;
-  //   }
-  //
-  //   this.socialAuthService.signIn(socialPlatformProvider).then(
-  //     (userData) => {
-  //       console.log(socialPlatform + ' sign in data : ' , userData);
-  //       // Now sign-in with userData
-  //       // ...
-  //
-  //     }
-  //   );
-  // }
 
   showRegistration() {
     this.showReg.show = !this.showReg.show;
   }
   onLogin() {
-    // this.userService.loginUser(this.user).subscribe(
-    //   response => {
-    //     console.log(response);
-    //     alert('User ' + this.user.username + ' logged!');
-    //   },
-    //   error => {
-    //     console.log('error' + error);
-    //   }
-    // );
 
     this.authenticationService.login(this.user)
       .pipe(first())
@@ -96,36 +65,10 @@ export class LoginComponent implements OnInit {
         },
         error => {
           console.log(error);
+          alert('Dont search user with ' + this.user.username + ' username or your password is not corect' );
         });
-
+    if (this.authenticationService.currentUserValue == null) {
+      this.loginVar = true;
+    }
   }
  }
-// export class SocialLoginComponent implements OnInit {
-//
-//   private socialUser: SocialUser;
-//   private loggedIn: boolean;
-//
-//   constructor(private authService: AuthService) { }
-//
-//   ngOnInit(): void {
-//     this.authService.authState.subscribe((user) => {
-//       this.user = user;
-//       this.loggedIn = (user != null);
-//     });
-//   }
-//
-//   signInWithGoogle(): void {
-//     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-//     console.log('login Google');
-//   }
-//
-//   signInWithFB(): void {
-//     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-//     console.log('login Facebook');
-//   }
-//
-//   signOut(): void {
-//     this.authService.signOut();
-//   }
-//
-// }

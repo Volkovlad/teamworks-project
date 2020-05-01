@@ -182,7 +182,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
 
-
+# class UserOrderConfirm(viewsets.ModelViewSet):
+#     queryset = Order.objects.all()
+#     serializer_class = OrderListSerializer
 
 # дає дозвіл тільки авторизованим користувачам
 # authentication_classes = (TokenAuthentication,)

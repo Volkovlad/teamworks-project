@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CartService} from '../../services/cart.service';
 import {Cart} from '../../services/cart';
+import {UserService} from '../../services/user.service';
+import {AuthenticationService} from "../../../../services/authentication.service";
 
 
 @Component({
@@ -9,12 +11,24 @@ import {Cart} from '../../services/cart';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private cartServices: CartService) { }
+  constructor(private userServices: UserService, private authenticationService: AuthenticationService) { }
   showVar = false;
   cartVar = false;
   favoriteVar = false;
+  public loginVar;
 
   ngOnInit(): void {
+    if (this.authenticationService.currentUserValue == null) {
+      this.loginVar = true;
+    }
+  }
+
+  onLogOut() {
+    this.authenticationService.logout();
+    alert('You are logged out!');
+    if (this.authenticationService.currentUserValue == null) {
+      this.loginVar = true;
+    }
   }
 
   toggleChild() {

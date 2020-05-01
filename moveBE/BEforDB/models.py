@@ -108,6 +108,14 @@ class Order(models.Model):
     def __str__(self):
         return self.order_status + " -- "+ str(self.date)
 
+    # def confirm(self, name, phone, address):
+    #     user = self.model(name=name, phone=phone, address=address)
+    #     user.save()
+    #     # self.name = name
+    #     # self.phone = phone
+    #     # self.address = address
+    #     return user
+
 
 
 class Comment(models.Model):
