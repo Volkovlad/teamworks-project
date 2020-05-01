@@ -3,9 +3,15 @@ from django.contrib import admin
 from .models import Shoe, User, Order, OrderList, Comment, Favorite, Color, Size
 
 
-admin.site.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('user', 'date', 'order_status', 'ordered')
+admin.site.register(Order, OrderAdmin)
 admin.site.register(Comment)
-admin.site.register(OrderList)
+
+class OrderListAdmin(admin.ModelAdmin):
+    list_display = ( 'user', 'shoes', 'ordered')
+
+admin.site.register(OrderList, OrderListAdmin)
 
 class ShoeAdmin(admin.ModelAdmin):
     list_display = ('shoe', 'image')

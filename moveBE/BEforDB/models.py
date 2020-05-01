@@ -53,6 +53,11 @@ class Size(models.Model):
     def shoe(self):
         return "".join(map(lambda c: c, str(self.color.shoe.model) + " - " + str(self.color.shoe.brand)))
 
+    def brand(self):
+        return "".join(map(lambda c: c, str(self.color.shoe.brand)))
+    def model(self):
+        return "".join(map(lambda c: c, str(self.color.shoe.model)))
+
 
 class OrderList(models.Model):
     shoe = models.ForeignKey(Size, on_delete=models.CASCADE)
@@ -61,6 +66,24 @@ class OrderList(models.Model):
     ordered = models.BooleanField(default=False)
 
     def __str__(self):
+        return str(self.shoe)
+
+    def brand(self):
+        return str(self.shoe.color.shoe.brand)
+    def model(self):
+        return str(self.shoe.color.shoe.model)
+    def price(self):
+        return str(self.shoe.color.shoe.price)
+    def color(self):
+        return str(self.shoe.color.color)
+    def size(self):
+        return str(self.shoe.size)
+    def image(self):
+        return str(self.shoe.color.image)
+    def size_id(self):
+        return str(self.shoe.id)
+
+    def shoes(self):
         return str(self.shoe.color.shoe.brand) + " " + str(self.shoe.color.shoe.model)\
                +" - " + str(self.shoe.color.color) + " - "+ str(self.shoe.size)+ " - ( " + str(self.quantity) + "x )"
 
@@ -79,7 +102,7 @@ class Order(models.Model):
     shoes = models.ManyToManyField(OrderList)
     address = models.CharField(max_length=40)
     payment_status = models.BooleanField(default=False)
-    order_status = models.CharField(choices=STATUS_CHOICES,max_length=20)
+    order_status = models.CharField(choices=STATUS_CHOICES,max_length=20, default="Not confirmed")
     ordered = models.BooleanField(default=False)
 
     def __str__(self):
@@ -109,3 +132,16 @@ class Favorite(models.Model):
 
     def shoe(self):
         return "".join(map(lambda c: c, str(self.color.shoe.model) + " - " + str(self.color.shoe.brand)))
+    def brand(self):
+        return str(self.color.shoe.brand)
+    def model(self):
+        return str(self.color.shoe.model)
+    def price(self):
+        return str(self.color.shoe.price)
+    def image(self):
+        return str(self.color.image)
+    def coloR(self):
+        return str(self.color.color)
+
+    def shoe_id(self):
+        return self.color.id
