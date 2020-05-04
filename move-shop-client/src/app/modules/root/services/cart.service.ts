@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Cart} from './cart';
+import {AuthenticationService} from '../../../services/authentication.service';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ import {Cart} from './cart';
 export class CartService {
 
   private baseUrl = 'http://localhost:8000';
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,  private authenticationService: AuthenticationService) {
   }
 
   getData() {

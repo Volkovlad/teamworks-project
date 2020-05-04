@@ -22,7 +22,7 @@
               <div class="price"><h1>{{item.price}}$</h1></div>
             </div>
             <div class="quantity">
-              <button (click)="minus(item.size_id)" class="minus"> - </button>
+              <button (click)="minus(item.size_id, item.quantity)" class="minus"> - </button>
               <div class="count">
                 <h2>{{item.quantity}}</h2>
               </div>
@@ -33,7 +33,7 @@
         </form>
       </div>
       <div class="underline">
-        <label style="margin-bottom: 10px;"> Subtotal :</label>
+        <label style="margin-bottom: 10px;"  > Subtotal :   {{sum()}}$ </label>
         <div class="space-line align-center"> </div>
       </div>
       <button  type="submit" class="btn">Chekout</button>

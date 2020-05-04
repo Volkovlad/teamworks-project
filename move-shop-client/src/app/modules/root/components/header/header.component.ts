@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from '../../services/cart.service';
 import {Cart} from '../../services/cart';
 import {UserService} from '../../services/user.service';
-import {AuthenticationService} from "../../../../services/authentication.service";
+import {AuthenticationService} from '../../../../services/authentication.service';
+import {CartComponent} from '../cart/cart.component';
 
 
 @Component({
@@ -11,11 +12,16 @@ import {AuthenticationService} from "../../../../services/authentication.service
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private userServices: UserService, private authenticationService: AuthenticationService) { }
+  constructor(
+    private userServices: UserService,
+    private authenticationService: AuthenticationService,
+    private favoriteServices: CartService,
+  ) { }
   showVar = false;
   cartVar = false;
   favoriteVar = false;
-  public loginVar;
+  loginVar;
+
 
   ngOnInit(): void {
     if (this.authenticationService.currentUserValue == null) {
@@ -29,6 +35,8 @@ export class HeaderComponent implements OnInit {
     if (this.authenticationService.currentUserValue == null) {
       this.loginVar = true;
     }
+    this.cartVar = false;
+    this.favoriteVar = false;
   }
 
   toggleChild() {
@@ -38,16 +46,27 @@ export class HeaderComponent implements OnInit {
   }
 
   viewCart() {
-    this.cartVar = !this.cartVar;
+    if (this.authenticationService.currentUserValue == null) {
+      alert('Please log in if you want see your cart!');
+    } else {
+      this.favoriteServices.getData();
+      this.cartVar = !this.cartVar;
+    }
     this.showVar = false;
     this.favoriteVar = false;
   }
 
-  viewFavorite(){
-    this.favoriteVar = !this.favoriteVar;
+  viewFavorite() {
+    if (this.authenticationService.currentUserValue == null) {
+      alert('Please log in if you want see your favorites products!');
+    } else {
+      this.favoriteServices.getFavorite();
+      this.favoriteVar = !this.favoriteVar;
+    }
     this.showVar = false;
     this.cartVar = false;
   }
+
 
 }
 

@@ -1,11 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { User } from '../../services/user';
 import { UserService } from '../../services/user.service';
-
+import { Router } from "@angular/router";
 import { AuthenticationService } from '../../../../services/authentication.service';
 import { first } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,9 @@ import { first } from 'rxjs/operators';
 export class LoginComponent implements OnInit {
   @Input() showMePartially: boolean;
   @Input() loginVar: boolean;
+  @Output() ChangeloginVar = new EventEmitter<boolean>();
+
+
   user: User = new User();
   private loggedIn: boolean;
   public socialUser: any = SocialUser;
@@ -22,7 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private userService: UserService,
     private socialAuthService: AuthService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
   ) { }
 
   showReg = {
@@ -67,8 +71,9 @@ export class LoginComponent implements OnInit {
           console.log(error);
           alert('Dont search user with ' + this.user.username + ' username or your password is not corect' );
         });
-    if (this.authenticationService.currentUserValue == null) {
-      this.loginVar = true;
-    }
+    this.ChangeloginVar.emit(!this.loginVar);
+
+
+
   }
  }

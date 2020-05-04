@@ -61,7 +61,7 @@ class Size(models.Model):
 
 class OrderList(models.Model):
     shoe = models.ForeignKey(Size, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=0, )
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True)
     ordered = models.BooleanField(default=False)
 
