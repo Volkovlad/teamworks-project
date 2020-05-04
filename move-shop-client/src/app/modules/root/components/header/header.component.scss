@@ -85,6 +85,10 @@ header{
   img{
     margin-right: 50px;
   }
+  img:hover{
+    cursor: pointer;
+    opacity: 0.7;
+  }
 }
 
 .login [type="button"]{
@@ -103,8 +107,8 @@ header{
   text-align: center;
 }
 .login :hover{
-  background-color: $text-color;
-  color: $primary-color;
+  background-color: rgba(0, 61, 122, 0.93);
+
   cursor: pointer;
 
 }

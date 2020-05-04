@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Cart} from './services/cart';
+import {CartService} from './services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./root.component.scss']
 })
 export class RootComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

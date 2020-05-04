@@ -1,0 +1,34 @@
+<form  *ngIf="showFavorite">
+  <div class="favorite">
+
+    <img class="triangle" src="../../../../../assets/img_login/Polygon.png" height="15" width="35"/>
+
+    <div class="container">
+      <label > Favorite :</label>
+      <div class="item" *ngFor=" let item of favorite">
+        <form>
+          <div class="left-box">
+            <img src="{{item.image}}" width="120" height="100" style=" border-radius: 10px 0 0 10px;" alt="">
+          </div>
+          <div class="right-box">
+            <button (click)="remove(item.shoe_id)" class="remove">✖</button>
+            <div class="name">
+              <h1>{{item.brand}}</h1>
+              <h1>{{item.model}}</h1>
+            </div>
+            <div class="param">
+              <h1>Price:</h1>
+              <div class="price"><h1>{{item.price}}$</h1></div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="underline">
+        <div class="space-line align-center"> </div>
+      </div>
+
+    </div>
+  </div>
+
+</form>
