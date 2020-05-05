@@ -17,7 +17,12 @@ export class ShoppingComponent implements OnInit {
 
   searchProducts($event) {
     const searchedValue = $event;
-
-    this.shoppingService.getSearchedProducts(searchedValue).subscribe(data => this.shoes = data['shoes']);
+    this.shoppingService.getSearchedProducts(searchedValue)
+      .subscribe(data => {this.shoes = data as Shoe[]});
+  }
+  filterProducts($event){
+    const brandFilter = $event;
+    this.shoppingService.getFilteredProducts(brandFilter.toString())
+      .subscribe(data => {this.shoes = data as Shoe[]});
   }
 }
