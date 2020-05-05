@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,14 @@ export class ShoppingService {
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
+
     return this.http.get(this.baseUrl);
   }
 
   getSearchedProducts(name: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}?q=${name}`);
+    return this.http.get(`${this.baseUrl}?search=${name}`);
+  }
+  getFilteredProducts(data: any): Observable<any> {
+    return this.http.get(`${this.baseUrl}`, {params: new HttpParams().set('brand__in', data)} );
   }
 }

@@ -11,7 +11,7 @@ from rest_framework.response import Response
 from .models import Shoe, Size, OrderList, Order, Favorite, Color
 from .serializers import ShoeSerializer, SizeSerializer, ColorSerializer, OrderListSerializer,FavoriteSerializer
 
-from rest_framework import viewsets, permissions
+from rest_framework import viewsets, permissions, generics, filters
 
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -22,17 +22,38 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer
+from django_filters import rest_framework as rest_filters, NumberFilter, CharFilter
 
-class ShoeView(APIView):    #display all shoes model
-    def get(self, request):
-        query = request.GET.get("q")
-        if query:
-            shoes = Shoe.objects.filter(brand__icontains=query) or Shoe.objects.filter(model__icontains=query)
-        else:
-            shoes = Shoe.objects.all()
-        serializer = ShoeSerializer(shoes, many=True)
+# class ShoeView(APIView):    #display all shoes model
+#     def get(self, request):
+#         query = request.GET.get("q")
+#         if query:
+#             shoes = Shoe.objects.filter(brand__icontains=query) or Shoe.objects.filter(model__icontains=query)
+#         else:
+#             shoes = Shoe.objects.all()
+#         serializer = ShoeSerializer(shoes, many=True)
+#
+#         return Response({"shoes": serializer.data})
 
-        return Response({"shoes": serializer.data})
+class ShoeFilter(rest_filters.FilterSet):
+    # brand = CharFilter(field_name='brand')
+    color = CharFilter(field_name='color__color', distinct = True)
+    size = NumberFilter(field_name='color__size__size', distinct = True)
+    class Meta:
+        model = Shoe
+        fields = {
+            'brand':['in'],
+            'color':['exact'],
+            'size':['in']
+        }
+
+class ShoeView(generics.ListAPIView):
+        serializer_class = ShoeSerializer
+        filter_backends = (rest_filters.DjangoFilterBackend, filters.SearchFilter, )
+        filterset_class = ShoeFilter
+        search_fields = ['brand', 'model']
+        queryset = Shoe.objects.all()
+
 
 class ShowSizeVaribleView(APIView): #display varidle size of current color
     def get(self,request, pk, color):

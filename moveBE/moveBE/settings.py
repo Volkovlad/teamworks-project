@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'BEforDB',
     'corsheaders',
-    'phonenumber_field'
+    'phonenumber_field',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
