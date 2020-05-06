@@ -12,19 +12,19 @@ import {CartComponent} from '../cart/cart.component';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  showVar = false;
+  cartVar = false;
+  favoriteVar = false;
+  loginVar = false;
+
   constructor(
     private userServices: UserService,
     private authenticationService: AuthenticationService,
     private favoriteServices: CartService,
   ) { }
-  showVar = false;
-  cartVar = false;
-  favoriteVar = false;
-  loginVar;
-
 
   ngOnInit(): void {
-    if (this.authenticationService.currentUserValue == null) {
+    if (this.authenticationService.currentUserValue === null) {
       this.loginVar = true;
     }
   }
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
   onLogOut() {
     this.authenticationService.logout();
     alert('You are logged out!');
-    if (this.authenticationService.currentUserValue == null) {
+    if (this.authenticationService.currentUserValue === null) {
       this.loginVar = true;
     }
     this.cartVar = false;
@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit {
   }
 
   viewCart() {
-    if (this.authenticationService.currentUserValue == null) {
+    if (this.authenticationService.currentUserValue === null) {
       alert('Please log in if you want see your cart!');
     } else {
       this.favoriteServices.getData();
@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   viewFavorite() {
-    if (this.authenticationService.currentUserValue == null) {
+    if (this.authenticationService.currentUserValue === null) {
       alert('Please log in if you want see your favorites products!');
     } else {
       this.favoriteServices.getFavorite();
@@ -67,6 +67,9 @@ export class HeaderComponent implements OnInit {
     this.cartVar = false;
   }
 
-
+  changeLoginButtonState($event) {
+    // this.loginVar = $event;
+    this.loginVar = false;
+  }
 }
 

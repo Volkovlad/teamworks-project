@@ -31,12 +31,12 @@
 
 
     <div class="login" *ngIf="loginVar">
-      <div (click)="toggleChild()"   >
+      <div (click)="toggleChild()">
         <button type="button"  >Log in</button>
       </div>
 
       <div class="log" style=" position: absolute; right: 320px; top: 65px;">
-        <app-login [showMePartially]="showVar" style="float: right" ></app-login>
+        <app-login [showMePartially]="showVar" style="float: right" (ChangeloginVar)="changeLoginButtonState($event)"></app-login>
       </div>
     </div>
     <div class="login" *ngIf="!loginVar">

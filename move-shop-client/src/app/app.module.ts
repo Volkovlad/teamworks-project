@@ -2,12 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './modules/shared/shared.module';
 import { AppComponent } from './app.component';
 import { SocialLoginModule, AuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Ng5SliderModule } from 'ng5-slider';
-import {JwtInterceptor} from './interceptors/jwt.interceptor';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
 
 
 const config = new AuthServiceConfig([
@@ -33,9 +38,12 @@ export function provideConfig() {
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    SharedModule,
     SocialLoginModule,
     FormsModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {
@@ -44,6 +52,11 @@ export function provideConfig() {
       /*useFactory: getAuthServiceConfigs*/
     },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
+  exports: [
+    AppRoutingModule,
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })
