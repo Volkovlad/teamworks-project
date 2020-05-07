@@ -7,7 +7,7 @@ from .views import *
 
 router = routers.DefaultRouter()
 router.register('register', views.UserViewSet)
-
+# router.register('ordering', views.OrderConfirm)
 urlpatterns = [
     path('shoe/', ShoeView.as_view()),
     path('shoe/<int:pk>/<color>/', ShowSizeVaribleView.as_view()),
@@ -26,8 +26,10 @@ urlpatterns = [
     path('view/', CartView.as_view()),
     path('favorite/', FavoriteView.as_view()),
 
-    path('conf/', confirm_orderlist),
+    # path('conf/', confirm_orderlist),
+
     path('confirm/s', ConfirmOrder().as_view()),
+    # path('confirming/', views.OrderConfirm),
 
 
 
@@ -38,5 +40,7 @@ urlpatterns = [
     # path('remove/one/<int:pk>/', remove_one_from_cart), #old
     path('remove/one/<int:pk>/', Remove_one_from_cart.as_view()),
 
+    path('order/', AllOrderiView.as_view()),
+    path('order/<int:pk>/', CurrentOrderView.as_view())
 
 ]
