@@ -20,14 +20,18 @@ export class BrandFilterComponent implements OnInit {
     {name:'Reebok', value:'Reebok', checked:false}
   ]
 
-  get selectedOptions() {
+    get selectedOptions() {
     this.brandFilter = this.options
       .filter(opt => opt.checked)
       .map(opt => opt.value);
+      this.brandFilterEvent.emit(this.brandFilter);
     return this.brandFilter;
   }
 
-  onFilterBrand(){
-    this.brandFilterEvent.emit(this.brandFilter);
-  }
+  // onFilterBrand(){
+  //     this.brandFilterEvent.emit(this.brandFilter);
+  //
+  //   // this.brandFilterEvent.emit(this.brandFilter);
+  // }
+
 }
