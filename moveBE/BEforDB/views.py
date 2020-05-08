@@ -69,9 +69,12 @@ class ConfirmOrder(APIView):# confirm order
         except:
             return Response('Error!')
         name = self.request.POST['name']
+        surname = self.request.POST['surname']
+        full_name = str(name+' '+surname)
         phone = self.request.POST['phone']
         address = self.request.POST['address']
-        Order.objects.filter(user=request.user, ordered=False).update(ordered=True, name=name, phone=phone, address=address, date=datetime.datetime.now())
+
+        Order.objects.filter(user=request.user, ordered=False).update(ordered=True, name=full_name, phone=phone, address=address, date=datetime.datetime.now())
         OrderList.objects.filter(user=request.user, ordered=False).update(ordered=True)
 
         return Response('Ordering are completed')

@@ -98,7 +98,7 @@ class Order(models.Model):
     def __str__(self):
         return str(self.pk)
     def item(self):
-        return str('Number shoes: ' + str(self.shoes.count()))
+        return str(self.shoes.count())
     def owner(self):
         return str(self.user.name)
 
