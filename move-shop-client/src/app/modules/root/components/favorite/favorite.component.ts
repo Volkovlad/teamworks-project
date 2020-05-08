@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Favorite} from '../../services/cart';
+import {Favorite} from '../../../../models/cart';
 import {CartService} from '../../services/cart.service';
 import {ifTrue} from "codelyzer/util/function";
 import {AuthenticationService} from "../../../../services/authentication.service";

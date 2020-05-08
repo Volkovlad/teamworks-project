@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { AuthService, SocialUser } from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
-import { User } from '../../services/user';
+import { User } from '../../../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from "@angular/router";
 import { AuthenticationService } from '../../../../services/authentication.service';

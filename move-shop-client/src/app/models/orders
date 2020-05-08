@@ -1,0 +1,7 @@
+export class Order {
+  id: number;
+  date: string;
+  order_status: string;
+  payment_status: boolean;
+  item: number;
+}

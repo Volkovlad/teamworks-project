@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from '../../services/cart.service';
-import {Cart} from '../../services/cart';
+import {Cart} from '../../../../models/cart';
 import {map} from 'rxjs/operators';
 import {AuthenticationService} from '../../../../services/authentication.service';
 

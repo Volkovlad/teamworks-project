@@ -1,0 +1,156 @@
+<body >
+
+<h3><br>Ordering</h3>
+<div *ngIf="checkValue">
+  <div class="table">
+    <button class="btn" (click)="onChange()"><h2>Look completed through</h2></button>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          <td mat-footer-cell *matFooterCellDef> Total </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="size">
+          <th mat-header-cell *matHeaderCellDef> Size </th>
+          <td mat-cell *matCellDef="let element"> {{element.size}} </td>
+          <td mat-footer-cell *matFooterCellDef>  </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef> Amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.amount }} </td>
+          <td mat-footer-cell *matFooterCellDef>  </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="cost">
+          <th mat-header-cell *matHeaderCellDef> Cost </th>
+          <td mat-cell *matCellDef="let element"> {{element.cost | currency}} </td>
+          <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+<div class="order-methods">
+  <div class="panel-group">
+        <h4 class="panel-title">
+          Cпосіб оплати
+          <img src="https://img.icons8.com/ios/500/money.png" class="img">
+        </h4>
+    <span> Післяплатою при отриманні замовлення у відділенні Нової Пошти. </span>
+  </div>
+  <br>
+  <div class="panel-group">
+        <h4 class="panel-title">
+
+          Cпосіб доставки
+          <img src="https://img.icons8.com/ios/500/delivery.png" class="img">
+        </h4>
+    <ul>
+      <li>Доставка здійснюється транспортною компанією "Нова Пошта", терміни 1-3 дні по Україні;</li>
+      <li>Після відправки замовлення вам прийде SMS з номером експрес-накладної, за якою на сайті novaposhta.ua зможете відстежити своє замовлення і дізнатися точну вартість доставки;</li>
+      <li>При отриманні замовлення необхідно мати при собі паспорт або водійські права;</li>
+    </ul>
+  </div>
+  <br>
+  <form id="checkoutOrderForm" method="" class="" action="" novalidate="">
+
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <hr>
+
+        <div class="panel-body horizontal-form">
+          <div class="form-group row addresses-list">
+            <h4>Адреса доставки</h4>
+
+          </div>
+          <br>
+          <div class="info">
+
+            <div>
+              <span class="input">
+              <label>Name:<input type="text" class="qwerty" placeholder="Gradient border focus fun"></label>
+                </span>
+            </div>
+            <br>
+            <div>
+              <span class="input">
+
+              <label>Surname:<input type="text" class="qwerty" placeholder="Gradient border focus fun"></label>
+                </span>
+            </div>
+            <br>
+            <div>
+              <span class="input"><br>
+              <label>City/Village: <input type="text" class="qwerty" placeholder="Gradient border focus fun"> </label>
+                </span>
+            </div>
+            <br>
+            <div>
+              <span class="input"><br>
+              <label>Phone number: <input type="tel" value="+380 " maxlength="14" class="qwerty"> </label>
+                </span>
+            </div>
+            <br>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+    </div></form>
+
+  <div class="button_div">
+  <button class="button">Submit</button>
+  </div>
+
+</div>
+</div>
+<div class="table" *ngIf="!checkValue">
+  <button class="btn" (click)="onChange()" ><h2>Current order</h2></button>
+  <div class="order-list">
+    <table mat-table [dataSource]="dataSource" >
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="size">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef> Payment </th>
+
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="cost">
+        <th mat-header-cell *matHeaderCellDef> Number items </th>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+  </div>
+</div>
+
+</body>
