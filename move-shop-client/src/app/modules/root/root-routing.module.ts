@@ -23,6 +23,10 @@ const routes: Routes = [
         loadChildren: () => import('../shopping/shopping.module').then(m => m.ShoppingModule),
       },
       {
+        path: 'product-page',
+        loadChildren: () => import('../product-page/product-page.module').then(m => m.ProductPageModule),
+      },
+      {
         path      : '**',
         redirectTo: 'home',
         pathMatch : 'full'
