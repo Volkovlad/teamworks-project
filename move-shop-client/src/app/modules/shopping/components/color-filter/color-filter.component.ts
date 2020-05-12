@@ -8,9 +8,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 export class ColorFilterComponent implements OnInit {
 
   constructor() { }
+
   colorFilter = [];
   @Output() colorFilterEvent = new EventEmitter();
-
   ngOnInit(): void {
   }
   options = [
@@ -20,7 +20,7 @@ export class ColorFilterComponent implements OnInit {
     {name:'Green', value:'Green', checked:false},
     {name:'Blue', value:'Blue', checked:false},
     {name:'Gray', value:'Gray', checked:false}
-  ]
+  ];
   get selectedOptions() {
     this.colorFilter = this.options
       .filter(opt => opt.checked)

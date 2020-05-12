@@ -102,9 +102,9 @@ DATABASES = {
         # database name.
         'NAME': 'shopdb',
         # user name. you need write your user on database MySQL
-        'USER': 'root',
+        'USER': 'foo_user',
         # password and your password
-        'PASSWORD': 'lukash051000',
+        'PASSWORD': 'foo_password',
     }
 }
 PHONENUMBER_DEFAULT_REGION = 'UA'

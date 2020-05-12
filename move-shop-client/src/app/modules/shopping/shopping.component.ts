@@ -12,6 +12,7 @@ export class ShoppingComponent implements OnInit {
   brandFilter = [];
   colorFilter = [];
   sizeFilter = [];
+  priceFilter: string;
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
@@ -34,9 +35,13 @@ export class ShoppingComponent implements OnInit {
     const sizeFilter = $event;
     this.sizeFilter = sizeFilter;
   }
+  filterPrice($event){
+    const priceFilter = $event;
+    this.priceFilter = priceFilter;
+  }
   acceptFilters(){
     this.shoppingService.getFilteredProducts(this.brandFilter.toString(),
-      this.colorFilter.toString(), this.sizeFilter.toString())
+      this.colorFilter.toString(), this.sizeFilter.toString(), this.priceFilter)
       .subscribe(data => {this.shoes = data as Shoe[]});
 }
 }

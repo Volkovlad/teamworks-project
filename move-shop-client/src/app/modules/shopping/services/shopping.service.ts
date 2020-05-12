@@ -20,8 +20,8 @@ export class ShoppingService {
   getSearchedProducts(name: string): Observable<any> {
     return this.http.get(`${this.baseUrl}?search=${name}`);
   }
-  getFilteredProducts(brand: any, color: any, size: any): Observable<any> {
+  getFilteredProducts(brand: any, color: any, size: any, price: string): Observable<any> {
     return this.http.get(`${this.baseUrl}`, {params: new HttpParams().set('brand__in', brand)
-        .set('color', color).set('size', size)} );
+        .set('color', color).set('size', size).set('price__range', price)} );
   }
 }
