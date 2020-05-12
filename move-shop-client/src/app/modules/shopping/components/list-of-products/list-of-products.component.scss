@@ -8,9 +8,12 @@
 .list-of-products{
   //margin-left: 50px;
   //margin-right: 50px;
-	.box{
-    float: left;
 
+	.box{
+
+    float: left;
+    box-shadow: 0 0 3px black;
+    border-radius: 10px;
     background: #FFFFFF;
     box-sizing: border-box;
     border-radius: 10px;

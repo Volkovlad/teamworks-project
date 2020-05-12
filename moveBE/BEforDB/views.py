@@ -44,7 +44,8 @@ class ShoeFilter(rest_filters.FilterSet):
         fields = {
             'brand':['in'],
             'color':['exact'],
-            'size':['in']
+            'size':['in'],
+            'price':['range']
         }
 
 class ShoeView(generics.ListAPIView):

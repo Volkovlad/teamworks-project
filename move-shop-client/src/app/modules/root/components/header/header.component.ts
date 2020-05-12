@@ -13,7 +13,6 @@ import {CartComponent} from '../cart/cart.component';
 })
 export class HeaderComponent implements OnInit {
   constructor(
-    private userServices: UserService,
     private authenticationService: AuthenticationService,
     private favoriteServices: CartService,
   ) { }
@@ -66,7 +65,5 @@ export class HeaderComponent implements OnInit {
     this.showVar = false;
     this.cartVar = false;
   }
-
-
 }
 

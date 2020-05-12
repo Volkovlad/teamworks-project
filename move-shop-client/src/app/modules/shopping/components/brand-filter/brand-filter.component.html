@@ -5,7 +5,7 @@
   <div *ngFor="let option of options" class="brands">
     <div class="container">
     <label>
-      <input type="checkbox"
+     <input type="checkbox"
              name="options"
              value="{{option.value}}"
              [(ngModel)]="option.checked"/>
@@ -13,6 +13,7 @@
     </label>
     </div>
   </div>
-  <button (click)="onFilterBrand()"></button>
-  <p>{{selectedOptions}}</p>
+<!--  <button (click)="onFilterBrand()">Accept</button>-->
+  <!--  <button (click)="onFilterBrand()"></button>-->
+  <p style="display:none;">{{selectedOptions}}</p>
 </div>

@@ -8,26 +8,31 @@
         <span class="checkmark"></span>
       </label>
     </div>
-    <app-brand-filter (brandFilterEvent)="filterProducts($event)"></app-brand-filter>
+    <app-brand-filter (brandFilterEvent)="filterBrand($event)"></app-brand-filter>
       <div class="line" style="top: 360px">
         _____________________
       </div>
-    <app-price-filter></app-price-filter>
+    <app-price-filter (priceFilterEvent)="filterPrice($event)"></app-price-filter>
       <div class="line" style="top: 555px">
         _____________________
       </div>
-    <app-size></app-size>
+    <app-size (sizeFilterEvent)="filterSize($event)"></app-size>
       <div class="line" style="top: 770px">
         _____________________
       </div>
-    <app-color-filter></app-color-filter>
+    <app-color-filter (colorFilterEvent)="filterColor($event)"></app-color-filter>
+    <button (click)="acceptFilters()">Accept</button>
 </div>
+
   <div class="list">
     <div class="search">
-    <app-shoe-search
-                     (searchProducts)="searchProducts($event)"
-    ></app-shoe-search>
+      <app-shoe-search
+        (searchProducts)="searchProducts($event)"
+      ></app-shoe-search>
     </div>
+    <div class="list_of_products">
     <app-list-of-products [shoes]="shoes"></app-list-of-products>
+    </div>
   </div>
+
 </div>

@@ -4,4 +4,5 @@ export class Shoe{
   price: number;
   color: string;
   size: number;
+  image: string;
 }
