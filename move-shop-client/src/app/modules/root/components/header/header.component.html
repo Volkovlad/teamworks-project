@@ -3,9 +3,9 @@
 
   <div class="logo">
     <a href=""><img
-            width="60"
+            width="60px"
             alt="Logo"
-            src="../../../../../assets/img_header/lg.png" height="60" width="45"
+            src="../../../../../assets/img_header/lg.png" height="60px" width="45px"
     /></a>
   </div>
 
@@ -19,16 +19,29 @@
 
     </div>
     <div class="icon">
-      <button style="background: none; border: none;cursor: pointer"><img class="one"  src="../../../../../assets/img_header/heart.png" height="26"/></button>
-      <button style="background: none; border: none;cursor: pointer"><img class="second" src="../../../../../assets/img_header/cart.png" height="28" /></button>
-    </div>
-    <div class="login">
-      <div (click)="toggleChild()">
+     <img (click)="viewFavorite()" class="one"  src="../../../../../assets/img_header/heart.png" height="26"/>
+      <div style=" position: absolute; right: 335px; top: 39px;">
+        <app-favorite [showFavorite]="favoriteVar"></app-favorite>
+      </div>
+     <img (click)="viewCart()" class="second" src="../../../../../assets/img_header/cart.png" height="28" />
+
+      <div style=" position: absolute; right: 255px; top: 39px;">
+        <app-cart [showCart]="cartVar" ></app-cart></div>
+      </div>
+
+
+    <div class="login" *ngIf="loginVar">
+      <div (click)="toggleChild()"   >
         <button type="button"  >Log in</button>
       </div>
 
       <div class="log" style=" position: absolute; right: 320px; top: 65px;">
         <app-login [showMePartially]="showVar" style="float: right" ></app-login>
+      </div>
+    </div>
+    <div class="login" *ngIf="!loginVar">
+      <div (click)="onLogOut()"   >
+        <button type="button"  >Log out</button>
       </div>
     </div>
 

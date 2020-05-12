@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {ShoppingService} from '../../services/shopping.service';
+import {Shoe} from '../../../../models/shoe';
 
 @Component({
   selector: 'app-list-of-products',
@@ -11,14 +12,11 @@ export class ListOfProductsComponent implements OnInit {
   @Input() shoes;
 
 
-  name: string;
-
   constructor(private shoppingService: ShoppingService) {
   }
 
   ngOnInit() {
-    this.name = '';
-    this.shoppingService.getData().subscribe(data => this.shoes = data["shoes"]);
+    this.shoppingService.getData().subscribe(data => {this.shoes = data as Shoe []});
   }
 
 }
