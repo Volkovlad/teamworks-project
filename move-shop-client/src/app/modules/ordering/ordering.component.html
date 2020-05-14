@@ -1,38 +1,49 @@
-<body >
 
 <h3><br>Ordering</h3>
 <div *ngIf="checkValue">
   <div class="table">
     <button class="btn" (click)="onChange()"><h2>Look completed through</h2></button>
     <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="dataSource">
+      <table mat-table [dataSource]="cart">
 
         <!-- Position Column -->
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element"><img src="{{element.image}}" width="150px" height="150px" style="margin-top: 5px; margin-bottom: 5px">  </td>
+          <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef> Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-          <td mat-footer-cell *matFooterCellDef> Total </td>
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Name </th>
+          <td mat-cell *matCellDef="let element" > {{element.brand}} <br> {{element.model}} </td>
+          <td mat-footer-cell *matFooterCellDef style="font-weight: bold"> Total </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="size">
-          <th mat-header-cell *matHeaderCellDef> Size </th>
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Size </th>
           <td mat-cell *matCellDef="let element"> {{element.size}} </td>
           <td mat-footer-cell *matFooterCellDef>  </td>
         </ng-container>
 
         <!-- Weight Column -->
-        <ng-container matColumnDef="amount">
-          <th mat-header-cell *matHeaderCellDef> Amount </th>
-          <td mat-cell *matCellDef="let element"> {{element.amount }} </td>
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.quantity }} </td>
           <td mat-footer-cell *matFooterCellDef>  </td>
         </ng-container>
 
         <!-- Symbol Column -->
-        <ng-container matColumnDef="cost">
-          <th mat-header-cell *matHeaderCellDef> Cost </th>
-          <td mat-cell *matCellDef="let element"> {{element.cost | currency}} </td>
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Cost </th>
+          <td mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
           <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element"><img (click)="remove(element.size_id) "src="../../../assets/bin.png" height="24" width="24" style="cursor: pointer"/></td>
+          <td mat-footer-cell *matFooterCellDef> </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -63,94 +74,110 @@
     </ul>
   </div>
   <br>
-  <form id="checkoutOrderForm" method="" class="" action="" novalidate="">
+  <h4 style="margin-bottom: 20px">Адреса доставки <img (click)="view() " src="../../../assets/arrow-right.png" height="20" width="20" style="cursor: pointer" /></h4>
+  <div *ngIf="viewAddress">
 
+
+  <form id="checkoutOrderForm" (ngSubmit)="onConfirm()" *ngIf="submit">
     <div class="panel-group">
       <div class="panel panel-default">
         <hr>
-
         <div class="panel-body horizontal-form">
           <div class="form-group row addresses-list">
-            <h4>Адреса доставки</h4>
 
           </div>
           <br>
           <div class="info">
+            <div class="input">
 
-            <div>
-              <span class="input">
-              <label>Name:<input type="text" class="qwerty" placeholder="Gradient border focus fun"></label>
-                </span>
+                <label>Name: </label>
+                <input type="text" name="name" required [(ngModel)]="confirm.name" class="qwerty" placeholder="Gradient border focus fun" >
+
             </div>
             <br>
-            <div>
-              <span class="input">
+            <div class="input">
 
-              <label>Surname:<input type="text" class="qwerty" placeholder="Gradient border focus fun"></label>
-                </span>
+                <label>Surname:</label>
+                <input type="text" name="surname" required [(ngModel)]="confirm.surname" class="qwerty" placeholder="Gradient border focus fun">
+
             </div>
             <br>
-            <div>
-              <span class="input"><br>
-              <label>City/Village: <input type="text" class="qwerty" placeholder="Gradient border focus fun"> </label>
-                </span>
+            <div class="input">
+             <br>
+                <label>City/Village: </label>
+                <input type="text" name="address" required [(ngModel)]="confirm.address" class="qwerty" placeholder="Gradient border focus fun">
+
             </div>
             <br>
-            <div>
-              <span class="input"><br>
-              <label>Phone number: <input type="tel" value="+380 " maxlength="14" class="qwerty"> </label>
-                </span>
+            <div class="input"><br>
+
+                <label>Phone number:  </label>
+                <input type="text" name="phone" required [(ngModel)]="confirm.phone" value="+380 " maxlength="14" class="qwerty">
+
             </div>
             <br>
-
-
           </div>
         </div>
       </div>
-
-
-
-    </div></form>
-
-  <div class="button_div">
-  <button class="button">Submit</button>
+    </div>
+    <div class="button_div">
+      <button class="button" type="submit">Submit</button>
+    </div>
+  </form></div>
+    <div class="button_div" *ngIf="!viewAddress">
+      <button class="button" routerLink="/shopping">Shopping</button>
+    </div>
   </div>
 
+
 </div>
-</div>
-<div class="table" *ngIf="!checkValue">
-  <button class="btn" (click)="onChange()" ><h2>Current order</h2></button>
-  <div class="order-list">
-    <table mat-table [dataSource]="dataSource" >
+  <div class="table" *ngIf="!checkValue">
+    <button class="btn" (click)="onChange()" ><h2>Current order</h2></button>
+    <div class="mat-elevation-z8">
+      <form class="order">
+        <table mat-table [dataSource]="orders">
 
-      <!-- Position Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
+          <!-- Position Column -->
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>  </th>
+            <td mat-cell *matCellDef="let element"><button class="arrow"><img src="../../../assets/arrow-right.png" height="20" width="20"></button></td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+          </ng-container>
 
-      </ng-container>
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>
+            <td mat-cell *matCellDef="let element" > {{element.date}}  </td>
+            <td mat-footer-cell *matFooterCellDef >  </td>
+          </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="size">
-        <th mat-header-cell *matHeaderCellDef> Status </th>
+          <!-- Name Column -->
+          <ng-container matColumnDef="order_status">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>
+            <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
+            <td mat-footer-cell *matFooterCellDef>  </td>
+          </ng-container>
 
-      </ng-container>
+          <!-- Weight Column -->
+          <ng-container matColumnDef="payment_status">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Payment status </th>
+            <td mat-cell *matCellDef="let element"> {{element.payment_status }} </td>
+            <td mat-footer-cell *matFooterCellDef>  </td>
+          </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="amount">
-        <th mat-header-cell *matHeaderCellDef> Payment </th>
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Number items </th>
+            <td mat-cell *matCellDef="let element"> {{element.item }} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
 
-      </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="cost">
-        <th mat-header-cell *matHeaderCellDef> Number items </th>
-      </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
-    </table>
+          <tr mat-header-row *matHeaderRowDef="displayedColumnsOrder"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumnsOrder;"></tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumnsOrder"></tr>
+        </table>
+      </form>
+    </div>
   </div>
-</div>
 
-</body>

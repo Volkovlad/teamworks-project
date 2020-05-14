@@ -5,3 +5,13 @@ export class Order {
   payment_status: boolean;
   item: number;
 }
+
+export class Confirm {
+  id: number;
+  name: string;
+  surname: string;
+  address: string;
+  phone: string;
+}
+
+

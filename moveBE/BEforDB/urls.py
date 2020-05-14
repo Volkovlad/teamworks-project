@@ -28,7 +28,7 @@ urlpatterns = [
 
     # path('conf/', confirm_orderlist),
 
-    path('confirm/s', ConfirmOrder().as_view()),
+    path('confirm/', ConfirmOrder().as_view()),
     # path('confirming/', views.OrderConfirm),
 
 

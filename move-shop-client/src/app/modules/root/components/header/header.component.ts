@@ -67,6 +67,16 @@ export class HeaderComponent implements OnInit {
     this.cartVar = false;
   }
 
+  receivVar($event) {
+    this.cartVar = $event;
+  }
+
+  receivLoginVar($event) {
+    this.showVar = $event;
+  }
+  receivAutorizationVar($event) {
+    this.loginVar = $event;
+  }
 
 }
 

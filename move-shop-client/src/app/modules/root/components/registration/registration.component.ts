@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
   @Input() showMe;
   ngOnInit(): void {
   }
-  save(){
+  save() {
     this.userService.createUser(this.user)
       .subscribe(
         data => {
@@ -29,11 +29,11 @@ export class RegistrationComponent implements OnInit {
         error => console.log(error)),
       this.user = new User();
   }
-  onSubmit(){
-    this.save()
+  onSubmit() {
+    this.save();
   }
 
-  closeRegistration(){
+  closeRegistration() {
     this.showMe.show = !this.showMe.show;
   }
 }

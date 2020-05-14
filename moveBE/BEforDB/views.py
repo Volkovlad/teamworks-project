@@ -198,7 +198,7 @@ class AllOrderiView(APIView): #display list of complited orders
     def get(self, request):
         orders = Order.objects.filter(user=request.user, ordered=True)
         serializer = OrderSerializer(orders, many=True)
-        return Response({'order': serializer.data})
+        return Response( serializer.data)
 
 class CurrentOrderView(APIView): #display current complited order
     authentication_classes = (TokenAuthentication,)

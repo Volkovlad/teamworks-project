@@ -211,6 +211,17 @@ body {
   justify-content: space-around;
 
 }
+.arrow{
+  border: none;
+  background: none;
+//<img src="../../../assets/arrow-right.png" height="20" width="20"/>
+  :hover{
+    cursor: pointer;
+  }
+}
 
+.order{
+  text-align: center;
+}
 
 
