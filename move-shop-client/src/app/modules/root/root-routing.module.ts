@@ -23,7 +23,7 @@ const routes: Routes = [
         loadChildren: () => import('../shopping/shopping.module').then(m => m.ShoppingModule),
       },
       {
-        path: 'product-page',
+        path: 'products/:shoeID/:color',
         loadChildren: () => import('../product-page/product-page.module').then(m => m.ProductPageModule),
       },
       {

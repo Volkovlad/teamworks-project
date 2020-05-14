@@ -60,7 +60,7 @@ class ShowSizeVaribleView(APIView): #display varidle size of current color
     def get(self,request, pk, color):
         color = Color.objects.filter(shoe__id = pk, color=color)
         serializer = ColorSerializer(color, many=True)
-        return Response({"value": serializer.data})
+        return Response( serializer.data)
 
 
 class CurrentShoeView(APIView): #display current shoe

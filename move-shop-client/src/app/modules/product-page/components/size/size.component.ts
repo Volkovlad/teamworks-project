@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-size',
@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./size.component.scss']
 })
 export class SizeComponent implements OnInit {
-
+  @Input() shoes;
   constructor() { }
 
   ngOnInit(): void {
+    // console.log(this.shoes);
   }
 
 }
