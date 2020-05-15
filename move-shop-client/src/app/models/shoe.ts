@@ -1,8 +1,9 @@
-export class Shoe{
+export class Shoe {
+  id: number;
   brand: string;
   model: string;
   price: number;
-  color: string;
+  color: [];
   size: number;
   image: string;
 }

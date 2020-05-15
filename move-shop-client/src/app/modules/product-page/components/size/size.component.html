@@ -1,59 +1,12 @@
 <div class="cont">
-
+  <div class="full_master" *ngFor="let sizes of shoes[0].size; index as i">
   <label class="container" >
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">36</div>
-  </label>
+    <input class="form-check-input" type="radio"
+           [(ngModel)]="size" value="{{shoes[0].size[i]}}" [checked]="true"
+           (change)="onItemChange(shoes[0].size[i])"/>
 
-  <label class="container">
-    <input type="radio" name="size">
     <span class="checkmark"></span>
-    <div class="top">37</div>
+    <div class="top">{{shoes[0].size[i]}}</div>
   </label>
-
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">38</div>
-  </label>
-
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">39</div>
-  </label>
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">40</div>
-  </label>
-
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">41</div>
-  </label>
-
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">42</div>
-  </label>
-
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">43</div>
-  </label>
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">44</div>
-  </label>
-  <label class="container">
-    <input type="radio" name="size">
-    <span class="checkmark"></span>
-    <div class="top">45</div>
-  </label>
+  </div>
 </div>

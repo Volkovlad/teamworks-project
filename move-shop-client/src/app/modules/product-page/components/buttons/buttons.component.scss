@@ -1,3 +1,6 @@
+*{
+  font-family: 'Montserrat', sans-serif;
+}
 .buy {
   margin-right: 307px;
   color: #EFEFEF;
@@ -11,7 +14,7 @@
   margin-top: 25px;
 }
 .cart {
-  margin-right: 307px;
+
   color: #071222;
   font-family: 'Montserrat', sans-serif;
   font-size: 12px;
@@ -26,6 +29,47 @@
 .heart{
   height: 27px;
   width: 30px;
-  margin-top: 10px;
-  margin-right: 157px;
+  margin-top: 13px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.favorite{
+  background: none;
+  border: none;
+}
+.quantity{
+  margin-left: -35px;
+  button{
+    border-radius: 20px;
+    border: 1px solid black;
+    height: 35px;
+    width: 35px;
+    background: white;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+  }
+  .minus{
+    margin-left: 16px;
+  }
+  display: inline-flex;
+  margin-top:-10px;
+  .count{
+    background-color: white;
+    width: 60px;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-right: 15px;
+    color: black;
+    h2{
+      font-size: 26px;
+      font-weight: bolder;
+      margin-top: 5px;
+    }
+
+  }
+
 }

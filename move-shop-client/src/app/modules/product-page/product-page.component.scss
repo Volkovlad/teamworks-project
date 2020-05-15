@@ -1,7 +1,8 @@
 .bd{
-  background-color: #071222;
+  background-color: #EFEFEF;
   width: 100%;
   height: 1000px;
+  margin-top: -17px;
 }
 .rectangle{
   width: 80%;
@@ -9,6 +10,7 @@
   margin-right: 10%;
   height: 1000px;
   background: #EFEFEF;
+  box-shadow: 0px 0px 30px 0 rgba(0, 0, 0, 1);
 }
 .name{
   padding-top: 50px;
@@ -34,16 +36,19 @@
   padding-left: 50px;
 }
 .iconDetails {
+  border: 2px solid black;
+  border-radius: 10px;
   float:left;
   width: 400px;
   height: 300px;
-  padding-left: 50px;
-  padding-top: 20px;
+  margin-left: 50px;
+  margin-top: 20px;
 }
 .container2 {
   width:100%;
   height:320px;
   padding:1%;
+
 }
 .text {
   float:left;

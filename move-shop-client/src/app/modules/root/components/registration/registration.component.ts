@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
       this.user = new User();
   }
   onSubmit(){
-    this.save()
+    this.save();
   }
 
   closeRegistration(){

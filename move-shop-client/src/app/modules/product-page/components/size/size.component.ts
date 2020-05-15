@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-size',
@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./size.component.scss']
 })
 export class SizeComponent implements OnInit {
-
+  @Input() shoes;
+  @Output() shoeSize = new EventEmitter();
+  size;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  onItemChange(value){
+    this.shoeSize.emit(value);
+  }
 }
