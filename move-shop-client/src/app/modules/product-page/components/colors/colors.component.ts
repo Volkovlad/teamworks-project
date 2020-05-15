@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {ColorShoe} from "../../../../models/color";
 import {ProductService} from "../../services/product.service";
@@ -11,22 +11,14 @@ import {ProductService} from "../../services/product.service";
 })
 export class ColorsComponent implements OnInit {
   @Input() shoes;
-  constructor(private productService:ProductService, private route:ActivatedRoute) { }
-  shoeId;
-  color;
+  constructor(private productService:ProductService) { }
+  @Output() colorChangeEvent = new EventEmitter();
   ngOnInit(): void {
   }
 
-  changeColor(){
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.shoeId = +params['shoeID'];
-          this.color = params['color'];
-        }
-      );
+  emitColor(){
+    this.colorChangeEvent.emit();
+    window.location.reload();
+}
 
-    this.productService.getData(this.shoeId, this.color)
-      .subscribe(data => {this.shoes = data as ColorShoe[]});
-  }
 }

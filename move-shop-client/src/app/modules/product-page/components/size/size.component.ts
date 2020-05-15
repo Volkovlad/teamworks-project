@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-size',
@@ -7,10 +7,13 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SizeComponent implements OnInit {
   @Input() shoes;
+  @Output() shoeSize = new EventEmitter();
+  size;
   constructor() { }
 
   ngOnInit(): void {
-    // console.log(this.shoes);
   }
-
+  onItemChange(value){
+    this.shoeSize.emit(value);
+  }
 }

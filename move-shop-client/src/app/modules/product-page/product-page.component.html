@@ -7,11 +7,11 @@
       <div class="name">{{shoes[0].shoe.brand}} {{shoes[0].shoe.model}}</div>
       <p class="price">{{shoes[0].shoe.price}}$</p>
     </div>
-    <div class="text"><app-colors [shoes]="shoes"></app-colors></div>
-    <div class="text"><app-size [shoes]="shoes"></app-size></div>
+    <div class="text"><app-colors [shoes]="shoes" (colorChangeEvent)="changeColor($event)"></app-colors></div>
+    <div class="text"><app-size [shoes]="shoes" (shoeSize)="changeSize($event)"></app-size></div>
 
   </div>
-  <app-buttons style="float: right" [size]="size"  [id]="this.shoes[0].id"></app-buttons>
+  <app-buttons style="float: right" [size]="size"  [id]="this.shoes[0].id" [shoes]="shoes" ></app-buttons>
   <div class="txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua. Duis aute elit esse cillum dolore eu fugiat nulla pariatur.</div>
   <div class="reviews"><p class="reviews-text">Reviews </p> </div>
