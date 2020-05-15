@@ -30,9 +30,11 @@ export class FavoriteComponent implements OnInit {
 
   }
   remove(shoe_id): void {
-    this.favoriteServices.removeFavorite(shoe_id).subscribe();
-    sleep(50);
-    this.favoriteServices.getFavorite().subscribe(data => this.favorite = data['value']);
+    this.favoriteServices.removeFavorite(shoe_id).subscribe( res => {
+      this.favoriteServices.getFavorite().subscribe(data => this.favorite = data['value']);
+    }
+  );
+
   }
   view(): void {
     this.favoriteServices.getFavorite().subscribe(data => this.favorite = data['value']);

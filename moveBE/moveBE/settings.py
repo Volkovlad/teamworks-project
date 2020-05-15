@@ -103,7 +103,7 @@ DATABASES = {
         # user name. you need write your user on database MySQL
         'USER': 'root',
         # password and your password
-        'PASSWORD': 'lukash051000',
+        'PASSWORD': '',
     }
 }
 PHONENUMBER_DEFAULT_REGION = 'UA'

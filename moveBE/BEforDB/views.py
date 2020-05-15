@@ -1,4 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework.utils import json
+
 from .models import Shoe, Size, OrderList, Order, Favorite, Color
 from .serializers import ShoeSerializer, SizeSerializer, ColorSerializer, OrderListSerializer, FavoriteSerializer, \
     OrderSerializer, OrderConfirmSerializer
@@ -64,15 +66,20 @@ class ConfirmOrder(APIView):# confirm order
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
+
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+
         try:
             Order.objects.get(user=request.user, ordered=False)
         except:
             return Response('Error!')
-        name = self.request.POST['name']
-        surname = self.request.POST['surname']
+
+        name = body['name']
+        surname = body['surname']
         full_name = str(name+' '+surname)
-        phone = self.request.POST['phone']
-        address = self.request.POST['address']
+        phone = body['phone']
+        address = body['address']
 
         Order.objects.filter(user=request.user, ordered=False).update(ordered=True, name=full_name, phone=phone, address=address, date=datetime.datetime.now())
         OrderList.objects.filter(user=request.user, ordered=False).update(ordered=True)
@@ -170,6 +177,7 @@ class Add_to_favorite(APIView):#add favorite item for color_id
             pass
         favorite, created  = Favorite.objects.get_or_create(color=shoe, user=request.user)
         favorite.save()
+        return Response('Item has add on favorite')
 
 class Remove_from_favorite(APIView):#remove item from favorite
     authentication_classes = (TokenAuthentication,)
@@ -181,6 +189,8 @@ class Remove_from_favorite(APIView):#remove item from favorite
             pass
         favorite = Favorite.objects.filter(user=request.user, color=shoe)[0]
         Favorite.delete(favorite)
+        return Response('Item has remove on favorite')
+
 
 class FavoriteView(APIView):#display favorite items of current user
     authentication_classes = (TokenAuthentication,)

@@ -31,6 +31,6 @@ export class CartService {
     return this.http.get(`${this.baseUrl}/move/remove/${size_id}/`);
   }
   removeFavorite(shoe_id) {
-    return this.http.get(`${this.baseUrl}/move/remove/${shoe_id}/`);
+    return this.http.get(`${this.baseUrl}/move/favorite/remove/${shoe_id}/`);
   }
 }

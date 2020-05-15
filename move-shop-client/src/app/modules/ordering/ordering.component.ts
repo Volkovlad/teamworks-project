@@ -37,6 +37,10 @@ export class OrderingComponent implements OnInit {
   submit = false;
   viewAddress;
 
+  panelOpenState = false;
+
+
+
   constructor(private orderServices: OrderingService, private cartServices: CartService) { }
 
   getTotalCost() {

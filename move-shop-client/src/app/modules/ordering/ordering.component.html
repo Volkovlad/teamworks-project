@@ -52,78 +52,78 @@
       </table>
     </div>
   </div>
-<div class="order-methods">
-  <div class="panel-group">
-        <h4 class="panel-title">
-          Cпосіб оплати
-          <img src="https://img.icons8.com/ios/500/money.png" class="img">
-        </h4>
-    <span> Післяплатою при отриманні замовлення у відділенні Нової Пошти. </span>
-  </div>
-  <br>
-  <div class="panel-group">
-        <h4 class="panel-title">
-
-          Cпосіб доставки
-          <img src="https://img.icons8.com/ios/500/delivery.png" class="img">
-        </h4>
-    <ul>
-      <li>Доставка здійснюється транспортною компанією "Нова Пошта", терміни 1-3 дні по Україні;</li>
-      <li>Після відправки замовлення вам прийде SMS з номером експрес-накладної, за якою на сайті novaposhta.ua зможете відстежити своє замовлення і дізнатися точну вартість доставки;</li>
-      <li>При отриманні замовлення необхідно мати при собі паспорт або водійські права;</li>
-    </ul>
-  </div>
-  <br>
-  <h4 style="margin-bottom: 20px">Адреса доставки <img (click)="view() " src="../../../assets/arrow-right.png" height="20" width="20" style="cursor: pointer" /></h4>
-  <div *ngIf="viewAddress">
-
-
-  <form id="checkoutOrderForm" (ngSubmit)="onConfirm()" *ngIf="submit">
+  <div class="order-methods">
     <div class="panel-group">
-      <div class="panel panel-default">
-        <hr>
-        <div class="panel-body horizontal-form">
-          <div class="form-group row addresses-list">
+      <h4 class="panel-title">
+        Cпосіб оплати
+        <img src="https://img.icons8.com/ios/500/money.png" class="img">
+      </h4>
+      <span> Післяплатою при отриманні замовлення у відділенні Нової Пошти. </span>
+    </div>
+    <br>
+    <div class="panel-group">
+      <h4 class="panel-title">
 
-          </div>
-          <br>
-          <div class="info">
-            <div class="input">
+        Cпосіб доставки
+        <img src="https://img.icons8.com/ios/500/delivery.png" class="img">
+      </h4>
+      <ul>
+        <li>Доставка здійснюється транспортною компанією "Нова Пошта", терміни 1-3 дні по Україні;</li>
+        <li>Після відправки замовлення вам прийде SMS з номером експрес-накладної, за якою на сайті novaposhta.ua зможете відстежити своє замовлення і дізнатися точну вартість доставки;</li>
+        <li>При отриманні замовлення необхідно мати при собі паспорт або водійські права;</li>
+      </ul>
+    </div>
+    <br>
+    <h4 style="margin-bottom: 20px">Адреса доставки <img (click)="view() " src="../../../assets/arrow-right.png" height="20" width="20" style="cursor: pointer" /></h4>
+    <div *ngIf="viewAddress">
 
-                <label>Name: </label>
-                <input type="text" name="name" required [(ngModel)]="confirm.name" class="qwerty" placeholder="Gradient border focus fun" >
 
+      <form id="checkoutOrderForm" (ngSubmit)="onConfirm()" *ngIf="submit">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <hr>
+            <div class="panel-body horizontal-form">
+              <div class="form-group row addresses-list">
+
+              </div>
+              <br>
+              <div class="info">
+                <div class="input">
+
+                  <label>Name: </label>
+                  <input  type="text" name="name" required [(ngModel)]="confirm.name" class="qwerty" placeholder="Gradient border focus fun" >
+
+                </div>
+                <br>
+                <div class="input">
+
+                  <label>Surname:</label>
+                  <input type="text" name="surname" required [(ngModel)]="confirm.surname" class="qwerty" placeholder="Gradient border focus fun">
+
+                </div>
+                <br>
+                <div class="input">
+                  <br>
+                  <label>City/Village: </label>
+                  <input type="text" name="address" required [(ngModel)]="confirm.address" class="qwerty" placeholder="Gradient border focus fun">
+
+                </div>
+                <br>
+                <div class="input"><br>
+
+                  <label>Phone number:  </label>
+                  <input type="text" name="phone" required [(ngModel)]="confirm.phone" value="+380 " maxlength="14" class="qwerty">
+
+                </div>
+                <br>
+              </div>
             </div>
-            <br>
-            <div class="input">
-
-                <label>Surname:</label>
-                <input type="text" name="surname" required [(ngModel)]="confirm.surname" class="qwerty" placeholder="Gradient border focus fun">
-
-            </div>
-            <br>
-            <div class="input">
-             <br>
-                <label>City/Village: </label>
-                <input type="text" name="address" required [(ngModel)]="confirm.address" class="qwerty" placeholder="Gradient border focus fun">
-
-            </div>
-            <br>
-            <div class="input"><br>
-
-                <label>Phone number:  </label>
-                <input type="text" name="phone" required [(ngModel)]="confirm.phone" value="+380 " maxlength="14" class="qwerty">
-
-            </div>
-            <br>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="button_div">
-      <button class="button" type="submit">Submit</button>
-    </div>
-  </form></div>
+        <div class="button_div">
+          <button class="button" type="submit">Submit</button>
+        </div>
+      </form></div>
     <div class="button_div" *ngIf="!viewAddress">
       <button class="button" routerLink="/shopping">Shopping</button>
     </div>
@@ -131,53 +131,135 @@
 
 
 </div>
-  <div class="table" *ngIf="!checkValue">
-    <button class="btn" (click)="onChange()" ><h2>Current order</h2></button>
-    <div class="mat-elevation-z8">
-      <form class="order">
-        <table mat-table [dataSource]="orders">
+<div class="table" *ngIf="!checkValue">
+  <button class="btn" (click)="onChange()" ><h2>Current order</h2></button>
+  <div class="mat-elevation-z8">
+    <form class="order" style="">
+      <table mat-table [dataSource]="orders">-->
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="image">
+                    <th mat-header-cell *matHeaderCellDef>  </th>
+                    <td mat-cell *matCellDef="let element"><button class="arrow"><img src="../../../assets/arrow-right.png" height="20" width="20"></button></td>
+                    <td mat-footer-cell *matFooterCellDef> </td>
+                  </ng-container>
 
-          <!-- Position Column -->
-          <ng-container matColumnDef="image">
-            <th mat-header-cell *matHeaderCellDef>  </th>
-            <td mat-cell *matCellDef="let element"><button class="arrow"><img src="../../../assets/arrow-right.png" height="20" width="20"></button></td>
-            <td mat-footer-cell *matFooterCellDef> </td>
-          </ng-container>
+                  <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>
+                    <td mat-cell *matCellDef="let element" > {{element.date}}  </td>
+                    <td mat-footer-cell *matFooterCellDef >  </td>
+                  </ng-container>
 
-          <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>
-            <td mat-cell *matCellDef="let element" > {{element.date}}  </td>
-            <td mat-footer-cell *matFooterCellDef >  </td>
-          </ng-container>
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="order_status">
+                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
+                    <td mat-footer-cell *matFooterCellDef>  </td>
+                  </ng-container>
 
-          <!-- Name Column -->
-          <ng-container matColumnDef="order_status">
-            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>
-            <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
-            <td mat-footer-cell *matFooterCellDef>  </td>
-          </ng-container>
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="payment_status">
+                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Payment status </th>
+                    <td mat-cell *matCellDef="let element"> {{element.payment_status == true ?  "Paymend" : "Not paymend"  }} </td>
+                    <td mat-footer-cell *matFooterCellDef>  </td>
+                  </ng-container>
 
-          <!-- Weight Column -->
-          <ng-container matColumnDef="payment_status">
-            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Payment status </th>
-            <td mat-cell *matCellDef="let element"> {{element.payment_status }} </td>
-            <td mat-footer-cell *matFooterCellDef>  </td>
-          </ng-container>
-
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="item">
-            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Number items </th>
-            <td mat-cell *matCellDef="let element"> {{element.item }} </td>
-            <td mat-footer-cell *matFooterCellDef></td>
-          </ng-container>
-
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="item">
+                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Number items <br> in order </th>
+                    <td mat-cell *matCellDef="let element"> {{element.item }} </td>
+                    <td mat-footer-cell *matFooterCellDef></td>
+                  </ng-container>
 
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumnsOrder"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumnsOrder;"></tr>
-          <tr mat-footer-row *matFooterRowDef="displayedColumnsOrder"></tr>
-        </table>
-      </form>
-    </div>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsOrder"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsOrder;"></tr>
+                  <tr mat-footer-row *matFooterRowDef="displayedColumnsOrder"></tr>
+                </table>
+<!--      <mat-accordion>-->
+<!--        <mat-expansion-panel >-->
+<!--          <mat-expansion-panel-header *ngFor="let item of orders">-->
+
+<!--            <mat-panel-title>-->
+
+<!--              {{item.date}}-->
+<!--            </mat-panel-title>-->
+<!--            <mat-panel-title>-->
+<!--              {{item.item}}-->
+<!--            </mat-panel-title>-->
+
+<!--            <mat-panel-description>-->
+<!--              {{item.order_status}}-->
+<!--            </mat-panel-description>-->
+<!--          </mat-expansion-panel-header>-->
+
+<!--          <mat-form-field>-->
+<!--            <mat-label>First name</mat-label>-->
+<!--            <input matInput>-->
+<!--          </mat-form-field>-->
+
+<!--          <mat-form-field>-->
+<!--            <mat-label>Age</mat-label>-->
+<!--            <input matInput type="number" min="1">-->
+<!--          </mat-form-field>-->
+<!--        </mat-expansion-panel>-->
+<!--        &lt;!&ndash;          <mat-expansion-panel (opened)="panelOpenState = true"&ndash;&gt;-->
+<!--        &lt;!&ndash;                               (closed)="panelOpenState = false">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <mat-expansion-panel-header>&ndash;&gt;-->
+<!--        &lt;!&ndash;              <mat-panel-title>&ndash;&gt;-->
+<!--        &lt;!&ndash;                Self aware panel&ndash;&gt;-->
+<!--        &lt;!&ndash;              </mat-panel-title>&ndash;&gt;-->
+<!--        &lt;!&ndash;              <mat-panel-description>&ndash;&gt;-->
+<!--        &lt;!&ndash;                Currently I am {{panelOpenState ? 'open' : 'closed'}}&ndash;&gt;-->
+<!--        &lt;!&ndash;              </mat-panel-description>&ndash;&gt;-->
+<!--        &lt;!&ndash;            </mat-expansion-panel-header>&ndash;&gt;-->
+<!--        &lt;!&ndash;            <p>I'm visible because I am open</p>&ndash;&gt;-->
+<!--        &lt;!&ndash;          </mat-expansion-panel>&ndash;&gt;-->
+<!--      </mat-accordion>-->
+
+      <!--        <table mat-table [dataSource]="orders">-->
+
+      <!--          &lt;!&ndash; Position Column &ndash;&gt;-->
+      <!--          <ng-container matColumnDef="image">-->
+      <!--            <th mat-header-cell *matHeaderCellDef>  </th>-->
+      <!--            <td mat-cell *matCellDef="let element"><button class="arrow"><img src="../../../assets/arrow-right.png" height="20" width="20"></button></td>-->
+      <!--            <td mat-footer-cell *matFooterCellDef> </td>-->
+      <!--          </ng-container>-->
+
+      <!--          <ng-container matColumnDef="date">-->
+      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>-->
+      <!--            <td mat-cell *matCellDef="let element" > {{element.date}}  </td>-->
+      <!--            <td mat-footer-cell *matFooterCellDef >  </td>-->
+      <!--          </ng-container>-->
+
+      <!--          &lt;!&ndash; Name Column &ndash;&gt;-->
+      <!--          <ng-container matColumnDef="order_status">-->
+      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>-->
+      <!--            <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>-->
+      <!--            <td mat-footer-cell *matFooterCellDef>  </td>-->
+      <!--          </ng-container>-->
+
+      <!--          &lt;!&ndash; Weight Column &ndash;&gt;-->
+      <!--          <ng-container matColumnDef="payment_status">-->
+      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Payment status </th>-->
+      <!--            <td mat-cell *matCellDef="let element"> {{element.payment_status }} </td>-->
+      <!--            <td mat-footer-cell *matFooterCellDef>  </td>-->
+      <!--          </ng-container>-->
+
+      <!--          &lt;!&ndash; Symbol Column &ndash;&gt;-->
+      <!--          <ng-container matColumnDef="item">-->
+      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Number items </th>-->
+      <!--            <td mat-cell *matCellDef="let element"> {{element.item }} </td>-->
+      <!--            <td mat-footer-cell *matFooterCellDef></td>-->
+      <!--          </ng-container>-->
+
+
+
+      <!--          <tr mat-header-row *matHeaderRowDef="displayedColumnsOrder"></tr>-->
+      <!--          <tr mat-row *matRowDef="let row; columns: displayedColumnsOrder;"></tr>-->
+      <!--          <tr mat-footer-row *matFooterRowDef="displayedColumnsOrder"></tr>-->
+      <!--        </table>-->
+    </form>
   </div>
+</div>
 

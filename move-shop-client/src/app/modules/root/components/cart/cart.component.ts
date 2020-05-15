@@ -32,22 +32,23 @@ export class CartComponent implements OnInit {
   }
   minus(size_id, quantity): void {
     if ( quantity > 1) {
-      this.cartServices.minusOneItem(size_id).subscribe();
-      sleep(80);
-      this.cartServices.getData().subscribe(data => this.cart = data['value']);
+      this.cartServices.minusOneItem(size_id).subscribe(res => {
+        this.cartServices.getData().subscribe(data => this.cart = data['value']);
+      });
     }
   }
   plus(size_id): void {
-    this.cartServices.plusOneItem(size_id).subscribe();
-    sleep(80);
-    this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    this.cartServices.plusOneItem(size_id).subscribe(res => {
+      this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    });
   }
   remove(size_id): void {
-    this.cartServices.removeItem(size_id).subscribe();
-    sleep(80);
-    this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    this.cartServices.removeItem(size_id).subscribe( res => {
+      this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    });
+
   }
-  sum() : number {
+  sum(): number {
     let res = 0;
     for ( let i = 0; i < this.cart.length; i++) {
       res += (this.cart[i].price * this.cart[i].quantity);
@@ -55,7 +56,7 @@ export class CartComponent implements OnInit {
     return res;
   }
 
-  view() : void{
+  view(): void {
     this.cartServices.getData().subscribe(data => this.cart = data['value']);
   }
 
