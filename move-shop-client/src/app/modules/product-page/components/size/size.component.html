@@ -1,0 +1,12 @@
+<div class="cont">
+  <div class="full_master" *ngFor="let sizes of shoes[0].size; index as i">
+  <label class="container" >
+    <input class="form-check-input" type="radio"
+           [(ngModel)]="size" value="{{shoes[0].size[i]}}" [checked]="true"
+           (change)="onItemChange(shoes[0].size[i])"/>
+
+    <span class="checkmark"></span>
+    <div class="top">{{shoes[0].size[i]}}</div>
+  </label>
+  </div>
+</div>

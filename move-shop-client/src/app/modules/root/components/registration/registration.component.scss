@@ -17,10 +17,11 @@
   float: right;
 }
 .registration_form{
-  position: relative;
+  z-index: 4;
   padding: 100%;
   background: rgba(0, 0, 0, 0.7);
-  position: fixed; top: 50%; left: 50%;
+  position: fixed;
+  top: 50%; left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);

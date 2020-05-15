@@ -11,23 +11,45 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserSerializer
+from django_filters import rest_framework as rest_filters, NumberFilter, CharFilter
 
-class ShoeView(APIView):    #display all shoes model
-    def get(self, request):
-        query = request.GET.get("q")
-        if query:
-            shoes = Shoe.objects.filter(brand__icontains=query) or Shoe.objects.filter(model__icontains=query)
-        else:
-            shoes = Shoe.objects.all()
-        serializer = ShoeSerializer(shoes, many=True)
+# class ShoeView(APIView):    #display all shoes model
+#     def get(self, request):
+#         query = request.GET.get("q")
+#         if query:
+#             shoes = Shoe.objects.filter(brand__icontains=query) or Shoe.objects.filter(model__icontains=query)
+#         else:
+#             shoes = Shoe.objects.all()
+#         serializer = ShoeSerializer(shoes, many=True)
+#
+#         return Response({"shoes": serializer.data})
 
-        return Response({"shoes": serializer.data})
+class ShoeFilter(rest_filters.FilterSet):
+    # brand = CharFilter(field_name='brand')
+    color = CharFilter(field_name='color__color', distinct = True)
+    size = NumberFilter(field_name='color__size__size', distinct = True)
+    class Meta:
+        model = Shoe
+        fields = {
+            'brand':['in'],
+            'color':['exact'],
+            'size':['in'],
+            'price':['range']
+        }
+
+class ShoeView(generics.ListAPIView):
+        serializer_class = ShoeSerializer
+        filter_backends = (rest_filters.DjangoFilterBackend, filters.SearchFilter, )
+        filterset_class = ShoeFilter
+        search_fields = ['brand', 'model']
+        queryset = Shoe.objects.all()
+
 
 class ShowSizeVaribleView(APIView): #display varidle size of current color
     def get(self,request, pk, color):
         color = Color.objects.filter(shoe__id = pk, color=color)
         serializer = ColorSerializer(color, many=True)
-        return Response({"value": serializer.data})
+        return Response( serializer.data)
 
 
 class CurrentShoeView(APIView): #display current shoe
@@ -222,8 +244,6 @@ class CurrentOrderView(APIView): #display current complited order
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-
-
 
 # class UserOrderConfirm(viewsets.ModelViewSet):
 #     queryset = Order.objects.all()

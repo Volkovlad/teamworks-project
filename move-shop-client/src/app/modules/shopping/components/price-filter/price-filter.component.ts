@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { Options, LabelType,  } from 'ng5-slider';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { Options, LabelType, ChangeContext, PointerType} from 'ng5-slider';
 
 
 @Component({
@@ -8,11 +8,17 @@ import { Options, LabelType,  } from 'ng5-slider';
   styleUrls: ['./price-filter.component.scss']
 })
 export class PriceFilterComponent implements OnInit {
-  minValue = 1800;
+  minValue = 2500;
   maxValue = 1;
+  priceFilter: string;
+  logText = '';
+
+  @Output() priceFilterEvent = new EventEmitter();
+  constructor() { }
+
   options: Options = {
-    floor: 80,
-    ceil: 1000,
+    floor: 1,
+    ceil: 2500,
 
     getPointerColor: (value: number): string => {
       if (this.minValue >= 10) {
@@ -27,10 +33,29 @@ export class PriceFilterComponent implements OnInit {
           return ' $' + value;
       }
     }
+
   };
-
-  constructor() { }
-
   ngOnInit(): void {
   }
+  onUserChangeStart(changeContext: ChangeContext): void {
+    this.logText = `${this.getChangeContextString(changeContext)}`;
+  }
+
+  onUserChange(changeContext: ChangeContext): void {
+    this.logText = `${this.getChangeContextString(changeContext)}`;
+  }
+
+  onUserChangeEnd(changeContext: ChangeContext): void {
+    this.logText = `${this.getChangeContextString(changeContext)}`;
+  }
+  getChangeContextString(changeContext: ChangeContext): string {
+    return `${changeContext.value},` +
+      `${changeContext.highValue}`;
+  }
+  get selectedOptions() {
+    this.priceFilter = this.logText;
+    this.priceFilterEvent.emit(this.priceFilter);
+    return this.priceFilter;
+  }
+
 }

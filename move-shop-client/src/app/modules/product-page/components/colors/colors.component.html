@@ -1,0 +1,17 @@
+
+<div class="cont" >
+  <div class="full_master" *ngFor="let colors of shoes[0].shoe.color; index as i">
+
+    <label class="container" (click)="emitColor()">
+    <input type="radio" name="color"
+                   [routerLink]="['/products', shoes[0].shoe.id, shoes[0].shoe.color[i]]" >
+    <span class="checkmark"></span>
+
+    <div class="top">{{shoes[0].shoe.color[i]}}</div>
+
+  </label>
+
+
+</div>
+</div>
+

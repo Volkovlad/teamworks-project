@@ -1,6 +1,10 @@
 <div class="custom-slider">
 
   <h4>Price:</h4>
-    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" ></ng5-slider>
-
+    <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"
+                (userChangeStart)="onUserChangeStart($event)"
+                (userChange)="onUserChange($event)"
+                (userChangeEnd)="onUserChangeEnd($event)"></ng5-slider>
+  <p style="display:none;">{{selectedOptions}}</p>
 </div>
+

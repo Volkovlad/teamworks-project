@@ -5,12 +5,9 @@ from django.contrib.auth.models import User
 from BEforDB.models import Shoe, Color, Size, OrderList, Order, Favorite
 
 
-class ColorSerializer(serializers.ModelSerializer):
-    size = serializers.StringRelatedField(many=True)
 
-    class Meta:
-        model = Color
-        fields = ['id', 'size', 'image']
+
+
 
 
 class ShoeSerializer(serializers.ModelSerializer):
@@ -18,6 +15,20 @@ class ShoeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Shoe
         fields = ['id','brand', 'model', 'price', 'color', 'image']
+
+class ShoeSerializerForProductPage(serializers.ModelSerializer):
+    color = serializers.StringRelatedField(many=True)
+    class Meta:
+        model = Shoe
+        fields = ['id', 'brand', 'model', 'price', 'color']
+
+
+class ColorSerializer(serializers.ModelSerializer):
+    size = serializers.StringRelatedField(many=True)
+    shoe = ShoeSerializerForProductPage()
+    class Meta:
+        model = Color
+        fields = ['id', 'color', 'size', 'image', 'shoe']
 
 class SizeSerializer(serializers.ModelSerializer):
 

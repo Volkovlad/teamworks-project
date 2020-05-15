@@ -1,0 +1,28 @@
+
+<div class="bd"><div class="rectangle">
+  <div *ngIf="shoes">
+  <div class='container2'>
+    <img src="{{shoes[0].image}}" alt="" class='iconDetails' />
+    <div class="text">
+      <div class="name">{{shoes[0].shoe.brand}} {{shoes[0].shoe.model}}</div>
+      <p class="price">{{shoes[0].shoe.price}}$</p>
+    </div>
+    <div class="text"><app-colors [shoes]="shoes" (colorChangeEvent)="changeColor($event)"></app-colors></div>
+    <div class="text"><app-size [shoes]="shoes" (shoeSize)="changeSize($event)"></app-size></div>
+
+  </div>
+  <app-buttons style="float: right" [size]="size"  [id]="this.shoes[0].id" [shoes]="shoes" ></app-buttons>
+  <div class="txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Duis aute elit esse cillum dolore eu fugiat nulla pariatur.</div>
+  <div class="reviews"><p class="reviews-text">Reviews </p> </div>
+  <div class="rev-name column left">Name Surname</div>
+  <div class="rev-text column right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+    ut labore et dolore magna aliqua. Duis aute elit esse cillum dolore eu fugiat nulla pariatur.</div>
+  <div class="rev-name column left">Name Surname</div>
+  <div class="rev-text column right">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+    eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident anim id est laborum.</div>
+  <div class="rev-name column left">Name Surname</div>
+  <div class="rev-text column right">Consectetur libero id faucibus nisl. Lectus quam id leo in vitae. Cras adipiscing
+    enim eu turpis egestas pretium. Id eu nisl nunc mi ipsum faucibus vitae. </div>
+</div></div>
+</div>

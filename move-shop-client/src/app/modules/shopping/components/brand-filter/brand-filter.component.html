@@ -1,12 +1,19 @@
-<div class="brand-filter">
-	<div class="filter">
-      <h4>Brand:</h4>
-		<div class="brands">
-            <div class="container"><label><input type="checkbox" name="brands[]" value="1"><span class="checkmark"></span> Nike</label></div>
-            <div class="container"><label><input type="checkbox" name="brands[]" value="2"><span class="checkmark"></span> New Balance</label></div>
-            <div class="container"><label><input type="checkbox" name="brands[]" value="3"><span class="checkmark"></span> ASICS</label></div>
-            <div class="container"><label><input type="checkbox" name="brands[]" value="4"><span class="checkmark"></span> Adidas</label></div>
-            <div class="container"><label><input type="checkbox" name="brands[]" value="5"><span class="checkmark"></span> Filla</label></div>
+
+
+<div class="filter">
+  <h4>Brand:</h4>
+  <div *ngFor="let option of options" class="brands">
+    <div class="container">
+    <label>
+     <input type="checkbox"
+             name="options"
+             value="{{option.value}}"
+             [(ngModel)]="option.checked"/>
+      <span class="checkmark"></span>{{option.name}}
+    </label>
     </div>
   </div>
+<!--  <button (click)="onFilterBrand()">Accept</button>-->
+  <!--  <button (click)="onFilterBrand()"></button>-->
+  <p style="display:none;">{{selectedOptions}}</p>
 </div>
