@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Cart} from './cart';
+import {Cart} from '../../../models/cart';
 import {AuthenticationService} from '../../../services/authentication.service';
 
 
@@ -31,6 +31,6 @@ export class CartService {
     return this.http.get(`${this.baseUrl}/move/remove/${size_id}/`);
   }
   removeFavorite(shoe_id) {
-    return this.http.get(`${this.baseUrl}/move/remove/${shoe_id}/`);
+    return this.http.get(`${this.baseUrl}/move/favorite/remove/${shoe_id}/`);
   }
 }

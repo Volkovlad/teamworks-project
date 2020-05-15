@@ -48,15 +48,24 @@ class FavoriteSerializer(serializers.ModelSerializer):
         model = Favorite
         fields = ['shoe_id','brand', 'model', 'image', 'price']
 
+class OrderSerializer( serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['id', 'date', 'order_status', 'payment_status', 'item']
+
 class OrderListSerializer(serializers.ModelSerializer):
+    # order = serializers.StringRelatedField()
+
 
     class Meta:
         model = OrderList
         fields = ['size_id', 'brand', 'model', 'color', 'price', 'size', 'quantity', 'image']
 
-    # def confirmOrder(self, data):
-    #     order = Order.objects.confirm(**data)
-    #     return order
+
+class OrderConfirmSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=30)
+    phone = serializers.CharField(max_length=14)
+    address = serializers.CharField(max_length=40)
 
 
 

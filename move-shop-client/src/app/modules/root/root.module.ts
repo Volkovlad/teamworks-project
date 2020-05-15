@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {CartComponent} from './components/cart/cart.component';
 import {FavoriteComponent} from './components/favorite/favorite.component';
 
+
 @NgModule({
   declarations: [
     RootComponent,
@@ -21,7 +22,7 @@ import {FavoriteComponent} from './components/favorite/favorite.component';
     LoginComponent,
     RegistrationComponent,
     CartComponent,
-    FavoriteComponent
+    FavoriteComponent,
   ],
   imports: [
     CommonModule,

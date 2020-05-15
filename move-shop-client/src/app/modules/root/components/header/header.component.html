@@ -13,7 +13,7 @@
     <div class="list">
       <ul >
         <li><a routerLink="/shopping">Catalog</a></li>
-        <li><a href="">About us</a></li>
+        <li><a routerLink="/about-us">About us</a></li>
         <li><a routerLink="/faq">FAQ</a></li>
       </ul>
 
@@ -26,7 +26,7 @@
      <img (click)="viewCart()" class="second" src="../../../../../assets/img_header/cart.png" height="28" />
 
       <div style=" position: absolute; right: 255px; top: 39px;">
-        <app-cart [showCart]="cartVar" ></app-cart></div>
+        <app-cart [showCart]="cartVar" (changeCart)="receivVar($event)" ></app-cart></div>
       </div>
 
 
@@ -36,11 +36,11 @@
       </div>
 
       <div class="log" style=" position: absolute; right: 320px; top: 65px;">
-        <app-login [showMePartially]="showVar" style="float: right" ></app-login>
+        <app-login [showMePartially]="showVar" (changeShowVar)="receivLoginVar($event)" (ChangeloginVar) = "receivAutorizationVar($event)" style="float: right" ></app-login>
       </div>
     </div>
     <div class="login" *ngIf="!loginVar">
-      <div (click)="onLogOut()"   >
+      <div (click)="onLogOut()"  routerLink="/home"  >
         <button type="button"  >Log out</button>
       </div>
     </div>

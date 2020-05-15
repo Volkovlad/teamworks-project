@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Favorite} from '../../services/cart';
+import {Favorite} from '../../../../models/cart';
 import {CartService} from '../../services/cart.service';
 import {ifTrue} from "codelyzer/util/function";
 import {AuthenticationService} from "../../../../services/authentication.service";
@@ -30,9 +30,11 @@ export class FavoriteComponent implements OnInit {
 
   }
   remove(shoe_id): void {
-    this.favoriteServices.removeFavorite(shoe_id).subscribe();
-    sleep(50);
-    this.favoriteServices.getFavorite().subscribe(data => this.favorite = data['value']);
+    this.favoriteServices.removeFavorite(shoe_id).subscribe( res => {
+      this.favoriteServices.getFavorite().subscribe(data => this.favorite = data['value']);
+    }
+  );
+
   }
   view(): void {
     this.favoriteServices.getFavorite().subscribe(data => this.favorite = data['value']);
