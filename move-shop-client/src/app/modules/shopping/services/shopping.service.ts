@@ -17,11 +17,9 @@ export class ShoppingService {
     return this.http.get(this.baseUrl);
   }
 
-  getSearchedProducts(name: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}?search=${name}`);
-  }
-  getFilteredProducts(brand: any, color: any, size: any, price: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}`, {params: new HttpParams().set('brand__in', brand)
+  getFilteredProducts(search: string, brand: any, color: any, size: any, price: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}`, {params: new HttpParams().set('search', search)
+        .set('brand__in', brand)
         .set('color', color).set('size', size).set('price__range', price)} );
   }
 }

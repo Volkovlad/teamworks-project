@@ -3,7 +3,7 @@ import { AuthService, SocialUser } from 'angularx-social-login';
 import { FacebookLoginProvider, GoogleLoginProvider } from 'angularx-social-login';
 import { User } from '../../../../models/user';
 import { UserService } from '../../services/user.service';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../../services/authentication.service';
 import { first } from 'rxjs/operators';
 
@@ -66,7 +66,6 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          this.ChangeloginVar.emit(!this.loginVar);
           alert('User ' + this.user.username + ' logged!');
           this.showMePartially = !this.showMePartially;
           this.changeShowVar.emit(this.showMePartially);
