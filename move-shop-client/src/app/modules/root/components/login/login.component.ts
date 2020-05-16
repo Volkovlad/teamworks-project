@@ -66,6 +66,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          this.ChangeloginVar.emit(!this.loginVar);
           alert('User ' + this.user.username + ' logged!');
           this.showMePartially = !this.showMePartially;
           this.changeShowVar.emit(this.showMePartially);
@@ -76,10 +77,6 @@ export class LoginComponent implements OnInit {
           console.log(error);
           alert('Dont search user with ' + this.user.username + ' username or your password is not corect' );
         });
-
-
-
-
 
   }
 

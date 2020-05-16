@@ -12,6 +12,7 @@ import { ListOfProductsComponent } from './components/list-of-products/list-of-p
 import { Ng5SliderModule } from 'ng5-slider';
 import { ShoeSearchComponent } from './components/shoe-search/shoe-search.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule,
     Ng5SliderModule,
+    SharedModule,
   ]
-
 })
 export class ShoppingModule {
 }
