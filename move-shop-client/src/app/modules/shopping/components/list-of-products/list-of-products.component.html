@@ -4,9 +4,7 @@
         <a [title]="shoe.brand + shoe.brand+' details'" [routerLink]="['/products', shoe.id, shoe.color[0]]">
 				<img class="shoes" src="{{shoe.image}}" alt="">
 				<div class="description">
-
-            <h4 style="text-decoration: none">{{ shoe.brand }} {{shoe.model}}</h4>
-
+          <h4 >{{ shoe.brand }} {{shoe.model}}</h4>
 					<h5>{{ shoe.price }}$</h5>
 			  </div>
         </a>

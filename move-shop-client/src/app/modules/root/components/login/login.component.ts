@@ -71,6 +71,7 @@ export class LoginComponent implements OnInit {
           this.changeShowVar.emit(this.showMePartially);
           this.loginVar = !this.loginVar;
           this.ChangeloginVar.emit(!this.loginVar);
+
         },
         error => {
           console.log(error);

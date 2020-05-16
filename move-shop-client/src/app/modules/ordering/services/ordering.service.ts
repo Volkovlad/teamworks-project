@@ -22,4 +22,7 @@ export class OrderingService {
     // const body = {name: order.name, surname: order.surname, address: order.address, phone: order.phone};
     return this.http.post(`${this.baseUrl}/move/confirm/`, order);
   }
+  getDetailsOrder(order_id) {
+    return this.http.get(`${this.baseUrl}/move/order/${order_id}/`);
+  }
 }

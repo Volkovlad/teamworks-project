@@ -7,6 +7,9 @@ import {Cart} from '../../models/cart';
 import {OrderingService} from './services/ordering.service';
 import {CartService} from '../root/services/cart.service';
 import {Confirm, Order} from '../../models/order';
+import {AuthenticationService} from '../../services/authentication.service';
+import {Router} from '@angular/router';
+import {RootRoutingModule} from "../root/root-routing.module";
 
 
 
@@ -33,15 +36,22 @@ export class OrderingComponent implements OnInit {
   cart: Cart[] = [];
   confirm: Confirm = new Confirm();
   orders: Order[] = [];
-  displayedColumnsOrder: string[] = ['image', 'date', 'order_status', 'payment_status', 'item'];
+  ColumnsOrder: string[] = ['image', 'date', 'order_status', 'payment_status', 'item'];
+  displayedColumnsOrder: string[] = ['image', 'date', 'order_status'];
   submit = false;
+  details: Cart[] = [];
   viewAddress;
 
-  panelOpenState = false;
+  panelOpenState = true ;
 
 
 
-  constructor(private orderServices: OrderingService, private cartServices: CartService) { }
+  constructor(
+    private orderServices: OrderingService,
+    private cartServices: CartService,
+    private authenticationService: AuthenticationService,
+    public router: Router
+  ) { }
 
   getTotalCost() {
       let res = 0;
@@ -53,16 +63,24 @@ export class OrderingComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; } );
-    this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    if (this.authenticationService.currentUserValue == null) {
+      this.router.navigateByUrl('/shopping');
+    } else {
+      this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; } );
+      this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    }
+
+
   }
 
   onChange() {
     this.checkValue = !this.checkValue;
+    this.panelOpenState = true;
     if (this.cart.length > 0 ) {
       this.submit = true;
-    }else
+    } else {
       this.submit = false;
+    }
   }
 
   onConfirm() {
@@ -90,6 +108,11 @@ export class OrderingComponent implements OnInit {
       console.log(this.cart.length);
       return false;
     }
+  }
+
+  viewDetailsOrder(order_id) {
+    this.orderServices.getDetailsOrder(order_id).subscribe( data => this.details = data['value']);
+    this.panelOpenState = false;
   }
 
 }
