@@ -12,16 +12,6 @@ import {Router} from '@angular/router';
 import {RootRoutingModule} from "../root/root-routing.module";
 
 
-
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
-
-
 /**
  * @title Table with filtering
  */
@@ -39,8 +29,9 @@ export class OrderingComponent implements OnInit {
   ColumnsOrder: string[] = ['image', 'date', 'order_status', 'payment_status', 'item'];
   displayedColumnsOrder: string[] = ['image', 'date', 'order_status'];
   submit = false;
+  listOrders = false;
   details: Cart[] = [];
-  viewAddress;
+  viewAddress = false;
 
   panelOpenState = true ;
 
@@ -66,8 +57,8 @@ export class OrderingComponent implements OnInit {
     if (this.authenticationService.currentUserValue == null) {
       this.router.navigateByUrl('/shopping');
     } else {
-      this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; } );
-      this.cartServices.getData().subscribe(data => this.cart = data['value']);
+      this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; this.listOrders = this.checkOrder()} );
+      this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); });
     }
 
 
@@ -86,26 +77,39 @@ export class OrderingComponent implements OnInit {
   onConfirm() {
     this.orderServices.ordering(this.confirm)
       .subscribe(
-       alert );
+        res => {
+          console.log(res);
+          alert('Your order has confirmed');
+          this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; this.listOrders = this.checkOrder(); this.viewAddress = false; });
+          this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); });
+        },
+        error => {
+          console.log(error);
+          alert('Dont confirmed! Please fill all field' );
+        });
   }
 
+
   remove(size_id): void {
-    this.cartServices.removeItem(size_id).subscribe();
-    sleep(80);
-    this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    this.cartServices.removeItem(size_id).subscribe( res => {
+      this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); this.viewAddress = false; });
+    });
 
   }
   view() {
     this.viewAddress = !this.viewAddress;
-    this.submit = this.check();
-    console.log(this.cart.length);
   }
   check(): boolean {
     if (this.cart.length > 0 ) {
-
       return true;
     } else {
-      console.log(this.cart.length);
+      return false;
+    }
+  }
+  checkOrder(): boolean {
+    if (this.orders.length > 0 ) {
+      return true;
+    } else {
       return false;
     }
   }
