@@ -7,16 +7,9 @@ import {Cart} from '../../models/cart';
 import {OrderingService} from './services/ordering.service';
 import {CartService} from '../root/services/cart.service';
 import {Confirm, Order} from '../../models/order';
-
-
-
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
+import {AuthenticationService} from '../../services/authentication.service';
+import {Router} from '@angular/router';
+import {RootRoutingModule} from "../root/root-routing.module";
 
 
 /**
@@ -33,15 +26,23 @@ export class OrderingComponent implements OnInit {
   cart: Cart[] = [];
   confirm: Confirm = new Confirm();
   orders: Order[] = [];
-  displayedColumnsOrder: string[] = ['image', 'date', 'order_status', 'payment_status', 'item'];
+  ColumnsOrder: string[] = ['image', 'date', 'order_status', 'payment_status', 'item'];
+  displayedColumnsOrder: string[] = ['image', 'date', 'order_status'];
   submit = false;
-  viewAddress;
+  listOrders = false;
+  details: Cart[] = [];
+  viewAddress = false;
 
-  panelOpenState = false;
+  panelOpenState = true ;
 
 
 
-  constructor(private orderServices: OrderingService, private cartServices: CartService) { }
+  constructor(
+    private orderServices: OrderingService,
+    private cartServices: CartService,
+    private authenticationService: AuthenticationService,
+    public router: Router
+  ) { }
 
   getTotalCost() {
       let res = 0;
@@ -53,43 +54,69 @@ export class OrderingComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; } );
-    this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    if (this.authenticationService.currentUserValue == null) {
+      this.router.navigateByUrl('/shopping');
+    } else {
+      this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; this.listOrders = this.checkOrder()} );
+      this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); });
+    }
+
+
   }
 
   onChange() {
     this.checkValue = !this.checkValue;
+    this.panelOpenState = true;
     if (this.cart.length > 0 ) {
       this.submit = true;
-    }else
+    } else {
       this.submit = false;
+    }
   }
 
   onConfirm() {
     this.orderServices.ordering(this.confirm)
       .subscribe(
-       alert );
+        res => {
+          console.log(res);
+          alert('Your order has confirmed');
+          this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; this.listOrders = this.checkOrder(); this.viewAddress = false; });
+          this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); });
+        },
+        error => {
+          console.log(error);
+          alert('Dont confirmed! Please fill all field' );
+        });
   }
 
+
   remove(size_id): void {
-    this.cartServices.removeItem(size_id).subscribe();
-    sleep(80);
-    this.cartServices.getData().subscribe(data => this.cart = data['value']);
+    this.cartServices.removeItem(size_id).subscribe( res => {
+      this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); this.viewAddress = false; });
+    });
 
   }
   view() {
     this.viewAddress = !this.viewAddress;
-    this.submit = this.check();
-    console.log(this.cart.length);
   }
   check(): boolean {
     if (this.cart.length > 0 ) {
-
       return true;
     } else {
-      console.log(this.cart.length);
       return false;
     }
+  }
+  checkOrder(): boolean {
+    if (this.orders.length > 0 ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  viewDetailsOrder(order_id) {
+    this.orderServices.getDetailsOrder(order_id).subscribe( data => this.details = data['value']);
+    this.panelOpenState = false;
   }
 
 }

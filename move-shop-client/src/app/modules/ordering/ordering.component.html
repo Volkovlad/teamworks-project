@@ -1,10 +1,10 @@
 
-<h3><br>Ordering</h3>
+<h3><br>Ordering</h3><br><br>
 <div *ngIf="checkValue">
   <div class="table">
-    <button class="btn" (click)="onChange()"><h2>Look completed through</h2></button>
+    <button class="btn" *ngIf="checkOrder()"  (click)="onChange()"><h2>Look completed through</h2></button>
     <div class="mat-elevation-z8">
-      <table mat-table [dataSource]="cart">
+      <table mat-table [dataSource]="cart" *ngIf="submit">
 
         <!-- Position Column -->
         <ng-container matColumnDef="image">
@@ -74,11 +74,9 @@
       </ul>
     </div>
     <br>
-    <h4 style="margin-bottom: 20px">Адреса доставки <img (click)="view() " src="../../../assets/arrow-right.png" height="20" width="20" style="cursor: pointer" /></h4>
-    <div *ngIf="viewAddress">
-
-
-      <form id="checkoutOrderForm" (ngSubmit)="onConfirm()" *ngIf="submit">
+    <div *ngIf="submit">
+    <h4 style="margin-bottom: 20px">Адреса доставки <img (click)="view()" src="../../../assets/write_icon.png" height="24" width="24" style="cursor: pointer" /></h4>
+      <form *ngIf="viewAddress" id="checkoutOrderForm" (ngSubmit)="onConfirm()" >
         <div class="panel-group">
           <div class="panel panel-default">
             <hr>
@@ -131,135 +129,132 @@
 
 
 </div>
-<div class="table" *ngIf="!checkValue">
+<div class="table second" *ngIf="!checkValue" >
   <button class="btn" (click)="onChange()" ><h2>Current order</h2></button>
   <div class="mat-elevation-z8">
-    <form class="order" style="">
-      <table mat-table [dataSource]="orders">-->
-                  <!-- Position Column -->
-                  <ng-container matColumnDef="image">
-                    <th mat-header-cell *matHeaderCellDef>  </th>
-                    <td mat-cell *matCellDef="let element"><button class="arrow"><img src="../../../assets/arrow-right.png" height="20" width="20"></button></td>
-                    <td mat-footer-cell *matFooterCellDef> </td>
-                  </ng-container>
+      <table mat-table [dataSource]="orders" *ngIf="panelOpenState">
+        <!-- Position Column -->
+        <ng-container matColumnDef="image">
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element" (click)="viewDetailsOrder(element.id)" [style]="" >
+            <img *ngIf="!panelOpenState" src="../../../assets/arrow-right.png" height="20" width="20" >
+            <img *ngIf="panelOpenState" src="../../../assets/arrow-down.png" height="20" width="20" >
+            <!--                      <img src="../../../assets/arrow-down.png" height="240" width="240"/></td>-->
+          <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
 
-                  <ng-container matColumnDef="date">
-                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>
-                    <td mat-cell *matCellDef="let element" > {{element.date}}  </td>
-                    <td mat-footer-cell *matFooterCellDef >  </td>
-                  </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>
+          <td mat-cell *matCellDef="let element" > {{element.date}}  </td>
+          <td mat-footer-cell *matFooterCellDef >  </td>
+        </ng-container>
 
-                  <!-- Name Column -->
-                  <ng-container matColumnDef="order_status">
-                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>
-                    <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
-                    <td mat-footer-cell *matFooterCellDef>  </td>
-                  </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="order_status">
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>
+          <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
+          <td mat-footer-cell *matFooterCellDef>  </td>
+        </ng-container>
 
-                  <!-- Weight Column -->
-                  <ng-container matColumnDef="payment_status">
-                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Payment status </th>
-                    <td mat-cell *matCellDef="let element"> {{element.payment_status == true ?  "Paymend" : "Not paymend"  }} </td>
-                    <td mat-footer-cell *matFooterCellDef>  </td>
-                  </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="payment_status">
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Payment status </th>
+          <td mat-cell *matCellDef="let element"> {{element.payment_status == true ?  "Paymend" : "Not paymend"  }} </td>
+          <td mat-footer-cell *matFooterCellDef>  </td>
+        </ng-container>
 
-                  <!-- Symbol Column -->
-                  <ng-container matColumnDef="item">
-                    <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Number items <br> in order </th>
-                    <td mat-cell *matCellDef="let element"> {{element.item }} </td>
-                    <td mat-footer-cell *matFooterCellDef></td>
-                  </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="item">
+          <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Number items <br> in order </th>
+          <td mat-cell *matCellDef="let element"> {{element.item }} </td>
+          <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
 
+        <tr mat-header-row *matHeaderRowDef="ColumnsOrder"></tr>
+        <tr mat-row *matRowDef="let row; columns: ColumnsOrder;"></tr>
+      </table>
+      <div *ngIf="panelOpenState" class="mih-heith"></div>
 
+      <div  class="table2" *ngIf="!panelOpenState">
+        <form class="order" style="">
+          <table class="archiv" mat-table [dataSource]="orders" >
+            <!-- Position Column -->
+            <ng-container matColumnDef="image">
+              <th mat-header-cell *matHeaderCellDef>  </th>
+              <td mat-cell *matCellDef="let element" (click)="viewDetailsOrder(element.id)" >
+                <img *ngIf="!panelOpenState" src="../../../assets/arrow-right.png" height="20" width="20" >
+                <img *ngIf="panelOpenState" src="../../../assets/arrow-down.png" height="20" width="20" >
+                <!--                      <img src="../../../assets/arrow-down.png" height="240" width="240"/></td>-->
+              <td mat-footer-cell *matFooterCellDef> </td>
+            </ng-container>
 
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsOrder"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsOrder;"></tr>
-                  <tr mat-footer-row *matFooterRowDef="displayedColumnsOrder"></tr>
-                </table>
-<!--      <mat-accordion>-->
-<!--        <mat-expansion-panel >-->
-<!--          <mat-expansion-panel-header *ngFor="let item of orders">-->
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>
+              <td mat-cell *matCellDef="let element" > {{element.date}}  </td>
+              <td mat-footer-cell *matFooterCellDef >  </td>
+            </ng-container>
 
-<!--            <mat-panel-title>-->
+            <!-- Name Column -->
+            <ng-container matColumnDef="order_status">
+              <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>
+              <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>
+              <td mat-footer-cell *matFooterCellDef>  </td>
+            </ng-container>
 
-<!--              {{item.date}}-->
-<!--            </mat-panel-title>-->
-<!--            <mat-panel-title>-->
-<!--              {{item.item}}-->
-<!--            </mat-panel-title>-->
-
-<!--            <mat-panel-description>-->
-<!--              {{item.order_status}}-->
-<!--            </mat-panel-description>-->
-<!--          </mat-expansion-panel-header>-->
-
-<!--          <mat-form-field>-->
-<!--            <mat-label>First name</mat-label>-->
-<!--            <input matInput>-->
-<!--          </mat-form-field>-->
-
-<!--          <mat-form-field>-->
-<!--            <mat-label>Age</mat-label>-->
-<!--            <input matInput type="number" min="1">-->
-<!--          </mat-form-field>-->
-<!--        </mat-expansion-panel>-->
-<!--        &lt;!&ndash;          <mat-expansion-panel (opened)="panelOpenState = true"&ndash;&gt;-->
-<!--        &lt;!&ndash;                               (closed)="panelOpenState = false">&ndash;&gt;-->
-<!--        &lt;!&ndash;            <mat-expansion-panel-header>&ndash;&gt;-->
-<!--        &lt;!&ndash;              <mat-panel-title>&ndash;&gt;-->
-<!--        &lt;!&ndash;                Self aware panel&ndash;&gt;-->
-<!--        &lt;!&ndash;              </mat-panel-title>&ndash;&gt;-->
-<!--        &lt;!&ndash;              <mat-panel-description>&ndash;&gt;-->
-<!--        &lt;!&ndash;                Currently I am {{panelOpenState ? 'open' : 'closed'}}&ndash;&gt;-->
-<!--        &lt;!&ndash;              </mat-panel-description>&ndash;&gt;-->
-<!--        &lt;!&ndash;            </mat-expansion-panel-header>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <p>I'm visible because I am open</p>&ndash;&gt;-->
-<!--        &lt;!&ndash;          </mat-expansion-panel>&ndash;&gt;-->
-<!--      </mat-accordion>-->
-
-      <!--        <table mat-table [dataSource]="orders">-->
-
-      <!--          &lt;!&ndash; Position Column &ndash;&gt;-->
-      <!--          <ng-container matColumnDef="image">-->
-      <!--            <th mat-header-cell *matHeaderCellDef>  </th>-->
-      <!--            <td mat-cell *matCellDef="let element"><button class="arrow"><img src="../../../assets/arrow-right.png" height="20" width="20"></button></td>-->
-      <!--            <td mat-footer-cell *matFooterCellDef> </td>-->
-      <!--          </ng-container>-->
-
-      <!--          <ng-container matColumnDef="date">-->
-      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Date </th>-->
-      <!--            <td mat-cell *matCellDef="let element" > {{element.date}}  </td>-->
-      <!--            <td mat-footer-cell *matFooterCellDef >  </td>-->
-      <!--          </ng-container>-->
-
-      <!--          &lt;!&ndash; Name Column &ndash;&gt;-->
-      <!--          <ng-container matColumnDef="order_status">-->
-      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Order status </th>-->
-      <!--            <td mat-cell *matCellDef="let element"> {{element.order_status}} </td>-->
-      <!--            <td mat-footer-cell *matFooterCellDef>  </td>-->
-      <!--          </ng-container>-->
-
-      <!--          &lt;!&ndash; Weight Column &ndash;&gt;-->
-      <!--          <ng-container matColumnDef="payment_status">-->
-      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Payment status </th>-->
-      <!--            <td mat-cell *matCellDef="let element"> {{element.payment_status }} </td>-->
-      <!--            <td mat-footer-cell *matFooterCellDef>  </td>-->
-      <!--          </ng-container>-->
-
-      <!--          &lt;!&ndash; Symbol Column &ndash;&gt;-->
-      <!--          <ng-container matColumnDef="item">-->
-      <!--            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Number items </th>-->
-      <!--            <td mat-cell *matCellDef="let element"> {{element.item }} </td>-->
-      <!--            <td mat-footer-cell *matFooterCellDef></td>-->
-      <!--          </ng-container>-->
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsOrder"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumnsOrder;"></tr>
 
 
+          </table>
 
-      <!--          <tr mat-header-row *matHeaderRowDef="displayedColumnsOrder"></tr>-->
-      <!--          <tr mat-row *matRowDef="let row; columns: displayedColumnsOrder;"></tr>-->
-      <!--          <tr mat-footer-row *matFooterRowDef="displayedColumnsOrder"></tr>-->
-      <!--        </table>-->
-    </form>
+        <table class="rows" mat-table [dataSource]="details">
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>  </th>
+            <td mat-cell *matCellDef="let element"><img src="{{element.image}}" width="150px" height="150px" style="margin-top: 5px; margin-bottom: 5px">  </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Name </th>
+            <td mat-cell *matCellDef="let element" > {{element.brand}} <br> {{element.model}} </td>
+            <td mat-footer-cell *matFooterCellDef style="font-weight: bold"> Total </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="size">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Size </th>
+            <td mat-cell *matCellDef="let element"> {{element.size}} </td>
+            <td mat-footer-cell *matFooterCellDef>  </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Amount </th>
+            <td mat-cell *matCellDef="let element"> {{element.quantity }} </td>
+            <td mat-footer-cell *matFooterCellDef>  </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef style="font-weight: bold"> Cost </th>
+            <td mat-cell *matCellDef="let element"> {{element.price | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>  </th>
+            <td mat-cell *matCellDef="let element"></td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+        </table>
+
+    </form></div>
   </div>
 </div>
 

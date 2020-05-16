@@ -6,7 +6,7 @@
 
 }
 #layer1{
-  height: 733px;
+  height: 533px;
   background: url("../../../../../assets/55.jpg")no-repeat center center;
   background-size: cover;
   margin-top: -18px;
@@ -142,6 +142,8 @@
   background: #004BA8;
   border-radius: 10px;
   border: none ;
+  font-size: 18px;
+  cursor: pointer;
 
 }
 
@@ -155,7 +157,8 @@
   background: #004BA8;
   border-radius: 10px;
   border: none ;
-
+  font-size: 18px;
+  cursor: pointer;
 }
 
 .popular {
@@ -171,6 +174,12 @@
   margin-top: 12px;
   border: none ;
 
+
+
+}
+button:hover{
+  opacity: 0.85;
+  cursor: pointer;
 }
 
 .description{
@@ -185,7 +194,7 @@
 
 .shoes {
 
-
+  cursor: pointer;
   width: 250.82px;
   height: 184.68px;
   border-radius: 10px 10px 0px 0px;
@@ -202,6 +211,13 @@
   margin: 10px;
   text-align: center;
 
+  h3,h4,a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
 
 }
 .box2{
@@ -212,6 +228,14 @@
   border-radius: 10px;
   margin: 10px;
   text-align: center;
+
+
+  h3,h4,a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+  }
 }
 
 

@@ -28,6 +28,11 @@ export class HeaderComponent implements OnInit {
       this.loginVar = true;
     }
   }
+  closeView() {
+    this.showVar = false;
+    this.cartVar = false;
+    this.favoriteVar = false;
+  }
 
   onLogOut() {
     this.authenticationService.logout();

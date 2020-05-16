@@ -34,7 +34,6 @@ h3{
 }
 
 .table {
-
   margin-left: 17%;
   margin-right: 17%;
 }
@@ -221,7 +220,33 @@ body {
 }
 
 .order{
+  display: inline-flex;
+  //position: relative;
+}
+.archiv{
   text-align: center;
+  width: 300px;
+  margin-bottom: 40px;
+}
+.rows{
+  margin-left: 150px;
+  float: right;
+  width: 800px;
+  margin-bottom: 40px;
+}
+.mat-elevation-z9{
+  //margin-left: -10%;
 }
 
-
+.table2{
+  margin-left: -10%;
+}
+.second{
+  margin-bottom: 40px;
+}
+.mih-heith{
+  min-height: 25vh;
+}
+.button_div{
+  min-height: 24.2vh;
+}
