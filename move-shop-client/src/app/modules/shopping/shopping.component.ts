@@ -27,7 +27,8 @@ export class ShoppingComponent implements OnInit {
 
   this.preloader.show();
     this.shoppingService.getSearchedProducts(searchedValue)
-      .subscribe(data => {this.shoes = data as Shoe[]});
+      .subscribe(data => {this.shoes = data as Shoe[]; this.preloader.hide()});
+
   }
   filterBrand($event){
     const brandFilter = $event;

@@ -18,7 +18,7 @@ export class ColorsComponent implements OnInit {
 
   emitColor(){
     this.colorChangeEvent.emit();
-    window.location.reload();
+
 }
 
 }
