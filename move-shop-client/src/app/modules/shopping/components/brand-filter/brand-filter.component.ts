@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-brand-filter',
@@ -8,8 +8,30 @@ import { Component, OnInit } from '@angular/core';
 export class BrandFilterComponent implements OnInit {
 
   constructor() { }
-
+  brandFilter = [];
+  @Output() brandFilterEvent = new EventEmitter();
   ngOnInit(): void {
   }
+  options = [
+    {name:'Nike', value:'Nike', checked:false},
+    {name:'Adidas', value:'Adidas', checked:false},
+    {name:'ASICS', value:'ASICS', checked:false},
+    {name:'New Balance', value:'New Balance', checked:false},
+    {name:'Reebok', value:'Reebok', checked:false}
+  ]
+
+    get selectedOptions() {
+    this.brandFilter = this.options
+      .filter(opt => opt.checked)
+      .map(opt => opt.value);
+      this.brandFilterEvent.emit(this.brandFilter);
+    return this.brandFilter;
+  }
+
+  // onFilterBrand(){
+  //     this.brandFilterEvent.emit(this.brandFilter);
+  //
+  //   // this.brandFilterEvent.emit(this.brandFilter);
+  // }
 
 }

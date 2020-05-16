@@ -60,4 +60,6 @@ export function provideConfig() {
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

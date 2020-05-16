@@ -13,7 +13,6 @@ const routes: Routes = [
         path: 'faq',
         loadChildren: () => import('../faq/faq.module').then(m => m.FaqModule),
       },
-
       {
         path        : 'home',
         loadChildren: () => import('../home-page/home-page.module').then(m => m.HomePageModule),
@@ -21,6 +20,18 @@ const routes: Routes = [
       {
         path        : 'shopping',
         loadChildren: () => import('../shopping/shopping.module').then(m => m.ShoppingModule),
+      },
+      {
+        path        : 'about-us',
+        loadChildren: () => import('../about-us/about-us.module').then(m => m.AboutUsModule),
+      },
+      {
+        path        : 'ordering',
+        loadChildren: () => import('../ordering/ordering.module').then(m => m.OrderingModule),
+      },
+      {
+        path: 'products/:shoeID/:color',
+        loadChildren: () => import('../product-page/product-page.module').then(m => m.ProductPageModule),
       },
       {
         path      : '**',

@@ -1,0 +1,15 @@
+<div class="quantity">
+  <button (click)="minus()" class="minus">-</button>
+  <div class="count">
+    <h2>{{quantity}}</h2>
+  </div>
+  <button (click)="plus()" class="plus">+</button>
+</div>
+<div>
+  <button class="buy">BUY NOW</button>
+</div>
+<div style="display: flex">
+<button class="cart" (click)="addToCart()">Add to cart</button>
+  <button class="favorite" (click)="addToFavorite()"><img  src="../../../../../assets/addFavorite.png" class="heart"/>
+  </button>
+</div>

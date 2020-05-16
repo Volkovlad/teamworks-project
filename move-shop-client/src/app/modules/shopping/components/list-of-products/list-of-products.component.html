@@ -1,11 +1,14 @@
 
 <div class="list-of-products">
 			<div class="box" *ngFor="let shoe of shoes">
-				<img class="shoes" src="https://brooklynstore.com.ua/content/images/30/zhenskie-krossovki-adidas-originals-falcon-w-black-grey-multi-0-18487358358211_small11.jpg" alt="">
+        <a [title]="shoe.brand + shoe.brand+' details'" [routerLink]="['/products', shoe.id, shoe.color[0]]">
+				<img class="shoes" src="{{shoe.image}}" alt="">
 				<div class="description">
-					<h4>{{ shoe.brand }} {{shoe.model}}</h4>
-					<h5>{{ shoe.price }}$</h5>
 
+            <h4 style="text-decoration: none">{{ shoe.brand }} {{shoe.model}}</h4>
+
+					<h5>{{ shoe.price }}$</h5>
 			  </div>
+        </a>
 		  </div>
 </div>

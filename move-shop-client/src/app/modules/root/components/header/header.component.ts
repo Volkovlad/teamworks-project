@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {CartService} from '../../services/cart.service';
-import {Cart} from '../../services/cart';
+import {Cart} from '../../../../models/cart';
 import {UserService} from '../../services/user.service';
 import {AuthenticationService} from '../../../../services/authentication.service';
 import {CartComponent} from '../cart/cart.component';
@@ -67,9 +67,23 @@ export class HeaderComponent implements OnInit {
     this.cartVar = false;
   }
 
+
   changeLoginButtonState($event) {
     // this.loginVar = $event;
     this.loginVar = false;
   }
+
+  receivVar($event) {
+    this.cartVar = $event;
+  }
+
+  receivLoginVar($event) {
+    this.showVar = $event;
+  }
+  receivAutorizationVar($event) {
+    this.loginVar = $event;
+  }
+
+
 }
 
