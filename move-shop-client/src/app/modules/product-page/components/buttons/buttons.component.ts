@@ -3,6 +3,7 @@ import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
 import {Location} from '@angular/common'
 import {AuthenticationService} from "../../../../services/authentication.service";
+import {ToastrService} from "ngx-toastr";
 
 function sleep(milliseconds) {
   const date = Date.now();
@@ -26,22 +27,34 @@ export class ButtonsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private toastrService: ToastrService
   ) { }
 
   ngOnInit(): void {
-
   }
 
   addToCart() {
 
     this.authenticationService.currentUserValue != null ? (this.size != null ? this.productService.postData(this.id, this.size, this.quantity)
-      .subscribe(res => {this.refresh(); console.log(this.size); }) : alert('Please choose size of shoe') ) : alert('Please sign in if you want to add this shoe in cart!');
+      .subscribe(res => {this.refresh(); console.log(this.size); }) :
+      this.toastrService.warning('Please choose size of shoe' , '', {
+      timeOut: 2500,
+      positionClass: 'toast-top-full-width',
+    })) :
+      this.toastrService.warning('Please sign in if you want to add this shoe in cart!' , '', {
+        timeOut: 2500,
+        positionClass: 'toast-top-full-width',
+      });
 
   }
   addToFavorite() {
     this.authenticationService.currentUserValue != null ? this.productService.postFavorite(this.id)
-      .subscribe(res => { this.refresh(); }) : alert('Please sign in if you want to add this shoe in cart!');
+      .subscribe(res => { this.refresh(); }) :
+      this.toastrService.warning('Please sign in if you want to add this shoe in cart!' , '', {
+        timeOut: 2500,
+        positionClass: 'toast-top-full-width',
+      });
   }
 
   refresh(): void{

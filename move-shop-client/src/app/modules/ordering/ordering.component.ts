@@ -10,6 +10,7 @@ import {Confirm, Order} from '../../models/order';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Router} from '@angular/router';
 import {RootRoutingModule} from "../root/root-routing.module";
+import {ToastrService} from "ngx-toastr";
 
 
 /**
@@ -41,7 +42,8 @@ export class OrderingComponent implements OnInit {
     private orderServices: OrderingService,
     private cartServices: CartService,
     private authenticationService: AuthenticationService,
-    public router: Router
+    public router: Router,
+    private toastrService: ToastrService
   ) { }
 
   getTotalCost() {
@@ -79,13 +81,16 @@ export class OrderingComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
-          alert('Your order has confirmed');
           this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; this.listOrders = this.checkOrder(); this.viewAddress = false; });
           this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); });
+          this.toastrService.success('Your order has confirmed! ' , '', {
+            timeOut: 2500,
+            positionClass: 'toast-top-full-width',
+          });
         },
         error => {
           console.log(error);
-          alert('Dont confirmed! Please fill all field' );
+          // alert('Dont confirmed! Please fill all field' );
         });
   }
 

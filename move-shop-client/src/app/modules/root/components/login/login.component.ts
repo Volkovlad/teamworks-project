@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../../../services/authentication.service';
 import { first } from 'rxjs/operators';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private socialAuthService: AuthService,
     private authenticationService: AuthenticationService,
-    public router: Router
+    public router: Router,
+    private toastrService: ToastrService
   ) { }
 
   showReg = {
@@ -66,17 +68,21 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         res => {
-          console.log(res);
-          alert('User ' + this.user.username + ' logged!');
+          this.toastrService.success('User ' + this.user.username + ' logged!', '', {
+            timeOut: 2500,
+            positionClass: 'toast-top-full-width',
+          });
           this.showMePartially = !this.showMePartially;
           this.changeShowVar.emit(this.showMePartially);
           this.loginVar = !this.loginVar;
           this.ChangeloginVar.emit(!this.loginVar);
-          location.replace('/home');
+          // location.replace('/home');
         },
         error => {
-          console.log(error);
-          alert('Dont search user with ' + this.user.username + ' username or your password is not corect' );
+          this.toastrService.error('Try again, username or your password is not corect' , '', {
+            timeOut: 2500,
+            positionClass: 'toast-top-full-width',
+          });
         });
   }
 
