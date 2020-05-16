@@ -12,6 +12,8 @@ import { finalize } from 'rxjs/operators';
 export class ShoppingComponent implements OnInit {
   @ViewChild(PreloaderComponent, { static: true }) preloader: PreloaderComponent;
 
+
+
   shoes: Shoe[] = [];
   brandFilter = [];
   colorFilter = [];
@@ -20,14 +22,15 @@ export class ShoppingComponent implements OnInit {
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
+
   }
 
   searchProducts($event) {
     const searchedValue = $event;
 
-  this.preloader.show();
+
     this.shoppingService.getSearchedProducts(searchedValue)
-      .subscribe(data => {this.shoes = data as Shoe[]; this.preloader.hide()});
+      .subscribe(data => {this.shoes = data as Shoe[]; });
 
   }
   filterBrand($event){

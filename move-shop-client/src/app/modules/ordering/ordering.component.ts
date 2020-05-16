@@ -10,6 +10,7 @@ import {Confirm, Order} from '../../models/order';
 import {AuthenticationService} from '../../services/authentication.service';
 import {Router} from '@angular/router';
 import {RootRoutingModule} from "../root/root-routing.module";
+import {PreloaderComponent} from "../shared/components/preloader/preloader.component";
 
 
 /**
@@ -21,6 +22,7 @@ import {RootRoutingModule} from "../root/root-routing.module";
   templateUrl: './ordering.component.html'
 })
 export class OrderingComponent implements OnInit {
+  @ViewChild(PreloaderComponent, { static: true }) preloader: PreloaderComponent;
   displayedColumns: string[] = ['image', 'name', 'size', 'quantity', 'price', 'delete'];
   checkValue = true;
   cart: Cart[] = [];
@@ -75,13 +77,15 @@ export class OrderingComponent implements OnInit {
   }
 
   onConfirm() {
+    this.preloader.show();
     this.orderServices.ordering(this.confirm)
       .subscribe(
         res => {
           console.log(res);
           alert('Your order has confirmed');
           this.orderServices.getOrders().subscribe(data => {this.orders = data as Order[]; this.listOrders = this.checkOrder(); this.viewAddress = false; });
-          this.cartServices.getData().subscribe(data => {this.cart = data['value'];  this.submit = this.check(); });
+          this.cartServices.getData().subscribe(data => {this.cart = data['value']; this.preloader.hide();  this.submit = this.check(); });
+
         },
         error => {
           console.log(error);
