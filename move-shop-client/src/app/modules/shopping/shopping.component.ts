@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShoppingService } from './services/shopping.service';
 import { Shoe } from '../../models/shoe';
+import { PreloaderComponent } from '../shared/components/preloader/preloader.component';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shopping',
@@ -8,6 +10,8 @@ import { Shoe } from '../../models/shoe';
   styleUrls: ['./shopping.component.scss']
 })
 export class ShoppingComponent implements OnInit {
+  @ViewChild(PreloaderComponent, { static: true }) preloader: PreloaderComponent;
+
   shoes: Shoe[] = [];
   brandFilter = [];
   colorFilter = [];
@@ -20,8 +24,11 @@ export class ShoppingComponent implements OnInit {
 
   searchProducts($event) {
     const searchedValue = $event;
+
+  this.preloader.show();
     this.shoppingService.getSearchedProducts(searchedValue)
-      .subscribe(data => {this.shoes = data as Shoe[]});
+      .subscribe(data => {this.shoes = data as Shoe[]; this.preloader.hide()});
+
   }
   filterBrand($event){
     const brandFilter = $event;
@@ -30,6 +37,7 @@ export class ShoppingComponent implements OnInit {
   filterColor($event){
     const colorFilter = $event;
     this.colorFilter = colorFilter;
+
   }
   filterSize($event){
     const sizeFilter = $event;
