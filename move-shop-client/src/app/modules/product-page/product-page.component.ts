@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ColorShoe} from '../../models/color';
 import {ProductService} from './services/product.service';
+import { HostListener } from '@angular/core';
 
 
 @Component({
@@ -14,15 +15,22 @@ export class ProductPageComponent implements OnInit {
   shoeId;
   color;
   size;
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
     this.testMethod();
   }
 
-  changeColor($event){
+  @HostListener('window:popstate', ['$event'])
+  onPopState(event) {
     this.testMethod();
+  }
+
+  changeColor($event){
+    this.router.navigateByUrl(`/products/${this.shoeId}/${this.color}`);
+    this.productService.getData(this.shoeId, this.color)
+      .subscribe(data => {this.shoes = data as ColorShoe[]});
   }
 
   testMethod(){
@@ -31,11 +39,10 @@ export class ProductPageComponent implements OnInit {
         (params: Params) => {
           this.shoeId = +params['shoeID'];
           this.color = params['color'];
+          this.productService.getData(this.shoeId, this.color)
+            .subscribe(data => {this.shoes = data as ColorShoe[]});
         }
       );
-
-    this.productService.getData(this.shoeId, this.color)
-      .subscribe(data => {this.shoes = data as ColorShoe[]});
   }
 
   changeSize($event){

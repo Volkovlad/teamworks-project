@@ -1,16 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
-import {Location} from '@angular/common'
 import {AuthenticationService} from "../../../../services/authentication.service";
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
 
 @Component({
   selector: 'app-buttons',
@@ -26,7 +18,8 @@ export class ButtonsComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -34,9 +27,12 @@ export class ButtonsComponent implements OnInit {
   }
 
   addToCart() {
-
     this.authenticationService.currentUserValue != null ? (this.size != null ? this.productService.postData(this.id, this.size, this.quantity)
       .subscribe(res => {this.refresh(); console.log(this.size); }) : alert('Please choose size of shoe') ) : alert('Please sign in if you want to add this shoe in cart!');
+  }
+  goToOrder(){
+    this.authenticationService.currentUserValue != null ? (this.size != null ? this.productService.postData(this.id, this.size, this.quantity)
+      .subscribe(res => {this.route.navigate(['/ordering']);}) : alert('Please choose size of shoe') ) : alert('Please sign in if you want to add this shoe in cart!');
 
   }
   addToFavorite() {
