@@ -11,7 +11,7 @@ import {ProductService} from "../../services/product.service";
 })
 export class ColorsComponent implements OnInit {
   @Input() shoes;
-  constructor(private productService:ProductService) { }
+  constructor() { }
   @Output() colorChangeEvent = new EventEmitter();
   ngOnInit(): void {
   }
