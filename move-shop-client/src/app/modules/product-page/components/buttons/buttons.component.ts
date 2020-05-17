@@ -1,18 +1,10 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {Router} from '@angular/router';
-import {Location} from '@angular/common'
 import {AuthenticationService} from "../../../../services/authentication.service";
 import {ToastrService} from "ngx-toastr";
 import {PreloaderComponent} from "../../../shared/components/preloader/preloader.component";
 
-function sleep(milliseconds) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < milliseconds);
-}
 
 @Component({
   selector: 'app-buttons',
@@ -31,6 +23,7 @@ export class ButtonsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private authenticationService: AuthenticationService,
+    private route: Router,
     private toastrService: ToastrService
   ) { }
 
@@ -58,6 +51,19 @@ export class ButtonsComponent implements OnInit {
     // }
     this.authenticationService.currentUserValue != null ? (this.size != null ? this.productService.postData(this.id, this.size, this.quantity)
         .subscribe(res => {this.refresh();  this.preloader.show(); console.log(this.size); }) :
+      this.toastrService.warning('Please choose size of shoe' , '', {
+        timeOut: 2500,
+        positionClass: 'toast-top-full-width',
+      })) :
+      this.toastrService.warning('Please sign in if you want to add this shoe in cart!' , '', {
+        timeOut: 2500,
+        positionClass: 'toast-top-full-width',
+      });
+    this.preloader.hide();
+  }
+  goToOrder() {
+    this.authenticationService.currentUserValue != null ? (this.size != null ? this.productService.postData(this.id, this.size, this.quantity)
+        .subscribe(res => {this.route.navigate(['/ordering']);  this.preloader.show(); console.log(this.size); }) :
       this.toastrService.warning('Please choose size of shoe' , '', {
         timeOut: 2500,
         positionClass: 'toast-top-full-width',
