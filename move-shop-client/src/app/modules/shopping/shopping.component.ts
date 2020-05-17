@@ -17,7 +17,7 @@ export class ShoppingComponent implements OnInit {
   colorFilter = [];
   sizeFilter = [];
   priceFilter: string;
-  search: string;
+  search = '';
   constructor(private shoppingService: ShoppingService) { }
 
   ngOnInit(): void {
@@ -51,8 +51,11 @@ export class ShoppingComponent implements OnInit {
   }
   acceptFilters(){
     this.preloader.show();
-    this.shoppingService.getFilteredProducts(this.search = '', this.brandFilter.toString(),
+    this.shoppingService.getFilteredProducts(this.search, this.brandFilter.toString(),
       this.colorFilter.toString(), this.sizeFilter.toString(), this.priceFilter)
       .subscribe(data => {this.shoes = data as Shoe[]; this.preloader.hide()});
 }
+  clearFilters(){
+    location.replace(`/shopping`);
+  }
 }

@@ -1,10 +1,10 @@
 <div class="main_content">
+
   <div class="all_filters">
+    <button class="clear" (click)="clearFilters()">Clear all filters</button>
+    <form action="">
     <div class="bg">
-      <label class="container" >Clear all filters
-        <input name="clear" type="checkbox" checked="checked">
-        <span class="checkmark"></span>
-      </label>
+
     </div>
     <app-brand-filter (brandFilterEvent)="filterBrand($event)"></app-brand-filter>
       <div class="line" style="top: 360px">
@@ -21,8 +21,9 @@
 
 
     <app-color-filter (colorFilterEvent)="filterColor($event)"></app-color-filter>
-    <button (click)="acceptFilters()">Accept</button>
-</div>
+    <button (click)="acceptFilters()" class="accept">Accept</button>
+    </form>
+  </div>
 
   <div class="list">
     <div class="search">

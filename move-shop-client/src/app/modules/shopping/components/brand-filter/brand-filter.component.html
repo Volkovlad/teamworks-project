@@ -4,12 +4,12 @@
   <h4>Brand:</h4>
   <div *ngFor="let option of options" class="brands">
     <div class="container">
-    <label>
+    <label>{{option.name}}
      <input type="checkbox"
              name="options"
              value="{{option.value}}"
              [(ngModel)]="option.checked"/>
-      <span class="checkmark"></span>{{option.name}}
+      <span class="checkmark"></span>
     </label>
     </div>
   </div>
