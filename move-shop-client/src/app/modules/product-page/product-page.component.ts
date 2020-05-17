@@ -15,7 +15,9 @@ export class ProductPageComponent implements OnInit {
   shoeId;
   color;
   size;
-  constructor(private productService: ProductService, private route: ActivatedRoute, private router: Router) {
+  constructor(private productService: ProductService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {

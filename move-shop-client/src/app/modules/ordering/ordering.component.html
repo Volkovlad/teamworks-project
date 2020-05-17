@@ -55,27 +55,27 @@
   <div class="order-methods">
     <div class="panel-group">
       <h4 class="panel-title">
-        Cпосіб оплати
+        Payment
         <img src="https://img.icons8.com/ios/500/money.png" class="img">
       </h4>
-      <span> Післяплатою при отриманні замовлення у відділенні Нової Пошти. </span>
+      <span> Postpaid upon receipt of the order at the Nova Poshta office. </span>
     </div>
     <br>
     <div class="panel-group">
       <h4 class="panel-title">
 
-        Cпосіб доставки
+        Delivery
         <img src="https://img.icons8.com/ios/500/delivery.png" class="img">
       </h4>
       <ul>
-        <li>Доставка здійснюється транспортною компанією "Нова Пошта", терміни 1-3 дні по Україні;</li>
-        <li>Після відправки замовлення вам прийде SMS з номером експрес-накладної, за якою на сайті novaposhta.ua зможете відстежити своє замовлення і дізнатися точну вартість доставки;</li>
-        <li>При отриманні замовлення необхідно мати при собі паспорт або водійські права;</li>
+        <li>Delivery is carried out by the Nova Poshta transport company, terms 1-3 days across Ukraine;</li>
+        <li>After sending the order, you will receive an SMS with the number of the express invoice, according to which you will be able to track your order on the site novaposhta.ua and find out the exact cost of delivery;</li>
+        <li>Upon receipt of the order you must have a passport or driver's license;</li>
       </ul>
     </div>
     <br>
     <div *ngIf="submit">
-    <h4 style="margin-bottom: 20px">Адреса доставки <img (click)="view()" src="../../../assets/write_icon.png" height="24" width="24" style="cursor: pointer" /></h4>
+    <h4 style="margin-bottom: 20px">Order data <img (click)="view()" src="../../../assets/write_icon.png" height="24" width="24" style="cursor: pointer" /></h4>
       <form *ngIf="viewAddress" id="checkoutOrderForm" (ngSubmit)="onConfirm()" >
         <div class="panel-group">
           <div class="panel panel-default">
