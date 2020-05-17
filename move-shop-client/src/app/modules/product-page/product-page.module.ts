@@ -6,11 +6,12 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { ProductPageComponent} from './product-page.component';
 import { ProductPageRoutingModule} from './product-page-routing.module';
 import {FormsModule} from "@angular/forms";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [ProductPageComponent, SizeComponent, ColorsComponent, ButtonsComponent],
     imports: [
-        CommonModule, ProductPageRoutingModule, FormsModule
+        CommonModule, ProductPageRoutingModule, FormsModule, SharedModule
     ]
 })
 export class ProductPageModule { }

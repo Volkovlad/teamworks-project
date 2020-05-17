@@ -9,6 +9,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {FormsModule} from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {SharedModule} from "../shared/shared.module";
 
 
 
@@ -27,6 +28,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     FormsModule,
     MatExpansionModule,
     MatFormFieldModule,
+    SharedModule,
 
   ]
 })

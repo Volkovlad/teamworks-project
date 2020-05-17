@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ShoppingService} from '../../services/shopping.service';
 import {Shoe} from '../../../../models/shoe';
+import {PreloaderComponent} from '../../../shared/components/preloader/preloader.component';
 
 
 @Component({
@@ -10,6 +11,7 @@ import {Shoe} from '../../../../models/shoe';
   providers: [ShoppingService]
 })
 export class ListOfProductsComponent implements OnInit {
+  @ViewChild(PreloaderComponent, { static: true }) preloader: PreloaderComponent;
   @Input() shoes;
 
 
@@ -17,7 +19,9 @@ export class ListOfProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.shoppingService.getData().subscribe(data => {this.shoes = data as Shoe []});
+    this.preloader.show();
+    this.shoppingService.getData().subscribe(data => {this.shoes = data as Shoe []; this.preloader.hide()});
+
   }
 
 }

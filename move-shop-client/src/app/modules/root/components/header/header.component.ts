@@ -4,7 +4,7 @@ import {Cart} from '../../../../models/cart';
 import {UserService} from '../../services/user.service';
 import {AuthenticationService} from '../../../../services/authentication.service';
 import {CartComponent} from '../cart/cart.component';
-
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -17,10 +17,12 @@ export class HeaderComponent implements OnInit {
   favoriteVar = false;
   loginVar = false;
 
+
   constructor(
     private userServices: UserService,
     private authenticationService: AuthenticationService,
     private favoriteServices: CartService,
+    private toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,10 @@ export class HeaderComponent implements OnInit {
 
   onLogOut() {
     this.authenticationService.logout();
-    alert('You are logged out!');
+    this.toastrService.info('Your are logged out !', '', {
+      timeOut: 2500,
+      positionClass: 'toast-top-full-width',
+    });
     if (this.authenticationService.currentUserValue === null) {
       this.loginVar = true;
     }
@@ -52,7 +57,10 @@ export class HeaderComponent implements OnInit {
 
   viewCart() {
     if (this.authenticationService.currentUserValue === null) {
-      alert('Please log in if you want see your cart!');
+      this.toastrService.info('Please log in if you want see your cart!', '', {
+        timeOut: 2500,
+        positionClass: 'toast-top-left',
+      });
     } else {
       this.favoriteServices.getData();
       this.cartVar = !this.cartVar;
@@ -63,7 +71,10 @@ export class HeaderComponent implements OnInit {
 
   viewFavorite() {
     if (this.authenticationService.currentUserValue === null) {
-      alert('Please log in if you want see your favorites products!');
+      this.toastrService.info('Please log in if you want see your favorites products!', '', {
+        timeOut: 2500,
+        positionClass: 'toast-top-left',
+      });
     } else {
       this.favoriteServices.getFavorite();
       this.favoriteVar = !this.favoriteVar;

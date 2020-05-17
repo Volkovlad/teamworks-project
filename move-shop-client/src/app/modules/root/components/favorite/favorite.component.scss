@@ -3,6 +3,7 @@
 *{
   font-family: Montserrat,sans-serif;
   font-size: 16px;
+  outline: none;
 }
 .favorite{
   position: absolute;
@@ -36,7 +37,7 @@ label{
   height: 100px;
   background-color: #6c757d;
   border-radius: 10px;
-
+  border: 0.8px solid black;
 }
 .underline{
   margin: 10px 0 10px 0;
